@@ -2,20 +2,18 @@
 {
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  users.defaultUser.name = "nekotori55";
-  users.useHomeManager = true;
-  desktop = {
-    wm = "bspwm";
+  user.name = "nekotori55";
+  modules = {
+    homeManager.enable = true;
 
-    bspwm = {
-      enable = true;
-      # configFilePath = "${pkgs.bspwm}/share/doc/bspwm/examples/bspwmrc";
-      # sxhkd.configFilePath = "${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc";
+    desktop = {
+      wm = "none";
 
-      additionalPackages = with pkgs; [
-        kitty
-        cowsay
-      ];
+      bspwm = {
+        additionalPackages = with pkgs; [
+          cowsay
+        ];
+      };
     };
   };
 

@@ -1,20 +1,33 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 with lib;
 with builtins;
+with types;
 let
-  username = config.users.defaultUser.name;
+  username = config.user.name;
 in
 {
-  home-manager = mkIf config.users.useHomeManager {
-    verbose = true;
+  # TODO: maybe move home-manager to modules
+  options = {
+    modules.homeManager.enable = mkEnableOption false;
+  };
 
-    useGlobalPkgs = true;
-    useUserPackages = true;
+  config = {
+    home-manager = mkIf config.modules.homeManager.enable {
+      verbose = true;
 
-    backupFileExtension = "hm.old";
+      useGlobalPkgs = true;
+      useUserPackages = true;
 
-    # TODO adapt for several users
-    # Import $username home manager configuration if it exists
-    users.${username} = mkIf (pathExists ./${username}) (import ./${username});
+      backupFileExtension = "hm.old";
+
+      # TODO adapt for several users
+      # Import $username home manager configuration if it exists
+      users.${username} = mkIf (pathExists ./${username}) (import ./${username});
+    };
   };
 }

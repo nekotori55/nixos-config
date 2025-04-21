@@ -1,26 +1,47 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  options,
+  ...
+}:
+with lib;
+with types;
 {
   # TODO description = "Essential stuff for every system (essential user and software stuff)";
   imports = [
     ./desktop
+    ./xdg.nix
+    ./home.nix
   ];
 
-  # TODO support several users
-  users.users = {
-    ${config.users.defaultUser.name} = {
-      # name = ;
-      initialPassword = "123";
-      isNormalUser = true;
-      uid = 1000;
+  options = {
+    user = mkOption {
+      type = attrs;
+      default = {
+        name = "";
+      };
     };
   };
 
-  # TODO is this essential?
-  programs.nh.enable = true;
+  config = {
+    user = {
+      initialPassword = "123";
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [ "wheel" ];
+      home = "/home/${config.user.name}";
+    };
+    users.users.${config.user.name} = mkAliasDefinitions options.user;
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-  ];
+    # TODO is this essential?
+    programs.nh.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      git
+      vim
+      wget
+    ];
+  };
+
 }

@@ -4,7 +4,6 @@ with lib;
   # TODO description = "Essential stuff for every system (hardware and systemsystem stuff)";
 
   imports = [
-    ./options
     ./modules
   ];
 
