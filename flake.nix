@@ -23,7 +23,6 @@
 
             # TODO include only when users.useHomeManager = true;
             home-manager.nixosModules.home-manager
-            ./home-manager
           ];
         };
       };

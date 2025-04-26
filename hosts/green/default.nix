@@ -2,18 +2,10 @@
 {
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  user.name = "nekotori55";
   modules = {
-    homeManager.enable = true;
-
+    home.useHomeManager = true;
     desktop = {
-      wm = "none";
-
-      bspwm = {
-        additionalPackages = with pkgs; [
-          cowsay
-        ];
-      };
+      wm = "bspwm";
     };
   };
 

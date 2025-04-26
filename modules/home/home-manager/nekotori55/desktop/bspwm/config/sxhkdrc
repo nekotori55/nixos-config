@@ -1,5 +1,5 @@
 super + t
     kitty
 
-super + alt + q
+super + q
     bspc quit

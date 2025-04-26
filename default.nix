@@ -5,6 +5,7 @@ with lib;
 
   imports = [
     ./modules
+    ./options
   ];
 
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";

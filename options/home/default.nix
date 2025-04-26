@@ -2,14 +2,21 @@
 with lib;
 with types;
 let
-  cfg = config.home;
+  cfg = config.modules.home;
 in
 {
   options = {
     modules.home = {
+      user = mkOption {
+        type = attrs;
+        default = {
+          name = "nekotori55";
+        };
+      };
+
       dir = mkOption {
         type = str;
-        default = "${config.user.home}";
+        default = "${cfg.user.home}";
       };
 
       binDir = mkOption {
@@ -41,6 +48,15 @@ in
         type = str;
         default = "${cfg.dir}/.local/user";
       };
+
+      xdg = {
+        enable = mkOption {
+          type = bool;
+          default = true;
+        };
+      };
+
+      useHomeManager = mkEnableOption "Use home manager";
     };
   };
 }
