@@ -2,6 +2,7 @@
 {
   imports = [
     ./desktop/bspwm
+    ./desktop/hyprland
   ];
 
   home = {

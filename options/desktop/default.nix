@@ -4,6 +4,7 @@ with types;
 {
   imports = [
     ./bspwm.nix
+    ./hyprland.nix
   ];
 
   options = {
@@ -12,6 +13,7 @@ with types;
         type = enum [
           "none"
           "bspwm"
+          "hyprland"
         ];
         default = "none";
         description = "which desktop to use";
@@ -27,6 +29,7 @@ with types;
   };
 
   config = {
-    modules.desktop.bspwm.enable = (config.modules.desktop.wm == "bspwm");
+    modules.desktop.bspwm.enable = mkDefault (config.modules.desktop.wm == "bspwm");
+    modules.desktop.hyprland.enable = (config.modules.desktop.wm == "hyprland");
   };
 }

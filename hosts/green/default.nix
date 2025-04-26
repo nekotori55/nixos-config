@@ -5,7 +5,7 @@
   modules = {
     home.useHomeManager = true;
     desktop = {
-      wm = "bspwm";
+      wm = "hyprland";
     };
   };
 
