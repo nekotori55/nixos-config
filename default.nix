@@ -27,7 +27,7 @@ with lib;
 
     virtualisation = {
       diskSize = 5192;
-      memorySize = 2048;
+      memorySize = 4096;
       cores = 2;
     };
 

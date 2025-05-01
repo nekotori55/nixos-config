@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, ... }:
 {
   imports = [
     ./desktop/bspwm
     ./desktop/hyprland
+    ./apps
   ];
 
   home = {
@@ -11,6 +12,6 @@
       kitty
     ];
 
-    stateVersion = "25.05";
+    stateVersion = osConfig.system.stateVersion;
   };
 }

@@ -2,14 +2,13 @@
   config,
   pkgs,
   lib,
-  options,
   ...
 }:
 with lib;
 with types;
-let
-  username = config.modules.home.user.name;
-in
+# let
+#   username = config.modules.home.user.name;
+# in
 {
   # TODO description = "Essential stuff for every system (essential user and software stuff)";
   imports = [

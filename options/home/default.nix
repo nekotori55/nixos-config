@@ -5,6 +5,10 @@ let
   cfg = config.modules.home;
 in
 {
+  imports = [
+    ./apps
+  ];
+
   options = {
     modules.home = {
       user = mkOption {
