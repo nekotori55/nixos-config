@@ -15,6 +15,10 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      settings = {
+
+      };
+
       extraConfig =
         keybinds
         + rules
@@ -26,6 +30,7 @@ in
     home.activation = mkIf cfg.mutableConfigFile.enable {
       hyprlandMutableFile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [[ ! -f "${cfg.mutableConfigFile.path}" ]]; then
+          dirname -z "${cfg.mutableConfigFile.path}" | xargs -0 mkdir -p
           touch "${cfg.mutableConfigFile.path}"
         fi;
       '';
@@ -38,5 +43,7 @@ in
         wallpaper = [",$HOME/wallpaper.png"];
       };
     };
+
+    programs.waybar.enable = true;
   };
 }
