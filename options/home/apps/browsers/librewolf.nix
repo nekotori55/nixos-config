@@ -10,10 +10,16 @@ with types;
     };
 
     preferences = mkOption {
-      type = (attrsOf (oneOf [ bool int str ]));
-      default = {};
+      type = (
+        attrsOf (oneOf [
+          bool
+          int
+          str
+        ])
+      );
+      default = { };
       description = ''
-      Librewolf preferences to set in <filename>user.js</filename>
+        Librewolf preferences to set in <filename>user.js</filename>
       '';
     };
 

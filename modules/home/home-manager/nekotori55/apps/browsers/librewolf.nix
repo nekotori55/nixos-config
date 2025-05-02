@@ -1,4 +1,9 @@
-{ osConfig, lib, pkgs, ... }:
+{
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = osConfig.modules.home.apps.browsers.librewolf;

@@ -3,7 +3,8 @@ with lib;
 with builtins;
 with types;
 let
-  user = config.modules.home.user;
+  cfg = config.modules.home;
+  user = cfg.user;
 in
 {
   config = {
@@ -19,7 +20,15 @@ in
       # Import $username home manager configuration if it exists
       users.${user.name} = mkIf (pathExists ./${user.name}) (import ./${user.name});
 
-      sharedModules = [ { xdg.enable = true; } ];
+      sharedModules = [ {
+        xdg = {
+          enable = true;
+          cacheHome = mkForce cfg.cacheDir;
+          configHome = mkForce cfg.configDir;
+          dataHome = mkForce cfg.dataDir;
+          stateHome = mkForce cfg.stateDir;
+        };
+      } ];
     };
   };
 }

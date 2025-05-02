@@ -1,28 +1,41 @@
 {
   osConfig,
   lib,
-  config,
   ...
 }:
 with lib;
+# with builtins;
 let
   cfg = osConfig.modules.desktop.hyprland;
+  keybinds = readFile ./binds.conf;
+  rules = readFile ./rules.conf;
+  settings = readFile ./settings.conf;
 in
 {
   config = mkIf cfg.enable {
-    # xsession.windowManager = {
-    # bspwm = {
-    # enable = true;
-    # };
-    # };
+    wayland.windowManager.hyprland = {
+      enable = true;
+      extraConfig =
+        keybinds
+        + rules
+        + settings
+        + (optionalString (cfg.mutableConfigFile.enable) "source = ${cfg.mutableConfigFile.path} \n")
+        + cfg.hostConfig;
+    };
 
-    # services.sxhkd.enable = true;
-    # services.picom.enable = true;
+    home.activation = mkIf cfg.mutableConfigFile.enable {
+      hyprlandMutableFile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [[ ! -f "${cfg.mutableConfigFile.path}" ]]; then
+          touch "${cfg.mutableConfigFile.path}"
+        fi;
+      '';
+    };
 
-    xdg.configFile = {
-      "hypr/" = {
-        source = ./config;
-        recursive = true;
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        preload = ["$HOME/wallpaper.png"];
+        wallpaper = [",$HOME/wallpaper.png"];
       };
     };
   };
