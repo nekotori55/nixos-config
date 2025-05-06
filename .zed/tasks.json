@@ -7,6 +7,14 @@
     "command": "nh os switch ."
   },
   {
+    "label": "NIXOS SWITCH ON NEXT BOOT",
+    "command": "nh os boot ."
+  },
+  {
+    "label": "NIXOS TEST",
+    "command": "nh os test ."
+  },
+  {
     "label": "NIXOS VM",
     "command": "rm result -rf; nixos-rebuild build-vm --flake ~/nixos-config-rewrite; if [[ -d ./result ]] ; then ./result/bin/run-${HOSTNAME}-vm ; fi;",
     "cwd": "/tmp/"

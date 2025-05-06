@@ -6,6 +6,7 @@ with lib;
   imports = [
     ./modules
     ./options
+    ./home-manager
   ];
 
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";

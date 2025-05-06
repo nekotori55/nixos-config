@@ -11,7 +11,6 @@ with lib;
 {
   imports = [
     ./xdg.nix
-    ./home-manager
   ];
 
   config = {

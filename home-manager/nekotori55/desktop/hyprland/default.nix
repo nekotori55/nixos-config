@@ -15,10 +15,6 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      settings = {
-
-      };
-
       extraConfig =
         keybinds
         + rules
@@ -44,6 +40,9 @@ in
       };
     };
 
-    programs.waybar.enable = true;
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
+    };
   };
 }

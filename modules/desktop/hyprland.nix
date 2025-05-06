@@ -24,6 +24,7 @@ in
     environment.systemPackages = with pkgs; [
       hyprpaper
       waybar # TODO replace with EWW
+      brightnessctl
     ];
 
     fonts.packages = with pkgs; [
