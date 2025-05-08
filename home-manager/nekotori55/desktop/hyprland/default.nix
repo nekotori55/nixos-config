@@ -1,42 +1,52 @@
 {
   osConfig,
   lib,
+  pkgs,
   ...
 }:
 with lib;
 # with builtins;
 let
-  cfg = osConfig.modules.desktop.hyprland;
+  hyprcfg = osConfig.modules.desktop.hyprland;
 
   # merge this in one file?
   hyprlandKeybinds = readFile ./hyprland/binds.conf;
   hyprlandRules = readFile ./hyprland/rules.conf;
   hyprlandSettings = readFile ./hyprland/settings.conf;
 
-
 in
 {
-  config = mkIf cfg.enable {
+  config = mkIf hyprcfg.enable {
+
+    # HYPRLAND
     wayland.windowManager.hyprland = {
       enable = true;
+      # plugins
       extraConfig =
       hyprlandKeybinds
         + hyprlandRules
         + hyprlandSettings
-        + (optionalString (cfg.mutableConfigFile.enable) "source = ${cfg.mutableConfigFile.path} \n")
-        + cfg.hostConfig;
+        + (optionalString (hyprcfg.mutableConfigFile.enable) "source = ${hyprcfg.mutableConfigFile.path} \n")
+        + hyprcfg.hostConfig;
     };
 
-    home.activation = mkIf cfg.mutableConfigFile.enable {
+    home.activation = mkIf hyprcfg.mutableConfigFile.enable {
       hyprlandMutableFile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        if [[ ! -f "${cfg.mutableConfigFile.path}" ]]; then
-          dirname -z "${cfg.mutableConfigFile.path}" | xargs -0 mkdir -p
-          touch "${cfg.mutableConfigFile.path}"
+        if [[ ! -f "${hyprcfg.mutableConfigFile.path}" ]]; then
+          dirname -z "${hyprcfg.mutableConfigFile.path}" | xargs -0 mkdir -p
+          touch "${hyprcfg.mutableConfigFile.path}"
         fi;
       '';
     };
 
-    # TODO improve
+    # required for script to work
+    home.packages = with pkgs; [ jq ];
+    xdg.configFile."hypr/workspace.sh" = {
+      source = ./hyprland/workspace.sh;
+      executable = true;
+    };
+
+    # HYPRPAPER
     services.hyprpaper = {
       enable = true;
       settings = {
@@ -45,9 +55,15 @@ in
       };
     };
 
+    # WAYBAR
     programs.waybar = {
       enable = true;
       systemd.enable = true;
     };
+
+    # xdg.configFile."waybar" = {
+    #   source = ./waybar;
+    #   recursive = true;
+    # };
   };
 }
