@@ -7,18 +7,22 @@ with lib;
 # with builtins;
 let
   cfg = osConfig.modules.desktop.hyprland;
-  keybinds = readFile ./binds.conf;
-  rules = readFile ./rules.conf;
-  settings = readFile ./settings.conf;
+
+  # merge this in one file?
+  hyprlandKeybinds = readFile ./hyprland/binds.conf;
+  hyprlandRules = readFile ./hyprland/rules.conf;
+  hyprlandSettings = readFile ./hyprland/settings.conf;
+
+
 in
 {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig =
-        keybinds
-        + rules
-        + settings
+      hyprlandKeybinds
+        + hyprlandRules
+        + hyprlandSettings
         + (optionalString (cfg.mutableConfigFile.enable) "source = ${cfg.mutableConfigFile.path} \n")
         + cfg.hostConfig;
     };
@@ -32,6 +36,7 @@ in
       '';
     };
 
+    # TODO improve
     services.hyprpaper = {
       enable = true;
       settings = {
