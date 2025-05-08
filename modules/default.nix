@@ -17,8 +17,10 @@ in
   ];
 
   config = {
-    # TODO is this essential?
-    programs.nh.enable = true;
+    programs.nh = {
+      enable = true;
+      flake = cfg.configDir + "/nixos";
+    };
 
     environment.systemPackages = with pkgs; [
       git
