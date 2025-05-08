@@ -77,6 +77,8 @@
     };
   };
 
+  time.timeZone = "Europe/Istanbul";
+
   # add on first install
   system.stateVersion = "23.05";
 }

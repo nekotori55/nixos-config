@@ -10,6 +10,7 @@
 
     packages = with pkgs; [
       kitty
+      telegram-desktop
     ];
 
     stateVersion = osConfig.system.stateVersion;
