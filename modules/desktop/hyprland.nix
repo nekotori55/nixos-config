@@ -27,6 +27,7 @@ in
       hyprpaper
       waybar # TODO replace with EWW
       brightnessctl
+      foot
     ];
 
     fonts.packages = with pkgs; [
