@@ -30,6 +30,8 @@ with types;
 
   config = {
     modules.desktop.bspwm.enable = mkDefault (config.modules.desktop.wm == "bspwm");
-    modules.desktop.hyprland.enable = (config.modules.desktop.wm == "hyprland");
+    modules.desktop.hyprland.enable = mkDefault (config.modules.desktop.wm == "hyprland");
+
+    modules.desktop.backend = mkDefault "none";
   };
 }

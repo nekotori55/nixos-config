@@ -10,6 +10,8 @@ let
 in
 {
   config = mkIf cfg.enable {
+    modules.desktop.backend = "wayland";
+
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.wayland.enable = true;
     services.displayManager.autoLogin.enable = true;
