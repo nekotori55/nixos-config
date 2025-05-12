@@ -39,10 +39,8 @@ in
       '';
     };
 
-    # required for script to work
-    home.packages = with pkgs; [ jq ];
     xdg.configFile."hypr/workspace.sh" = {
-      source = ./hyprland/workspace.sh;
+      source = ./hyprland/workspace.sh; # requires jq
       executable = true;
     };
 
@@ -60,6 +58,11 @@ in
       enable = true;
       systemd.enable = true;
     };
+
+    home.packages = with pkgs; [
+      jq # required for script to work
+      rofi-wayland
+    ];
 
     # xdg.configFile."waybar" = {
     #   source = ./waybar;

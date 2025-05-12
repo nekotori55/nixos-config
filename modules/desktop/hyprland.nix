@@ -17,7 +17,9 @@ in
     services.displayManager.autoLogin.enable = true;
     services.displayManager.autoLogin.user = "nekotori55";
 
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+    };
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
       TOPBAR = "waybar";
@@ -27,11 +29,11 @@ in
       hyprpaper
       waybar # TODO replace with EWW
       brightnessctl
-      foot
     ];
 
     fonts.packages = with pkgs; [
       font-awesome # needed for waybar # TODO check if can put in home manager
+      nerd-fonts.fira-code
     ];
 
     virtualisation.vmVariant = {
