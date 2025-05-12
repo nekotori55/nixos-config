@@ -29,7 +29,15 @@ in
       wm = "hyprland";
       hyprland = {
         mutableConfigFile.enable = true;
-        hostConfig = '' '';
+        hostConfig = ''
+	cursor {
+          no_hardware_cursors = true
+        }
+        
+        animations {
+          enabled = false
+        }
+        '';
       };
     };
 
