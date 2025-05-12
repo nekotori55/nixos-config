@@ -14,7 +14,7 @@ parted /dev/sda -- mkpart swap linux-swap -8GB 100%
 
 echo "adding boot partition"
 parted /dev/sda -- mkpart ESP fat32 1MB 512MB
-parted /dev/sda --set 3 esp on
+parted /dev/sda -- set 3 esp on
 
 echo "partition end"
 
