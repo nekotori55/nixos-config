@@ -26,7 +26,7 @@
   networking.useDHCP = lib.mkDefault true;
   networking.hostName = "work-vm";
   # networking.interfaces.enp0s3.useDHCP = lib.mkDefault true;
-   
+
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
@@ -34,5 +34,5 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  virtualisation.vmware.guest.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
 }
