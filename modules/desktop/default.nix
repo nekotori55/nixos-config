@@ -3,6 +3,7 @@
   imports = [
     ./bspwm.nix
     ./hyprland.nix
+    ./kde.nix
   ];
 
   config = lib.mkIf (config.modules.desktop.backend != "none") {

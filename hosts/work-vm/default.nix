@@ -9,7 +9,7 @@
   modules = {
     home.useHomeManager = true;
     desktop = {
-      wm = "hyprland";
+      wm = "kde";
       hyprland = {
         mutableConfigFile.enable = true;
         hostConfig = ''
