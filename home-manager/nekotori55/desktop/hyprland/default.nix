@@ -61,7 +61,7 @@ in
 
     home.packages = with pkgs; [
       jq # required for script to work
-      rofi-wayland
+      fuzzel
     ];
 
     # xdg.configFile."waybar" = {

@@ -9,6 +9,11 @@
   home = {
     packages = with pkgs; [
       telegram-desktop
+
+      fuzzel
+      grim
+      slurp
+      wl-clipboard
     ];
 
     stateVersion = osConfig.system.stateVersion;
