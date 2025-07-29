@@ -12,16 +12,19 @@ with lib;
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
   # enable the laptop stuff (probably should move to host specific config)
-  hardware.enableRedistributableFirmware = true;
+  hardware.enableRedistributableFirmware = mkDefault true;
 
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
-      # the whole point of nix
-      auto-optimise-store = true;
+
+      auto-optimise-store = mkDefault true; # debatable
     };
   };
 
+  # Not needed on a server???
+  # TODO move to separate desktop only profile
+  # or even in host-specific file
   # VM Settings
   virtualisation.vmVariant = {
     services.spice-vdagentd.enable = true;

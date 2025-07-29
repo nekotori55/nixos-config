@@ -26,8 +26,12 @@
           ];
         };
         work-vm = nixpkgs.lib.nixosSystem {
-	   modules = [ ./. ./hosts/work-vm home-manager.nixosModules.home-manager ];
+	        modules = [ ./. ./hosts/work-vm home-manager.nixosModules.home-manager ];
         };
+
+        server = nixpkgs.lib.nixosSystem {
+          modules = [ /hosts/ ] # ./. is not ready for server
+        }
       };
 
       devShells."x86_64-linux".default =

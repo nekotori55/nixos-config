@@ -28,7 +28,7 @@ in
       wget
     ];
 
-    # monkey see monkey repeat
+    # TODO desktop only?
     environment.localBinInPath = true;
      environment.sessionVariables = mkOrder 10 {
          # These are the defaults, and xdg.enable does set them, but due to load

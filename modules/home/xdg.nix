@@ -20,6 +20,7 @@ in
     environment = {
       systemPackages = with pkgs; [ xdg-user-dirs ];
 
+      # TODO desktop only?
       sessionVariables = {
         __GL_SHADER_DISK_CACHE_PATH = "/tmp/nv";
         XCOMPOSECACHE = "/tmp/xcompose";
@@ -31,6 +32,7 @@ in
 
     };
 
+    # TODO desktop only? Definetly
     system.userActivationScripts.initXDG = ''
       for dir in "$XDG_DESKTOP_DIR" "$XDG_STATE_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_BIN_HOME" "$XDG_CONFIG_HOME"; do
         mkdir -p "$dir" -m 700
