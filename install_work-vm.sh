@@ -10,7 +10,7 @@ Help()
 }
 
 
-if [ $? != 0 ] ; echo "Terminating..." ; exit 1 ;
+if [ $? != 0 ] ; echo "Terminating..." ; exit 1 ; fi 
 
 HOST=
 UEFI=true
