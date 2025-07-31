@@ -84,10 +84,14 @@ nixos-install --no-root-passwd --flake /mnt/etc/nixos#$HOSTNAME
 
 echo "Post install sequence"
 # POST INSTALL
-nixos-enter --root /mnt -c 
+# nixos-enter --root /mnt -c 
 
-mkdir -p /home/$USER/.config/nixos
-mv /etc/nixos/ .config/ -r
-chown 1000 -r /home/$USER/.config/nixos
-rm /etc/nixos -rf
-ln -sf /home/$USER/.config/nixos /etc/nixos
+# mkdir -p /home/$USER/.config/nixos
+# mv /etc/nixos/ .config/ -r
+# chown 1000 -r /home/$USER/.config/nixos
+# rm /etc/nixos -rf
+# ln -sf /home/$USER/.config/nixos /etc/nixos
+
+
+
+
