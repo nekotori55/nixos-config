@@ -10,7 +10,7 @@ Help()
 }
 
 
-if [ $? != 0 ] ; then Help(); echo "Terminating..." >&2 ; exit 1 ; fi
+if [ $? != 0 ] ; echo "Terminating..." >&2 ; exit 1 ; fi
 
 HOST=
 UEFI=true
@@ -22,7 +22,7 @@ while true; do
     -u | --uefi ) UEFI=true; shift ;;
     -h | --host ) HOST="$2"; shift 2 ;;
     -d | --disk ) DISK="$2"; shift 2 ;;
-    -h | --help ) ; Help(); exit 0;
+    -h | --help ) ; exit 0;
 
     # examples
     # -d | --debug ) DEBUG=true; shift ;;
