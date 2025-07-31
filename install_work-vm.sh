@@ -10,7 +10,7 @@ Help()
 }
 
 
-if [ $? != 0 ] ; echo "Terminating..." ; exit 1 ; fi 
+if [ $? != 0 ] ; then echo "Terminating..." ; exit 1 ; fi 
 
 HOST=
 UEFI=true
@@ -80,7 +80,7 @@ echo "cloning config from github.com/nekotori55/nixos-config"
 git clone https://github.com/nekotori55/nixos-config.git /mnt/etc/nixos
 
 echo "Installing nixos"
-nixos-install --no-root-passwd --flake /mnt/etc/nixos#$HOSTNAME
+nixos-install --no-root-passwd --flake /mnt/etc/nixos#$HOST
 
 echo "Post install sequence"
 # POST INSTALL
