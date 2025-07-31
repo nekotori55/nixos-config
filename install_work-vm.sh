@@ -10,7 +10,7 @@ Help()
 }
 
 
-if [ $? != 0 ] ; echo "Terminating..." >&2 ; exit 1 ; fi
+if [ $? != 0 ] ; echo "Terminating..." ; exit 1 ;
 
 HOST=
 UEFI=true
@@ -22,17 +22,7 @@ while true; do
     -u | --uefi ) UEFI=true; shift ;;
     -h | --host ) HOST="$2"; shift 2 ;;
     -d | --disk ) DISK="$2"; shift 2 ;;
-    -h | --help ) ; exit 0;
-
-    # examples
-    # -d | --debug ) DEBUG=true; shift ;;
-    # -m | --memory ) MEMORY="$2"; shift 2 ;;
-    # --debugfile ) DEBUGFILE="$2"; shift 2 ;;
-    # --minheap )
-    #   JAVA_MISC_OPT="$JAVA_MISC_OPT -XX:MinHeapFreeRatio=$2"; shift 2 ;;
-    # --maxheap )
-    #   JAVA_MISC_OPT="$JAVA_MISC_OPT -XX:MaxHeapFreeRatio=$2"; shift 2 ;;
-
+    -h | --help ) exit 0 ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
