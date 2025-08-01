@@ -13,7 +13,7 @@ Help()
 if [ $? != 0 ] ; then echo "Terminating..." ; exit 1 ; fi 
 
 HOST=
-UEFI=true
+UEFI=false
 DISK=sda
 USER=nekotori55
 
