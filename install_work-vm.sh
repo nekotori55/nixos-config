@@ -76,6 +76,12 @@ then
     mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 fi
 
+echo "Creating swap"
+fallocate -l 8G /mnt/installer-swap
+mkswap /mnt/installer-swap
+swapon /mnt/installer-swap
+swapon --show
+
 echo "cloning config from github.com/nekotori55/nixos-config"
 git clone https://github.com/nekotori55/nixos-config.git /mnt/etc/nixos
 
