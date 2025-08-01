@@ -48,7 +48,7 @@ then
     parted /dev/$DISK -- set 2 esp on
 
     echo "initialising boot partition (UEFI)"
-    mkfs.fat -F 32 -n boot /dev/$DISK3
+    mkfs.fat -F 32 -n boot /dev/${DISK}3
 
 else # DOS
 
@@ -62,8 +62,8 @@ else # DOS
     parted /dev/$DISK -- set 1 boot on
 fi
 
-    echo "initialising nixos partition with ext4 on $DISK1"
-    mkfs.ext4 -L nixos /dev/$DISK1
+    echo "initialising nixos partition with ext4 on ${DISK}1"
+    mkfs.ext4 -L nixos /dev/${DISK}1
 
     echo "mounting target partitions"
     mount /dev/disk/by-label/nixos /mnt
@@ -80,7 +80,8 @@ echo "cloning config from github.com/nekotori55/nixos-config"
 git clone https://github.com/nekotori55/nixos-config.git /mnt/etc/nixos
 
 echo "Installing nixos"
-nixos-install --no-root-passwd --flake /mnt/etc/nixos#$HOST
+mkdir /mnt/installation-tmp
+TMPDIR=/mnt/installation-tmp nixos-install --no-root-passwd --flake /mnt/etc/nixos#$HOST
 
 echo "Post install sequence"
 # POST INSTALL
