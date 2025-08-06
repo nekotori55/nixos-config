@@ -1,23 +1,24 @@
 { ... }:
 {
   boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-      default = "saved";
-    };
+  #  grub = {
+  #    enable = true;
+  #    device = "nodev";
+  #    efiSupport = true;
+  #    useOSProber = true;
+  #    default = "saved";
+  #  };
+    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/89d297f2-192b-4721-9ebd-fe604709cd5f";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/838B-7D5A";
+    device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"

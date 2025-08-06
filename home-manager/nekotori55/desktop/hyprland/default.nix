@@ -64,9 +64,9 @@ in
       fuzzel
     ];
 
-    # xdg.configFile."waybar" = {
-    #   source = ./waybar;
-    #   recursive = true;
-    # };
+    xdg.configFile."waybar" = {
+      source = ./waybar;
+      recursive = true;
+    };
   };
 }

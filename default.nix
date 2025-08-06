@@ -17,8 +17,8 @@ with lib;
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
-      # the whole point of nix
-      auto-optimise-store = true;
+
+      auto-optimise-store = false;
     };
   };
 

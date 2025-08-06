@@ -101,5 +101,5 @@ in
   time.timeZone = "Europe/Istanbul";
 
   # add on first install
-  system.stateVersion = "23.05";
+  system.stateVersion = "25.05";
 }
