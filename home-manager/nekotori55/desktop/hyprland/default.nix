@@ -45,11 +45,12 @@ in
     };
 
     # HYPRPAPER
+    # TODO autoload from web?
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = ["$HOME/wallpaper.png"];
-        wallpaper = [",$HOME/wallpaper.png"];
+        preload = ["$HOME/.wallpaper.png"];
+        wallpaper = [",$HOME/.wallpaper.png"];
       };
     };
 

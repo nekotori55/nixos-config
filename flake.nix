@@ -4,6 +4,11 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -11,9 +16,33 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-generators,
       ...
     }:
     {
+      nixosModules.myFormats = { config, ... }: {
+        imports = [
+            nixos-generators.nixosModules.all-formats
+        ];
+
+        nixpkgs.hostPlatform = "x86_64-linux";
+
+        # customize an existing format
+        formatConfigs.vmware = { config, ... }: {
+            services.openssh.enable = true;
+        };
+
+        # define a new format
+        formatConfigs.my-custom-format = { config, modulesPath, ... }: {
+            imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
+            formatAttr = "isoImage";
+            fileExtension = ".iso";
+            networking.wireless.networks = {
+            # ...
+            };
+        };
+      };
+
       nixosConfigurations = {
         # TODO turn this into function that searches hosts/ path
         green = nixpkgs.lib.nixosSystem {
@@ -25,8 +54,18 @@
             home-manager.nixosModules.home-manager
           ];
         };
+
         work-vm = nixpkgs.lib.nixosSystem {
-	   modules = [ ./. ./hosts/work-vm home-manager.nixosModules.home-manager ];
+          modules = [
+            ./.
+            ./hosts/work-vm
+            home-manager.nixosModules.home-manager ];
+        };
+
+        server = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/server
+          ];
         };
       };
 

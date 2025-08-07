@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   boot.loader = {
    grub = {
@@ -34,4 +34,16 @@
   ];
 
   networking.hostName = "green";
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = lib.mkDefault true;
+  };
+  services.blueman.enable = true;
+
+  specialisation = {
+    on-the-go.configuration = {
+      hardware.bluetooth.powerOnBoot = false;
+    };
+  };
 }
