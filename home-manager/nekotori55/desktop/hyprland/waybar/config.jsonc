@@ -18,11 +18,11 @@
     "tray",
     "mpd", // Music player
     // "idle_inhibitor", // the eye
-    // "pulseaudio",
+    "pulseaudio",
     "network",
     // "power-profiles-daemon",
     // "cpu",
-    // "memory",
+    // "memory",+
     // "temperature",
     // "backlight",
     // "keyboard-state",

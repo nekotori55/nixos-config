@@ -33,7 +33,7 @@ in
     };
 
     home.apps = {
-      browsers.librewolf.enable = true;
+      browsers.librewolf.enable = false;
     };
   };
 

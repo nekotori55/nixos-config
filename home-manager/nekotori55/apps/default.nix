@@ -8,5 +8,6 @@
   home.packages = with pkgs;
   [
     vesktop
+    firefox
   ];
 }

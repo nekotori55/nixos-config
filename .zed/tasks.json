@@ -16,7 +16,7 @@
   },
   {
     "label": "NIXOS VM",
-    "command": "rm result -rf; nixos-rebuild build-vm --flake ~/.config/nixos#work-vm; if [[ -d ./result ]] ; then ./result/bin/run-work-vm-vm ; fi;",
+    "command": "rm result -rf; nixos-rebuild build-vm --flake ~/.config/nixos#green; if [[ -d ./result ]] ; then ./result/bin/run-green-vm ; fi;",
     "cwd": "/tmp/"
     // "hide": "on_success"
   },

@@ -29,6 +29,8 @@ in
       hyprpaper
       waybar # TODO replace with EWW
       brightnessctl
+      adwaita-icon-theme
+      gnome-icon-theme
     ];
 
     fonts.packages = with pkgs; [

@@ -22,24 +22,24 @@
     {
       nixosModules.myFormats = { config, ... }: {
         imports = [
-            nixos-generators.nixosModules.all-formats
+          nixos-generators.nixosModules.all-formats
         ];
 
         nixpkgs.hostPlatform = "x86_64-linux";
 
         # customize an existing format
         formatConfigs.vmware = { config, ... }: {
-            services.openssh.enable = true;
+          services.openssh.enable = true;
         };
 
         # define a new format
         formatConfigs.my-custom-format = { config, modulesPath, ... }: {
-            imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
-            formatAttr = "isoImage";
-            fileExtension = ".iso";
-            networking.wireless.networks = {
-            # ...
-            };
+          imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
+          formatAttr = "isoImage";
+          fileExtension = ".iso";
+          networking.wireless.networks = {
+          # ...
+          };
         };
       };
 
