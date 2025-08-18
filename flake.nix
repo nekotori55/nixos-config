@@ -67,6 +67,14 @@
             ./hosts/server
           ];
         };
+
+        pancake = nixpkgs.lib.nixosSystem {
+	  modules = [
+           ./.
+           ./hosts/pancake
+           home-manager.nixosModules.home-manager
+          ];
+	};
       };
 
       devShells."x86_64-linux".default =
