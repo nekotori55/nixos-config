@@ -20,28 +20,34 @@
       ...
     }:
     {
-      nixosModules.myFormats = { config, ... }: {
-        imports = [
-          nixos-generators.nixosModules.all-formats
-        ];
+      nixosModules.myFormats =
+        { config, ... }:
+        {
+          imports = [
+            nixos-generators.nixosModules.all-formats
+          ];
 
-        nixpkgs.hostPlatform = "x86_64-linux";
+          nixpkgs.hostPlatform = "x86_64-linux";
 
-        # customize an existing format
-        formatConfigs.vmware = { config, ... }: {
-          services.openssh.enable = true;
+          # customize an existing format
+          formatConfigs.vmware =
+            { config, ... }:
+            {
+              services.openssh.enable = true;
+            };
+
+          # define a new format
+          formatConfigs.my-custom-format =
+            { config, modulesPath, ... }:
+            {
+              imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
+              formatAttr = "isoImage";
+              fileExtension = ".iso";
+              networking.wireless.networks = {
+                # ...
+              };
+            };
         };
-
-        # define a new format
-        formatConfigs.my-custom-format = { config, modulesPath, ... }: {
-          imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
-          formatAttr = "isoImage";
-          fileExtension = ".iso";
-          networking.wireless.networks = {
-          # ...
-          };
-        };
-      };
 
       nixosConfigurations = {
         # TODO turn this into function that searches hosts/ path
@@ -59,7 +65,8 @@
           modules = [
             ./.
             ./hosts/work-vm
-            home-manager.nixosModules.home-manager ];
+            home-manager.nixosModules.home-manager
+          ];
         };
 
         server = nixpkgs.lib.nixosSystem {

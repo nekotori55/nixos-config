@@ -9,5 +9,6 @@
   [
     vesktop
     firefox
+    vivaldi
   ];
 }
