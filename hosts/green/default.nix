@@ -87,11 +87,6 @@ in
     configureFirewall = true;
     package = pkgs.zapret;
     params = [
-      # "--socks --port=9143"
-      # "--filter-tcp=443 --dpi-desync=fake,multidisorder --dpi-desync-split-pos=method+2,midsld,5 --dpi-desync-ttl=1 --dpi-desync-fooling=md5sig,badsum,badseq --dpi-desync-repeats=15 --dpi-desync-fake-tls=${client_hello} --hostlist ${hostlist} --new"
-      # "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --hostlist ${hostlist} --new"
-      # "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --hostlist ${hostlist} --new"
-
       # Discord voice channels & screen sharing
       "--filter-udp=50000-65535"
       "--filter-l7=discord,stun"
@@ -99,7 +94,6 @@ in
       "--dpi-desync-any-protocol"
       "--dpi-desync-cutoff=n2"
       "--dpi-desync-repeats=6"
-      # "--hostlist ${hostlist}"
       "--new"
 
       "--filter-tcp=443"
@@ -165,133 +159,10 @@ in
   environment.systemPackages = with pkgs; [
     zed-editor
     hyprpolkitagent
-    v2rayn
-    v2ray-domain-list-community
-    v2ray-geoip
-    v2ray
-    xray
-
-    # gaming
     prismlauncher
   ];
 
-  # services.zapret = {
-  #   enable = true;
-  #   params = [
-  #     "--dpi-desync=split2 --dpi-desync-ttl=5 --wssize 1:6 --dpi-desync-fooling=md5sig"
-  #     "--dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-repeats=6"
-  #   ];
-  # };
-  #
-  # services.zapret = {
-  #   enable = false;
-  #   params = [
-  #     # Discord voice channels & screen sharing
-  #     "--filter-udp=50000-65535"
-  #     "--filter-l7=discord,stun"
-  #     "--dpi-desync=fake,tamper"
-  #     "--dpi-desync-any-protocol"
-  #     "--new"
-
-  #     # TCP port 80 filter (HTTP) - Youtube & Discord
-  #     "--filter-tcp=80"
-  #     "--dpi-desync=fake,split2"
-  #     "--dpi-desync-autottl=2"
-  #     "--dpi-desync-fooling=md5sig"
-  #     "--new"
-
-  #     # TCP port 443 filter (HTTPS) - Youtube & Discord
-  #     "--filter-tcp=443"
-  #     "--dpi-desync=fake"
-  #     "--dpi-desync=split"
-  #     "--dpi-desync-autottl=2"
-  #     "--dpi-desync-fooling=badseq"
-  #     "--dpi-desync-fake-tls-mod=rnd,rndsni,padencap"
-
-  #     # UDP port 443 filter (QUIC) - Youtube
-  #     "--filter-udp=443"
-  #     "--dpi-desync=fake"
-  #     "--dpi-desync-udplen-increment=10"
-  #     "--dpi-desync-repeats=6"
-  #     "--dpi-desync-udplen-pattern=0xDEADBEEF"
-  #   ];
-  #   udpSupport = true;
-  #   udpPorts = [
-  #     "50000:65535"
-  #     "443"
-  #   ];
-  #   configureFirewall = true;
-  # };
-  #
-  #
-
-  # systemd.services.hyprpolkitagent.wantedBy = [ "multi-user.target" ];
-  #
-  # services.resolved = {
-  #   enable = true;
-  #   # dnssec = "true";
-  #   # domains = [ "~." ];
-  #   # fallbackDns = [ "8.8.8.8" ];
-  #   # dnsovertls = "true";
-  # };
-
-  # services.zapret.enable = true;
-  # services.zapret = {
-  #   # blacklist = [ "discord.com " ];
-  #   #
-  #   udpSupport = true;
-
-  #   udpPorts = [
-  #     "45000:65535"
-  #   ];
-
-  #   params = [
-  #     "--dpi-desync=fake,disorder2"
-  #     "--dpi-desync-ttl=9"
-  #     "--dpi-desync-autottl=2"
-  #     "--dpi-desync-any-protocol"
-  #     "--dpi-desync=fakedsplit"
-  #     "--dpi-desync-fooling=badseq"
-  #     "--dpi-desync-split-pos=midsl"
-  #     "--split-pos=method+2"
-  #     "--dpi-desync-fake-tls=0x00000000"
-  #     "--dpi-desync-fake-tls-mod=rnd"
-  #     "--dpi-desync-fake-tls=! ,rndsni,dupsid"
-  #   ];
-  # };
-  #
-  #
-  #
-
-  # services.zapret = {
-  #   enable = false;
-  #   params = [
-  #     "--filter-udp=50000-50099 --filter-l7=discord,stun --dpi-desync=fake --new" # For Discord voice chats
-  #     "--dpi-desync=fake split2 --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig"
-  #   ];
-  # };
-
-  # programs.nekoray = {
-  #   enable = true;
-  #   tunMode = {
-  #     enable = true;
-  #     setuid = true;
-  #   };
-  # };
-
   security.polkit.enable = true;
-  # security.polkit.extraConfig = ''
-  #       polkit.addRule(function(action, subject) {
-  #       if (
-  #         action.id == "org.freedesktop.policykit.exec" &&
-  #         (action.lookup("command_line").indexOf(' /home/' + subject.user + '/.config/nekoray/config/vpn-run-root.sh') !== -1)
-  #         )
-  #         {
-  #         return polkit.Result.YES;
-  #         }
-  #       });
-  #     '';
-
   nixpkgs.config.allowUnfree = true;
 
   # DEFAULT SPECIALIZATION (docked)
