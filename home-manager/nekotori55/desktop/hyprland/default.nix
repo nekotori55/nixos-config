@@ -10,9 +10,9 @@ let
   hyprcfg = osConfig.modules.desktop.hyprland;
 
   # merge this in one file?
-  hyprlandKeybinds = readFile ./hyprland/binds.conf;
-  hyprlandRules = readFile ./hyprland/rules.conf;
-  hyprlandSettings = readFile ./hyprland/settings.conf;
+  hyprlandKeybinds = readFile ./dotfiles/hyprland/binds.conf;
+  hyprlandRules = readFile ./dotfiles/hyprland/rules.conf;
+  hyprlandSettings = readFile ./dotfiles/hyprland/settings.conf;
 
 in
 {
@@ -23,7 +23,7 @@ in
       enable = true;
       # plugins
       extraConfig =
-      hyprlandKeybinds
+        hyprlandKeybinds
         + hyprlandRules
         + hyprlandSettings
         + (optionalString (hyprcfg.mutableConfigFile.enable) "source = ${hyprcfg.mutableConfigFile.path} \n")
@@ -40,7 +40,7 @@ in
     };
 
     xdg.configFile."hypr/workspace.sh" = {
-      source = ./hyprland/workspace.sh; # requires jq
+      source = ./dotfiles/hyprland/workspace.sh; # requires jq
       executable = true;
     };
 
@@ -49,8 +49,8 @@ in
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = ["$HOME/.wallpaper.png"];
-        wallpaper = [",$HOME/.wallpaper.png"];
+        preload = [ "$HOME/.wallpaper.png" ];
+        wallpaper = [ ",$HOME/.wallpaper.png" ];
       };
     };
 
@@ -66,7 +66,7 @@ in
     ];
 
     xdg.configFile."waybar" = {
-      source = ./waybar;
+      source = ./dotfiles/waybar;
       recursive = true;
     };
   };
