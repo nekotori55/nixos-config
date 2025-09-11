@@ -83,14 +83,9 @@ in
   };
 
   services.zapret = {
-    enable = false;
+    enable = true;
+    configureFirewall = true;
     package = pkgs.zapret;
-    udpSupport = true;
-    udpPorts = [
-      "50000:50099"
-      "443"
-    ];
-    httpSupport = true;
     params = [
       # "--socks --port=9143"
       # "--filter-tcp=443 --dpi-desync=fake,multidisorder --dpi-desync-split-pos=method+2,midsld,5 --dpi-desync-ttl=1 --dpi-desync-fooling=md5sig,badsum,badseq --dpi-desync-repeats=15 --dpi-desync-fake-tls=${client_hello} --hostlist ${hostlist} --new"
@@ -146,6 +141,7 @@ in
 
   imports = [
     ./hardware.nix
+    ./zapret-custom.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -174,8 +170,9 @@ in
     v2ray-geoip
     v2ray
     xray
-    zapret
-    # nfqws
+
+    # gaming
+    prismlauncher
   ];
 
   # services.zapret = {
