@@ -54,10 +54,12 @@ let
   hostlist = builtins.toFile "zapret_whitelist" (builtins.concatStringsSep "\n" whitelist);
 in
 {
+  # todo extract to module (and nekoray)
   services.zapret = {
     enable = true;
     configureFirewall = true;
     package = pkgs.zapret;
+    # TODO extract params to variable
     params = [
       # Discord voice channels & screen sharing
       "--filter-udp=50000-65535"
