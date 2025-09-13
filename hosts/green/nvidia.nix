@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   # NVIDIA
   hardware.graphics = {
@@ -6,6 +6,39 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+
+  };
+
+environment.systemPackages =
+      (with pkgs; [
+        lshw # sudo lshw -c display    # to check bus id's
+
+        libva-utils
+        vdpauinfo
+        vulkan-tools
+        vulkan-validation-layers
+        libvdpau-va-gl
+        egl-wayland
+        wgpu-utils
+        mesa
+        libglvnd
+        nvtopPackages.full
+        nvitop
+        libGL
+
+      ])
+      ++ (with pkgs; [ vkdevicechooser ]);
+
+  boot.kernelParams = [
+      "nvidia_drm.fbdev=1"
+    ];
+
+    environment.sessionVariables = {
+      GSK_RENDERER = "cairo";
+    };
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -18,7 +51,7 @@
       finegrained = false; # works on turing or newer (should check)
     };
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
       # option A: Offload Mode         // nvidia sleepy - amd worky; amd can ask nvidia for help (nvidia-offload)

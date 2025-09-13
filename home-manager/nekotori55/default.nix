@@ -1,4 +1,9 @@
-{ pkgs, osConfig, lib, ... }:
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}:
 {
   imports = [
     ./desktop/bspwm
@@ -26,9 +31,8 @@
         term = "xterm-256color";
 
         font = "Fira Code Nerd Font:size=11";
-        dpi-aware = "yes";
-
-        horizontal-letter-offset = 0;
+        dpi-aware = "no";
+        pad = "8x0";
       };
 
       colors = {
@@ -36,6 +40,5 @@
       };
     };
   };
-
 
 }
