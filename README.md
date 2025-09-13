@@ -8,6 +8,6 @@ TODO:
 - [ ] add roles in config
 - [ ] add layout indicator
 - [ ] write server configs
-- [ ] add nil nixd to system
+- [x] add nil nixd to system
 
 ```
