@@ -46,12 +46,17 @@ in
 
     # HYPRPAPER
     # TODO autoload from web?
-    services.hyprpaper = {
+    # services.hyprpaper = {
+    #   enable = true;
+    #   settings = {
+    #     preload = [ "$HOME/.wallpaper.png" ];
+    #     wallpaper = [ ",$HOME/.wallpaper.png" ];
+    #   };
+    # };
+
+    services.swww = {
       enable = true;
-      settings = {
-        preload = [ "$HOME/.wallpaper.png" ];
-        wallpaper = [ ",$HOME/.wallpaper.png" ];
-      };
+      extraArgs = [ ];
     };
 
     # WAYBAR
@@ -63,6 +68,7 @@ in
     home.packages = with pkgs; [
       jq # required for script to work
       fuzzel
+      waypaper
     ];
 
     xdg.configFile."waybar" = {

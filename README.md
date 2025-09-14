@@ -9,5 +9,6 @@ TODO:
 - [ ] add layout indicator
 - [ ] write server configs
 - [x] add nil nixd to system
+- [ ] dark theme GTK / QT
 
 ```
