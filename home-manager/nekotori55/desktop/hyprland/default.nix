@@ -69,6 +69,7 @@ in
       jq # required for script to work
       fuzzel
       waypaper
+      pavucontrol
     ];
 
     xdg.configFile."waybar" = {

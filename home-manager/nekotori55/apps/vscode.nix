@@ -108,7 +108,13 @@ in
       };
 
       flutter = {
-        extensions = with pkgs.vscode-extensions; [ dart-code.flutter ] ++ commonExtensions;
+        extensions =
+          with pkgs.vscode-extensions;
+          [
+            dart-code.flutter
+            dart-code.dart-code
+          ]
+          ++ commonExtensions;
         userSettings = commonSettings;
       };
     };
