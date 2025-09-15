@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 with lib;
 with builtins;
 with types;
@@ -20,15 +25,19 @@ in
       # Import $username home manager configuration if it exists
       users.${user.name} = mkIf (pathExists ./${user.name}) (import ./${user.name});
 
-      sharedModules = [ {
-        xdg = {
-          enable = true;
-          cacheHome = mkForce cfg.cacheDir;
-          configHome = mkForce cfg.configDir;
-          dataHome = mkForce cfg.dataDir;
-          stateHome = mkForce cfg.stateDir;
-        };
-      } ];
+      extraSpecialArgs = { inherit inputs; };
+
+      sharedModules = [
+        {
+          xdg = {
+            enable = true;
+            cacheHome = mkForce cfg.cacheDir;
+            configHome = mkForce cfg.configDir;
+            dataHome = mkForce cfg.dataDir;
+            stateHome = mkForce cfg.stateDir;
+          };
+        }
+      ];
     };
   };
 }

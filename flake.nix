@@ -5,6 +5,9 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    jerry.url = "github:justchokingaround/jerry/main";
+    jerry.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,37 +20,38 @@
       nixpkgs,
       home-manager,
       nixos-generators,
+      jerry,
       ...
     }:
     {
-      nixosModules.myFormats =
-        { config, ... }:
-        {
-          imports = [
-            nixos-generators.nixosModules.all-formats
-          ];
+      # nixosModules.myFormats =
+      #   { config, ... }:
+      #   {
+      #     imports = [
+      #       nixos-generators.nixosModules.all-formats
+      #     ];
 
-          nixpkgs.hostPlatform = "x86_64-linux";
+      #     nixpkgs.hostPlatform = "x86_64-linux";
 
-          # customize an existing format
-          formatConfigs.vmware =
-            { config, ... }:
-            {
-              services.openssh.enable = true;
-            };
+      #     # customize an existing format
+      #     formatConfigs.vmware =
+      #       { config, ... }:
+      #       {
+      #         services.openssh.enable = true;
+      #       };
 
-          # define a new format
-          formatConfigs.my-custom-format =
-            { config, modulesPath, ... }:
-            {
-              imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
-              formatAttr = "isoImage";
-              fileExtension = ".iso";
-              networking.wireless.networks = {
-                # ...
-              };
-            };
-        };
+      #     # define a new format
+      #     formatConfigs.my-custom-format =
+      #       { config, modulesPath, ... }:
+      #       {
+      #         imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
+      #         formatAttr = "isoImage";
+      #         fileExtension = ".iso";
+      #         networking.wireless.networks = {
+      #           # ...
+      #         };
+      #       };
+      #   };
 
       nixosConfigurations = {
         # TODO turn this into function that searches hosts/ path
@@ -59,6 +63,8 @@
             # TODO include only when users.useHomeManager = true;
             home-manager.nixosModules.home-manager
           ];
+
+          specialArgs = { inherit inputs; };
         };
 
         work-vm = nixpkgs.lib.nixosSystem {
@@ -76,12 +82,14 @@
         };
 
         pancake = nixpkgs.lib.nixosSystem {
-	  modules = [
-           ./.
-           ./hosts/pancake
-           home-manager.nixosModules.home-manager
+          modules = [
+            ./.
+            ./hosts/pancake
+            home-manager.nixosModules.home-manager
           ];
-	};
+
+          specialArgs = { inherit inputs; };
+        };
       };
 
       devShells."x86_64-linux".default =
