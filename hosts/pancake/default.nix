@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -13,7 +18,8 @@
       hyprland = {
         mutableConfigFile.enable = true;
         hostConfig = ''
-        # TODO media keys binds
+          # TODO media keys binds
+          monitor = eDP-1, 1920x1080@60, 1920x0, 1
         '';
       };
     };
