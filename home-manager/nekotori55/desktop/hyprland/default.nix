@@ -70,7 +70,22 @@ in
       fuzzel
       waypaper
       pavucontrol
+      hyprcursor
     ];
+
+    home.pointerCursor = {
+      enable = true;
+      name = "phinger-cursors-light";
+      package = pkgs.phinger-cursors;
+      hyprcursor.enable = true;
+      hyprcursor.size = 24;
+      size = 24;
+      gtk.enable = true;
+      x11 = {
+        enable = true;
+        defaultCursor = "phinger-cursors-light";
+      };
+    };
 
     xdg.configFile."waybar" = {
       source = ./dotfiles/waybar;
