@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware.nix
+    ../green/zapret.nix # TODO
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -20,6 +21,14 @@
         hostConfig = ''
           # TODO media keys binds
           monitor = eDP-1, 1920x1080@60, 1920x0, 1
+
+          $LAPTOP_KB_ENABLED = true
+          device {
+            name = at-translated-set-2-keyboard
+            enabled = $LAPTOP_KB_ENABLED
+          }
+
+
         '';
       };
     };

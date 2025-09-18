@@ -12,6 +12,7 @@ let
       tobiasalthoff.atom-material-theme
       emroussel.atomize-atom-one-dark-theme
       mkhl.direnv
+      ms-python.python
     ]
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
 
@@ -67,6 +68,7 @@ in
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
+    python3
   ];
 
   programs.bash = {

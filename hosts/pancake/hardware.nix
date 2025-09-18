@@ -16,6 +16,12 @@
 
   powerManagement.enable = true;
 
+  services.tlp = {
+    enable = true;
+  };
+
+  powerManagement.powertop.enable = true;
+
   boot.loader = {
     grub = {
       enable = true;
@@ -60,7 +66,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  networking.hostname = "pancake";
+  networking.hostName = "pancake";
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -72,29 +78,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
-    wireplumber.extraConfig.soundFix = {
-      "monitor.alsa.rules" = [
-        {
-          matches = [
-            {
-              # Matches all sources
-              node.name = "~alsa_input.*";
-            }
-            {
-              # Matches all sinks
-              node.name = "~alsa_output.*";
-            }
-          ];
-          actions = {
-            update-props = {
-              session.suspend-timeout-seconds = 0;
-            };
-          };
-        }
-      ];
-    };
   };
+
+  boot.extraModprobeConfig = "options snd-hda-intel power_save=0 power_save_controller=N";
 
   services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
     "monitor.bluez.properties" = {
@@ -116,7 +102,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = lib.mkDefault true;
+    powerOnBoot = lib.mkDefault false;
     hsphfpd.enable = false;
   };
   services.blueman.enable = true;
