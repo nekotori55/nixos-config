@@ -19,6 +19,7 @@
     vivaldi
     obsidian
     telegram-desktop
+    spotify
   ];
 
   programs.foot = lib.mkIf (osConfig.modules.desktop.backend == "wayland") {

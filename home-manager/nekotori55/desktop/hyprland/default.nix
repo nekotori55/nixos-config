@@ -80,11 +80,11 @@ in
       hyprcursor.enable = true;
       hyprcursor.size = 24;
       size = 24;
-      gtk.enable = true;
-      x11 = {
-        enable = true;
-        defaultCursor = "phinger-cursors-light";
-      };
+      # gtk.enable = true;
+      # x11 = {
+      # enable = true;
+      # defaultCursor = "phinger-cursors-light";
+      # };
     };
 
     xdg.configFile."waybar" = {
