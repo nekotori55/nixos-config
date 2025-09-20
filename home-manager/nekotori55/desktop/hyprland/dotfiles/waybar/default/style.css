@@ -1,8 +1,8 @@
-@define-color background         #161618;
-@define-color foreground         #ffffff;
-@define-color foreground-alt     #809fe0;
-@define-color foreground-alt-2   #F5A97F;
-@define-color foreground-alt-3   #8DDb8C;
+@define-color background #161618;
+@define-color foreground #ffffff;
+@define-color foreground-alt #809fe0;
+@define-color foreground-alt-2 #F5A97F;
+@define-color foreground-alt-3 #8DDb8C;
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */

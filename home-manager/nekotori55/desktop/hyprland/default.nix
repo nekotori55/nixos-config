@@ -44,16 +44,6 @@ in
       executable = true;
     };
 
-    # HYPRPAPER
-    # TODO autoload from web?
-    # services.hyprpaper = {
-    #   enable = true;
-    #   settings = {
-    #     preload = [ "$HOME/.wallpaper.png" ];
-    #     wallpaper = [ ",$HOME/.wallpaper.png" ];
-    #   };
-    # };
-
     services.swww = {
       enable = true;
       extraArgs = [ ];
@@ -88,7 +78,7 @@ in
     };
 
     xdg.configFile."waybar" = {
-      source = ./dotfiles/waybar;
+      source = ./dotfiles/waybar/default;
       recursive = true;
     };
 
