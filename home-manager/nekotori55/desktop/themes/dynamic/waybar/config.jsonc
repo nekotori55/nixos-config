@@ -25,19 +25,25 @@
         "window-rewrite-default": "",
         "window-rewrite": {
             "class<firefox>": "",
+            "class<librewolf>": "",
+            "waypaper": "󰸉",
             "sterminal": "",
+            "spotify": "",
             "kitty": "",
+            "foot": "",
             "class<kitty> title<vim.*>": "",
             "class<UnrealEditor-?.*> title<.+>": "<span font_size='10pt'>󰦱</span>",
             "class<UnrealEditor-?.*> title<>": "",
             "class<io.github.achetagames.epic_asset_manager>": "",
             "obsidian": "󰠮",
             "code": "󰨞",
+            "codium": "󰨞",
             "title<btop>": "󰊚",
             "KeePassXC": "",
             "Rofi": "",
             "music": "",
             "nautilus": "",
+            "nemo": "",
             "Qalculate!": "",
             "com.stremio.stremio": "󱜅",
             "steam": "",
@@ -67,7 +73,8 @@
             "stopped": " "
         },
         "ignored-players": [
-            "firefox"
+            "firefox",
+            "librewolf"
         ]
     },
     "group/audio": {
@@ -249,7 +256,7 @@
     "pulseaudio#output": {
         "scroll-step": 1,
         "format": "{icon} {volume}%",
-        "format-bluetooth": "󰂰",
+        "format-bluetooth": "󰂰 {volume}%",
         "format-bluetooth-muted": "{format_muted}",
         "format-muted": "",
         "format-icons": {
@@ -269,7 +276,7 @@
     "hyprland/language": {
         "format": "󰥻 {}",
         "format-en": "en",
-        "format-es": "es",
+        "format-ru": "ru",
         "tooltip": true
     }
 }

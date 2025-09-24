@@ -32,6 +32,10 @@
     };
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.8"
+  ];
+
   networking.networkmanager.enable = true;
 
   services.preload.enable = true;

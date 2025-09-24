@@ -12,6 +12,6 @@
   ];
 
   config = lib.mkIf (config.modules.desktop.backend != "none") {
-    environment.systemPackages = [ pkgs.nautilus ];
+    environment.systemPackages = [ pkgs.nemo ];
   };
 }

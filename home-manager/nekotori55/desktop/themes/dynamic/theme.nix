@@ -16,10 +16,16 @@ in
 
       # pywal + firefox TODO autoinstall extension for firefox
       pywalfox-native
+      python2 # for pywal
+
+      themix-gui
     ];
 
     # DYNAMIC COLORS
     programs.pywal.enable = true;
+
+    # TODO
+    services.swaync.enable = true;
 
     xdg.configFile."wal/templates" = {
       source = ./wal-templates;
@@ -93,6 +99,17 @@ in
       colors = {
         alpha = 0.8; # add some transparency
       };
+    };
+
+    gtk = {
+      enable = true;
+      theme.name = "Materia-dark";
+      theme.package = pkgs.materia-theme;
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
     };
 
     # ROFI-LIKE

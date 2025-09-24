@@ -82,7 +82,7 @@ in
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
-    python3
+    # python3
     nerd-fonts.fira-code
   ];
 
