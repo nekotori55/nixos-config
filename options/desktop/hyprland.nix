@@ -4,7 +4,7 @@ with types;
 {
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "";
-    hostConfig = mkOption {
+    additionalConfig = mkOption {
       type = lines;
       default = "";
     };

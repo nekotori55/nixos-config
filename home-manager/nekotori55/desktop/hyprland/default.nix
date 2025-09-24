@@ -13,7 +13,6 @@ let
   hyprlandKeybinds = readFile ./dotfiles/hyprland/binds.conf;
   hyprlandRules = readFile ./dotfiles/hyprland/rules.conf;
   hyprlandSettings = readFile ./dotfiles/hyprland/settings.conf;
-
 in
 {
   config = mkIf hyprcfg.enable {
@@ -27,7 +26,7 @@ in
         + hyprlandRules
         + hyprlandSettings
         + (optionalString (hyprcfg.mutableConfigFile.enable) "source = ${hyprcfg.mutableConfigFile.path} \n")
-        + hyprcfg.hostConfig;
+        + hyprcfg.additionalConfig;
     };
 
     home.activation = mkIf hyprcfg.mutableConfigFile.enable {
@@ -49,53 +48,16 @@ in
       extraArgs = [ ];
     };
 
-    # WAYBAR
-    programs.waybar = {
-      enable = true;
-      systemd.enable = true;
-    };
-
     home.packages = with pkgs; [
       jq # required for script to work
-      fuzzel
       waypaper
-      pavucontrol
-      hyprcursor
+      pavucontrol # todo move somewhere else
+
+      nerd-fonts.fira-code
+      nerd-fonts.envy-code-r
     ];
 
-    home.pointerCursor = {
-      enable = true;
-      name = "phinger-cursors-light";
-      package = pkgs.phinger-cursors;
-      hyprcursor.enable = true;
-      hyprcursor.size = 24;
-      size = 24;
-      # gtk.enable = true;
-      # x11 = {
-      # enable = true;
-      # defaultCursor = "phinger-cursors-light";
-      # };
-    };
-
-    xdg.configFile."waybar" = {
-      source = ./dotfiles/waybar/default;
-      recursive = true;
-    };
-
-    programs.fuzzel = {
-      enable = true;
-      settings =
-        let
-          themeSrc = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "fuzzel";
-            rev = "0af0e26901b60ada4b20522df739f032797b07c3";
-            sha256 = "sha256-XpItMGsYq4XvLT+7OJ9YRILfd/9RG1GMuO6J4hSGepg=";
-          };
-        in
-        {
-          main.include = toString "${themeSrc}/themes/catppuccin-mocha/green.ini";
-        };
-    };
+    # enable custom fonts
+    fonts.fontconfig.enable = true;
   };
 }

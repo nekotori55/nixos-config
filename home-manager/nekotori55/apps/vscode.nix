@@ -1,20 +1,29 @@
 {
   pkgs,
+  lib,
+  config,
   ...
 }:
 let
-  commonExtensions =
-    with pkgs.vscode-extensions;
-    [
-      bbenoist.nix
-      jnoortheen.nix-ide
-      leonardssh.vscord
-      tobiasalthoff.atom-material-theme
-      emroussel.atomize-atom-one-dark-theme
-      mkhl.direnv
-      ms-python.python
-    ]
-    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
+  pywalEnabled = config.programs.pywal.enable;
+
+  commonExtensions = with pkgs.vscode-extensions; [
+    bbenoist.nix
+    jnoortheen.nix-ide
+    leonardssh.vscord
+    tobiasalthoff.atom-material-theme
+    emroussel.atomize-atom-one-dark-theme
+    mkhl.direnv
+    ms-python.python
+  ];
+  # ++ lib.optionals pywalEnabled pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+  #   {
+  #     name = "wal-theme";
+  #     publisher = "dlasagno";
+  #     version = "1.1.2";
+  #     sha256 = "sha256-vO9FjzA3+5VTgnBY12eawPCfDzKap07Tgf5jqz/IgN0=";
+  #   }
+  # ];
 
   commonSettings = {
 
@@ -29,10 +38,12 @@ let
     "window.menuBarVisibility" = "toggle";
     "workbench.tree.indent" = 12;
     "workbench.tree.renderIndentGuides" = "always";
+    "editor.fontFamily" = "'FiraCode Nerd Font', 'monospace', monospace";
 
     # bash has this weird symbols idk whats broken so i just will use fish there
     "terminal.integrated.defaultProfile.linux" = "fish";
 
+    # TODO move to external theme option
     "workbench.colorTheme" = "Atomize";
 
     # VSCORD
@@ -62,6 +73,9 @@ let
     # ];
 
     "direnv.restart.automatic" = true;
+  }
+  // lib.optionalAttrs pywalEnabled {
+
   };
 in
 {
@@ -69,6 +83,7 @@ in
     nixd
     nixfmt-rfc-style
     python3
+    nerd-fonts.fira-code
   ];
 
   programs.bash = {

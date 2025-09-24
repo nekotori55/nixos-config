@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -12,14 +17,14 @@
       wm = "kde";
       hyprland = {
         mutableConfigFile.enable = true;
-        hostConfig = ''
-        cursor {
-          no_hardware_cursors = true
-        }
+        additionalConfig = ''
+          cursor {
+            no_hardware_cursors = true
+          }
 
-        animations {
-          enabled = false
-        }
+          animations {
+            enabled = false
+          }
         '';
       };
     };

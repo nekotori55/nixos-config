@@ -49,7 +49,7 @@ in
         # WLR_NO_HARDWARE_CURSORS = "1";
       };
 
-      modules.desktop.hyprland.hostConfig = mkForce ''
+      modules.desktop.hyprland.additionalConfig = mkForce ''
         animations {
           enabled = false
         }

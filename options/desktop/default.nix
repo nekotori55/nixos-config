@@ -27,6 +27,15 @@ with types;
           "wayland"
         ];
       };
+      theme = mkOption {
+        type = enum [
+          "default"
+          "windows"
+          "dynamic"
+        ];
+        default = "default";
+        description = "which theme to use";
+      };
     };
   };
 

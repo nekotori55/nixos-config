@@ -18,7 +18,7 @@
       wm = "hyprland";
       hyprland = {
         mutableConfigFile.enable = true;
-        hostConfig = ''
+        additionalConfig = ''
           # TODO media keys binds
           monitor = eDP-1, 1920x1080@60, 1920x0, 1
 
@@ -27,7 +27,6 @@
             name = at-translated-set-2-keyboard
             enabled = $LAPTOP_KB_ENABLED
           }
-
 
         '';
       };

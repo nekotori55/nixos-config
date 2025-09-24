@@ -2,7 +2,7 @@
 
 TODO:
 - [ ] write a readme.md
-- [ ] change cursor theme
+- [x] change cursor theme
 - [ ] clean up mess in configuration
 - [ ] make an iso installation image
 - [ ] add roles in config
@@ -10,5 +10,6 @@ TODO:
 - [ ] write server configs
 - [x] add nil nixd to system
 - [ ] dark theme GTK / QT
+- [ ] integrate pywall
 
 ```

@@ -28,6 +28,7 @@
       hyprland = {
         mutableConfigFile.enable = true;
       };
+      theme = "dynamic";
     };
 
     home.apps = {
@@ -47,7 +48,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # DEFAULT SPECIALIZATION (docked)
-  modules.desktop.hyprland.hostConfig = lib.mkIf (config.specialisation != { }) (''
+  modules.desktop.hyprland.additionalConfig = lib.mkIf (config.specialisation != { }) (''
     # DEVICE-SPECIFIC
     env = AQ_DRM_DEVICES,/dev/dri/card1:/dev/dri/card2
 
@@ -93,7 +94,7 @@
     on-the-go.configuration = {
       environment.etc."specialisation".text = "on-the-go";
 
-      modules.desktop.hyprland.hostConfig = (''
+      modules.desktop.hyprland.additionalConfig = (''
         monitor = eDP-1, 1920x1080@60, 0x0, 1
         env = AQ_DRM_DEVICES,/dev/dri/card2
       '');

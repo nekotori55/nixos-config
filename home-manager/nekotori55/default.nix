@@ -7,6 +7,7 @@
   imports = [
     ./desktop/bspwm
     ./desktop/hyprland
+    ./desktop/themes
     ./apps
   ];
 
