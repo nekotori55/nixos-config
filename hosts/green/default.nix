@@ -30,13 +30,11 @@
       };
       theme = "dynamic";
     };
-
-    home.apps = {
-      browsers.librewolf.enable = false;
-    };
   };
 
   networking.networkmanager.enable = true;
+
+  services.preload.enable = true;
 
   environment.systemPackages = with pkgs; [
     zed-editor

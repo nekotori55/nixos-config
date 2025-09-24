@@ -13,6 +13,9 @@ in
 
     home.packages = with pkgs; [
       nerd-fonts.caskaydia-cove # waybar font
+
+      # pywal + firefox TODO autoinstall extension for firefox
+      pywalfox-native
     ];
 
     # DYNAMIC COLORS
@@ -34,12 +37,13 @@ in
       }
 
       exec-once = wal -R
+      exec-once = waybar
     '';
 
     # WAYBAR
     programs.waybar = {
       enable = true;
-      systemd.enable = true;
+      systemd.enable = false; # better using hyprland exec-once
     };
 
     xdg.configFile."waybar" = {
@@ -68,7 +72,7 @@ in
             show_hidden = false;
             show_gifs_only = false;
             zen_mode = true;
-            post_command = "wal --saturate 0.5 -n -i $wallpaper";
+            post_command = "wal --saturate 0.5 -n -i $wallpaper ; pywalfox update";
             number_of_columns = 3;
             swww_transition_type = "any";
             swww_transition_step = 90;

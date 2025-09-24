@@ -22,9 +22,9 @@ in
       enable = true;
       # plugins
       extraConfig =
-        hyprlandKeybinds
+        hyprlandSettings
+        + hyprlandKeybinds
         + hyprlandRules
-        + hyprlandSettings
         + (optionalString (hyprcfg.mutableConfigFile.enable) "source = ${hyprcfg.mutableConfigFile.path} \n")
         + hyprcfg.additionalConfig;
     };
