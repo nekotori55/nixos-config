@@ -57,6 +57,8 @@ in
       nerd-fonts.envy-code-r
     ];
 
+    programs.hyprlock.enable = true;
+
     # enable custom fonts
     fonts.fontconfig.enable = true;
   };

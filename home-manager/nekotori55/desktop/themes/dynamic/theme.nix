@@ -5,7 +5,6 @@
   ...
 }:
 let
-  # themeEnabled = osConfig.modules.desktop.theme == "default";
   cacheDir = osConfig.modules.home.cacheDir;
 in
 {
@@ -44,7 +43,20 @@ in
 
       exec-once = wal -R
       exec-once = waybar
+
+      # Waypaper pretty placement
+      windowrule = float , class: waypaper
+      windowrule = size 50%, 50%, class: waypaper
     '';
+
+    # hyprlock coloring
+    programs.hyprlock = {
+
+      extraConfig = ''
+        source = ${cacheDir}/wal/hyprlock-colors.conf
+      ''
+      + lib.readFile ./hyprlock/hyprlock.conf;
+    };
 
     # WAYBAR
     programs.waybar = {
@@ -78,7 +90,7 @@ in
             show_hidden = false;
             show_gifs_only = false;
             zen_mode = true;
-            post_command = "wal --saturate 0.5 -n -i $wallpaper ; pywalfox update";
+            post_command = "wal --saturate 0.5 -n -i $wallpaper ; pywalfox update ; pkill waypaper";
             number_of_columns = 3;
             swww_transition_type = "any";
             swww_transition_step = 90;
@@ -143,6 +155,5 @@ in
       # defaultCursor = "phinger-cursors-light";
       # };
     };
-
   };
 }

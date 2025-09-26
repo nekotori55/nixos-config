@@ -17,6 +17,8 @@ in
     services.displayManager.autoLogin.enable = true;
     services.displayManager.autoLogin.user = "nekotori55";
 
+    security.pam.services.hyprlock = { };
+
     programs.hyprland = {
       enable = true;
     };
