@@ -16,10 +16,6 @@
 
   powerManagement.enable = true;
 
-  services.tlp = {
-    enable = true;
-  };
-
   powerManagement.powertop.enable = true;
 
   boot.loader = {
@@ -80,7 +76,7 @@
     pulse.enable = true;
   };
 
-  boot.extraModprobeConfig = "options snd-hda-intel power_save=0 power_save_controller=N";
+  # boot.extraModprobeConfig = "options snd-hda-intel power_save=0 power_save_controller=N";
 
   services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
     "monitor.bluez.properties" = {
@@ -92,18 +88,86 @@
         "a2dp_sink"
         "a2dp_source"
       ];
-      "10-disable-camera" = {
-        "wireplumber.profiles" = {
-          main."monitor.libcamera" = "disabled";
-        };
-      };
+      # "10-disable-camera" = {
+      #   "wireplumber.profiles" = {
+      #     main."monitor.libcamera" = "disabled";
+      #   };
+      # };
     };
   };
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = lib.mkDefault false;
+    # powerOnBoot = lib.mkDefault false;
     hsphfpd.enable = false;
   };
   services.blueman.enable = true;
+
+  # FIX ZONE
+
+  boot = {
+    # CRITICAL: Force the use of deep sleep (S3) instead of modern standby (s2idle)
+    kernelParams = [
+      "mem_sleep_default=deep"
+      # Enable Intel IOMMU if needed for security, but not directly for sleep
+      # "intel_iommu=on"
+      # Force PCIe ASPM to manage power states aggressively
+      "pcie_aspm=force"
+    ];
+
+    # BLACKLIST problematic kernel modules
+    # Common culprits: ISH sensor hub, buggy wireless drivers
+    blacklistedKernelModules = [
+      "ish_hid" # Integrated Sensor Hub (common cause of sleep failures)
+      # "acpi_call" # Only blacklist if you tested and it causes issues
+    ];
+  };
+
+  services = {
+    # Ensure TLP is installed and configured for power savings
+    # (often more effective on laptops than default settings)
+    tlp = {
+      enable = true;
+      settings = {
+        # Refer to TLP documentation for optimal settings for your hardware
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      };
+    };
+
+    # This service handles lid close events. Critical for laptops.
+    logind = {
+      lidSwitch = "suspend-then-hibernate"; # or "suspend"
+      lidSwitchExternalPower = "suspend"; # suspend on AC when lid closed
+      # extraConfig = ''...''; # Optional manual settings
+    };
+  };
+
+  # HARDWARE-SPECIFIC TWEAKS
+  # Enable support for CPU frequency scaling
+
+  # SYSTEMD SERVICE TO FIX WAKEUP SOURCES
+  # This script runs at boot to ensure the lid and USB can wake the system.
+  # The exact device names (LID0, XHC) can be found in /proc/acpi/wakeup
+  systemd.services.set-wakeup-devices = {
+    description = "Configure ACPI wakeup devices";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart =
+        let
+          wakeupScript = pkgs.writeShellScriptBin "set-wakeup" ''
+            echo LID0 > /proc/acpi/wakeup   # Enable lid to wake
+            echo XHC > /proc/acpi/wakeup    # Enable USB controller to wake
+            # echo PEG0 > /proc/acpi/wakeup # Example for PCIe graphics
+          '';
+        in
+        "${wakeupScript}/bin/set-wakeup";
+      RemainAfterExit = true;
+    };
+  };
+
+  # Enable necessary firmware for your hardware (WiFi, Bluetooth, etc.)
+  hardware.enableRedistributableFirmware = true;
+
 }
