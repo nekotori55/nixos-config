@@ -12,5 +12,6 @@ TODO:
 - [x] install&customize hyprlock
 - [ ] autofetch gravatar image
 - [ ] start using password manager
+- [ ] speed up nixos builds (maybe decouple home-manager and nixos configuration)
 
 ```
