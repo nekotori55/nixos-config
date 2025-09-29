@@ -58,6 +58,11 @@ in
       + lib.readFile ./hyprlock/hyprlock.conf;
     };
 
+    xdg.configFile."hypr/hyprlock" = {
+      source = ./hyprlock/scripts;
+      recursive = true;
+    };
+
     # WAYBAR
     programs.waybar = {
       enable = true;

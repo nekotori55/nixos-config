@@ -20,7 +20,7 @@ in
     };
 
     profiles.${osConfig.modules.home.user.name}.settings = {
-
+        
     }
     // cfg.preferences;
   };

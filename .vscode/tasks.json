@@ -21,12 +21,14 @@
         {
             "label": "nixos test",
             "type": "shell",
-            "command": "nh os test"
+            "command": "nh os test",
+            "problemMatcher": []
         },
         {
             "label": "nixos switch",
             "type": "shell",
-            "command": "nh os switch"
+            "command": "nh os switch",
+            "problemMatcher": []
         }
     ]
 }
