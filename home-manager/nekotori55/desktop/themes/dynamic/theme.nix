@@ -91,7 +91,7 @@ in
           show_hidden = false;
           show_gifs_only = false;
           zen_mode = true;
-          post_command = "wal --saturate 0.5 -n -i $wallpaper ; pywalfox update ; pkill waypaper; pkill hyprlock";
+          post_command = "wal --saturate 0.5 -n -i $wallpaper ; pywalfox update ; pkill hyprlock";
           number_of_columns = 3;
           swww_transition_type = "any";
           swww_transition_step = 90;
