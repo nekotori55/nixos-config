@@ -46,6 +46,7 @@ in
 
       # Waypaper pretty placement
       windowrule = float , class: waypaper
+      windowrule = pin, class: waypaper
       windowrule = size 50%, 50%, class: waypaper
     '';
 
