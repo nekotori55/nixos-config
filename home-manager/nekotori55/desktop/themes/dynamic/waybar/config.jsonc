@@ -57,7 +57,8 @@
             "class<(Minecraft\\s\\d\\.\\d+\\.\\d+)>": "",
             "class<(steam_proton)>": "",
             "class<(steam_app_.*)>": "",
-            "org.telegram.desktop": ""
+            "org.telegram.desktop": "",
+            "vesktop": ""
         }
     },
     "mpris": {
