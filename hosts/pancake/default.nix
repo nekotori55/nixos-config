@@ -30,12 +30,17 @@
 
         '';
       };
+      theme = "dynamic";
     };
 
     home.apps = {
       browsers.librewolf.enable = true;
     };
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.8"
+  ];
 
   networking.networkmanager.enable = true;
 
