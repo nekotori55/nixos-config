@@ -44,7 +44,7 @@ let
     "terminal.integrated.defaultProfile.linux" = "fish";
 
     # TODO move to external theme option
-    "workbench.colorTheme" = "Atomize";
+    "workbench.colorTheme" = "Atom Material Theme";
 
     # VSCORD
     "vscord.behaviour.suppressNotifications" = false;

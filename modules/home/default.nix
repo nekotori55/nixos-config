@@ -19,7 +19,10 @@ with lib;
       initialPassword = "123";
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "kvm"
+      ];
       home = "/home/${username}";
 
       # Needed for podman shell
