@@ -38,6 +38,8 @@
       # ];
       # })
       # teamspeak_client # install voice-chat
+
+      prismlauncher
     ];
   };
 }

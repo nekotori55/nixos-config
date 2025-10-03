@@ -33,6 +33,7 @@ in
       brightnessctl
       adwaita-icon-theme
       gnome-icon-theme
+      hyprpolkitagent
     ];
 
     fonts.packages = with pkgs; [

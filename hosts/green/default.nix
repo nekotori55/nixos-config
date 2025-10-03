@@ -19,6 +19,7 @@
     tunMode.setuid = true;
   };
 
+  # todo move or use flake-parts
   nixpkgs.hostPlatform = "x86_64-linux";
 
   modules = {
@@ -37,17 +38,15 @@
     "python-2.7.18.8"
   ];
 
+  # TODO MOVE
   networking.networkmanager.enable = true;
 
   services.preload.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    zed-editor
-    hyprpolkitagent
-    prismlauncher
-  ];
-
+  # TODO move
   security.polkit.enable = true;
+
+  # TODO group
   nixpkgs.config.allowUnfree = true;
 
   # DEFAULT SPECIALIZATION (docked)
