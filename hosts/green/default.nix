@@ -30,6 +30,7 @@
       };
       theme = "dynamic";
     };
+    gaming.enable = true;
   };
 
   nixpkgs.config.permittedInsecurePackages = [

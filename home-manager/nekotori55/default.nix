@@ -18,10 +18,13 @@
       grim
       slurp
       wl-clipboard
+      pkgs.gcr
     ];
 
     stateVersion = osConfig.system.stateVersion;
   };
+
+  services.gnome-keyring.enable = true;
 
   services.git-sync.enable = true;
   services.git-sync.repositories =

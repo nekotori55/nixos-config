@@ -20,6 +20,12 @@
     obsidian
     telegram-desktop
     spotify
+
+    fluffychat
+    fluffychat-web
+
+    # cinny
+    # cinny-desktop
   ];
 
   programs.foot = lib.mkIf (osConfig.modules.desktop.backend == "wayland") {
