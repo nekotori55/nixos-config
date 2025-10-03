@@ -34,6 +34,7 @@ in
       adwaita-icon-theme
       gnome-icon-theme
       hyprpolkitagent
+      playerctl
     ];
 
     fonts.packages = with pkgs; [
