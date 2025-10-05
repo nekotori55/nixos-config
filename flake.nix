@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zapret-discord-youtube.url = "github:nekotori55/zapret-discord-youtube/flake-fix";
+    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
   };
 
   outputs =
@@ -66,12 +66,6 @@
             # TODO include only when users.useHomeManager = true;
             home-manager.nixosModules.home-manager
             zapret-discord-youtube.nixosModules.default
-            {
-              services.zapret-discord-youtube = {
-                enable = true;
-                config = "general(ALT7)"; # любой конфиг из configs (general, general(ALT), general(МГТС) и т.д.)
-              };
-            }
           ];
 
           specialArgs = { inherit inputs; };

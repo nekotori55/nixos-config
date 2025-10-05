@@ -19,6 +19,11 @@
     tunMode.setuid = true;
   };
 
+  services.zapret-discord-youtube = {
+    enable = true;
+    config = "general(ALT7)"; # любой конфиг из configs (general, general(ALT), general(МГТС) и т.д.)
+  };
+
   # todo move or use flake-parts
   nixpkgs.hostPlatform = "x86_64-linux";
 

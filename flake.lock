@@ -196,16 +196,15 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1759603782,
-        "narHash": "sha256-3wQRS6B9rpVA7opN6Px8FHsrSHxJffI7GsqgMC8g16M=",
-        "owner": "nekotori55",
+        "lastModified": 1759666047,
+        "narHash": "sha256-6HFoARWzPFeeFOqjjFtbiP5hnZ/uU8qKOG3P5xKNjvY=",
+        "owner": "kartavkun",
         "repo": "zapret-discord-youtube",
-        "rev": "d2d4e86861180084544a3d2f3f1888757cf2cf5b",
+        "rev": "972f59ea18289befead9f1ab2d2d3045dbef6e4c",
         "type": "github"
       },
       "original": {
-        "owner": "nekotori55",
-        "ref": "flake-fix",
+        "owner": "kartavkun",
         "repo": "zapret-discord-youtube",
         "type": "github"
       }
