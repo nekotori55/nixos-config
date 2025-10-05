@@ -9,7 +9,7 @@
     ./hardware.nix
     # TODO
     # ./zapret-custom.nix
-    ./zapret.nix
+    # ./zapret.nix
   ];
 
   programs.nekoray = {
