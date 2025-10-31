@@ -21,11 +21,9 @@
     telegram-desktop
     spotify
 
-    fluffychat
-    fluffychat-web
-
-    # cinny
-    # cinny-desktop
+    blender
+    # godot-mono
+    godot
   ];
 
   programs.foot = lib.mkIf (osConfig.modules.desktop.backend == "wayland") {

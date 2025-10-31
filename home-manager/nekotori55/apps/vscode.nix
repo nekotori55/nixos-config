@@ -84,6 +84,8 @@ in
     nixfmt-rfc-style
     # python3
     nerd-fonts.fira-code
+
+    # dotnetCorePackages.dotnet_9.sdk # For Godot-Mono VSCode-Extension CSharp
   ];
 
   programs.bash = {
@@ -133,6 +135,38 @@ in
           ]
           ++ commonExtensions;
         userSettings = commonSettings;
+      };
+
+      godot = {
+        extensions =
+          with pkgs.vscode-extensions;
+          [
+            geequlim.godot-tools
+            # woberg.godot-dotnet-tools
+            # ms-dotnettools.csdevkit
+            # ms-dotnettools.csharp
+            # ms-dotnettools.vscode-dotnet-runtime
+          ]
+          ++ commonExtensions;
+
+        userSettings = commonSettings // {
+          # "csharp.toolsDotnetPath" = "${pkgs.dotnet-sdk_9}/bin/dotnet";
+          # "dotnetAcquisitionExtension.sharedExistingDotnetPath" = "${pkgs.dotnet-sdk_9}/bin/dotnet";
+          # "dotnetAcquisitionExtension.existingDotnetPath" = [
+          #   {
+          #     "extensionId" = "ms-dotnettools.csharp";
+          #     "path" = "${pkgs.dotnet-sdk_9}/bin/dotnet";
+          #   }
+          #   {
+          #     "extensionId" = "ms-dotnettools.csdevkit";
+          #     "path" = "${pkgs.dotnet-sdk_9}/bin/dotnet";
+          #   }
+          #   {
+          #     "extensionId" = "woberg.godot-dotnet-tools";
+          #     "path" = "${pkgs.dotnet-sdk_8}/bin/dotnet"; # Godot-Mono uses DotNet8 version.
+          #   }
+          # ];
+        };
       };
     };
 

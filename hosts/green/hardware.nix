@@ -104,7 +104,11 @@
       powerManagement.powertop.enable = true;
 
       services.tlp = {
-        enable = true;
+        enable = false;
+        settings = {
+          USB_AUTOSUSPEND = 0;
+          USB_EXCLUDE_BTUSB = 1;
+        };
       };
 
     };

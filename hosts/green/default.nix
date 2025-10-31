@@ -40,7 +40,7 @@
   };
 
   nixpkgs.config.permittedInsecurePackages = [
-    "python-2.7.18.8"
+    "python-2.7.18.12"
   ];
 
   # TODO MOVE
@@ -104,6 +104,8 @@
       modules.desktop.hyprland.additionalConfig = (''
         monitor = eDP-1, 1920x1080@60, 0x0, 1
         env = AQ_DRM_DEVICES,/dev/dri/card2
+
+        exec-once = systemctl --user start hyprpolkitagent
       '');
     };
   };

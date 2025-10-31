@@ -1,5 +1,5 @@
 {
-    "vscord.enabled": true,
+    "vscord.enabled": false,
     // make vscode shut the hell up in waybar style files
     "css.validate": false,
 }
