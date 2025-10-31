@@ -11,7 +11,7 @@ with types;
     mutableConfigFile = {
       enable = mkEnableOption "";
       path = mkOption {
-        type = string;
+        type = str;
         default = "$XDG_CONFIG_HOME/hypr/hyprland.mutable.conf";
       };
     };
