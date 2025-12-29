@@ -10,12 +10,12 @@
   system.stateVersion = "26.05";
 
   # General system
-  networking.hostname = "hp-laptop";
+  networking.hostName = "hp-laptop";
 
   # Locale/Time Settings
   time.timeZone = "Europe/Istanbul";
   time.hardwareClockInLocalTime = true;
-  i118.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -38,7 +38,10 @@
     mutableUsers = true;
 
     users.nekotori55 = {
-      initialPassword = "123";
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+
+      initialHashedPassword = "$y$j9T$EBOHnjpSHK4Vp86O4A.SP0$4nF/TaJSlLQt9Q0rRb8JnWfmRSbl1jmGfqN5b7gO3SB";
     };
   };
 }
