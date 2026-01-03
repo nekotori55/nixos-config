@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   # System
-  home.stateVersion = "26.05";
+  home.stateVersion = "25.05";
 
   # Essentials
   programs.git = {
@@ -14,21 +14,6 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    settings = {
-      # TODO
-      # keys.normal = {
-      #   C-f = [
-      #     ":new"
-      #     ":insert-output lf -selection-path=/dev/stdout"
-      #     "split_selection_on_newline"
-      #     "goto_file"
-      #     "goto_last_modification"
-      #     "goto_last_modified_file"
-      #     ":buffer-close!"
-      #     ":redraw"
-      #   ];
-      # };
-    };
 
     languages.language = [
       {
@@ -38,5 +23,4 @@
       }
     ];
   };
-
 }

@@ -37,6 +37,9 @@
 
   # Compositor
   programs.niri.enable = true;
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
   virtualisation.vmVariant = {
     virtualisation.qemu.options = [
       "-device virtio-vga-gl" # niri requires opengl
