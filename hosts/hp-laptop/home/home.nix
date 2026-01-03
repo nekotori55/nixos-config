@@ -1,5 +1,8 @@
 { lib, pkgs, ... }:
 {
+  imports = [
+    ./desktop-environment.nix
+  ];
   # System
   home.stateVersion = "25.05";
 

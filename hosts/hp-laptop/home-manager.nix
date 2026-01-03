@@ -8,7 +8,7 @@
 
     backupFileExtension = "hm.old";
 
-    users.nekotori55 = import ./home.nix;
+    users.nekotori55 = import ./home/home.nix;
 
   };
 }
