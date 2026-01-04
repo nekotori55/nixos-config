@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./home-manager.nix
+    ./nvidia.nix
   ];
 
   # NixOS system
@@ -13,6 +14,8 @@
     "nix-command"
     "flakes"
   ];
+  programs.nh.enable = true;
+  programs.nh.flake = "/home/nekotori55/new-config";
 
   # General system
   networking.hostName = "hp-laptop";

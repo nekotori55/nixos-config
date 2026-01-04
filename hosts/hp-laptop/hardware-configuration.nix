@@ -41,4 +41,7 @@
     };
     efi.canTouchEfiVariables = true;
   };
+
+  # Firmware
+  hardware.enableRedistributableFirmware = true;
 }

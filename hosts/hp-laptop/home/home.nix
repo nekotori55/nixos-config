@@ -14,6 +14,11 @@
     lfs.enable = true;
   };
 
+  programs.firefox = {
+    enable = true;
+    package = pkgs.librewolf;
+  };
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -26,4 +31,5 @@
       }
     ];
   };
+
 }

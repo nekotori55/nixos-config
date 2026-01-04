@@ -1,5 +1,4 @@
 { lib, pkgs, ... }:
-with lib.mkDefault;
 {
   services.xserver.videoDrivers = [
     "nvidia"
@@ -16,7 +15,7 @@ with lib.mkDefault;
     nvidiaSettings = true;
 
     powerManagement = {
-      enable = mkDefault false;
+      enable = false;
       finegrained = false;
     };
 
@@ -31,7 +30,7 @@ with lib.mkDefault;
       #
       # offload = {
       #   enable = true;
-      #   enableOffloadCmd;
+      #   enableOffloadCmd = true;
       # };
 
       # SYNC_MODE:
@@ -56,4 +55,19 @@ with lib.mkDefault;
     };
 
   };
+
+  environment.systemPackages = with pkgs; [
+    libva-utils
+    vdpauinfo
+    vulkan-tools
+    vulkan-validation-layers
+    libvdpau-va-gl
+    egl-wayland
+    wgpu-utils
+    mesa
+    libglvnd
+    nvtopPackages.full
+    nvitop
+    libGL
+  ];
 }
