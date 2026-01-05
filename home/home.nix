@@ -24,11 +24,20 @@
 
       languages.language = [
         {
+          # TODO LSP
           name = "nix";
           auto-format = true;
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
         }
       ];
+
+      settings = {
+        editor.auto-save = {
+          after-delay.enable = true;
+          after-delay.timeout = 3000;
+          focus-lost = true;
+        };
+      };
     };
 
     bash = {
