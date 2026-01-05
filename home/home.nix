@@ -3,33 +3,50 @@
   imports = [
     ./desktop-environment.nix
   ];
-  # System
+
+  # System settings
   home.stateVersion = "25.05";
 
-  # Essentials
-  programs.git = {
-    enable = true;
-    userEmail = "nekotori55@gmail.com";
-    userName = "nekotori55";
-    lfs.enable = true;
+  programs = {
+    # Essentials
+    git = {
+      enable = true;
+      settings = {
+        user.email = "nekotori55@gmail.com";
+        user.name = "nekotori55";
+      };
+      lfs.enable = true;
+    };
+
+    helix = {
+      enable = true;
+      defaultEditor = true;
+
+      languages.language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+        }
+      ];
+    };
+
+    bash = {
+      enable = true;
+      shellAliases = {
+        config = "cd .config/nixos; nix develop";
+      };
+    };
+
+    firefox = {
+      enable = true;
+      package = pkgs.librewolf;
+      # TODO add extensions and parameters
+    };
   };
 
-  programs.firefox = {
-    enable = true;
-    package = pkgs.librewolf;
-  };
-
-  programs.helix = {
-    enable = true;
-    defaultEditor = true;
-
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-      }
-    ];
-  };
-
+  home.packages = with pkgs; [
+    # Messengers
+    telegram-desktop
+  ];
 }
