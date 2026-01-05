@@ -15,10 +15,11 @@
     "flakes"
   ];
   programs.nh.enable = true;
-  programs.nh.flake = "/home/nekotori55/new-config";
+  programs.nh.flake = "/home/nekotori55/.config/nixos";
 
   # General system
   networking.hostName = "hp-laptop";
+  networking.networkmanager.enable = true;
 
   # Locale/Time Settings
   time.timeZone = "Europe/Istanbul";
