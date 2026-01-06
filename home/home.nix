@@ -27,7 +27,11 @@
           # TODO LSP
           name = "nix";
           auto-format = true;
-          formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
+          formatter.command = "nixfmt-rfc-style";
+          language-servers = [
+            "nixd"
+            "nil"
+          ];
         }
       ];
 
@@ -43,7 +47,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        config = "cd .config/nixos; nix develop";
+        config = "cd ~/.config/nixos; hx ./flake.nix";
         flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";
       };
     };
@@ -59,5 +63,10 @@
     # Messengers
     telegram-desktop
     ungoogled-chromium
+
+    # Nix LSP
+    nil
+    nixd
+    nixfmt-rfc-style
   ];
 }

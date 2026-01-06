@@ -29,6 +29,7 @@
   hardware.bluetooth = {
     enable = true;
   };
+  services.blueman.enable = true;
 
   # Bootloader
   boot.loader = {
@@ -40,6 +41,14 @@
       default = "saved";
     };
     efi.canTouchEfiVariables = true;
+  };
+
+  # Sound
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
 
   # Firmware

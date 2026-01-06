@@ -4,8 +4,8 @@
 
   # Required programs
   home.packages = with pkgs; [
-    blueman # bluetooth manager
     fuzzel # app launcher
+    pavucontrol # audio settings
 
     # fonts
     nerd-fonts.fira-code
@@ -32,7 +32,7 @@
 
   services = {
     # Notification daemon
-    mako.enable = true;
+    # mako.enable = true;
   };
 
   # Font managment

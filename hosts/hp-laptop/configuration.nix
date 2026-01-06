@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./home-manager.nix
     ./nvidia.nix
+    ./android-dev.nix
   ];
 
   # NixOS system
