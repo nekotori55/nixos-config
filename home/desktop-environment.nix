@@ -28,6 +28,8 @@
     };
   };
 
+  programs.quickshell.enable = true;
+
   services = {
     # Notification daemon
     mako.enable = true;

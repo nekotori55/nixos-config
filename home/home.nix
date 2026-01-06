@@ -44,6 +44,7 @@
       enable = true;
       shellAliases = {
         config = "cd .config/nixos; nix develop";
+        flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";
       };
     };
 
@@ -57,5 +58,6 @@
   home.packages = with pkgs; [
     # Messengers
     telegram-desktop
+    ungoogled-chromium
   ];
 }
