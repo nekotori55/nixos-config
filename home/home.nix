@@ -48,6 +48,8 @@
       enable = true;
       shellAliases = {
         config = "cd ~/.config/nixos; hx ./flake.nix";
+        conf = "config";
+        dev = "nix develop";
         flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";
       };
     };
@@ -68,5 +70,8 @@
     nil
     nixd
     nixfmt-rfc-style
+
+    # Useful
+    bitwarden-desktop
   ];
 }

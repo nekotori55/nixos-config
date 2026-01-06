@@ -4,6 +4,8 @@
 
   # Required programs
   home.packages = with pkgs; [
+    xwayland-satellite
+
     fuzzel # app launcher
     pavucontrol # audio settings
 

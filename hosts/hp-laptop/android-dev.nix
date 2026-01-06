@@ -10,9 +10,9 @@
   ];
 
   # Install Android Studio and SDK
-  # environment.systemPackages = with pkgs; [
-  # android-studio-full
-  # ];
+  environment.systemPackages = with pkgs; [
+    android-studio
+  ];
 
   # Accept license
   # nixpkgs.config.android_sdk.accept_license = true;

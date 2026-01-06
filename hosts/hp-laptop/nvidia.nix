@@ -61,6 +61,7 @@
     vdpauinfo
     vulkan-tools
     vulkan-validation-layers
+    vulkan-loader
     libvdpau-va-gl
     egl-wayland
     wgpu-utils
