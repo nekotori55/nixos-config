@@ -86,7 +86,16 @@
   };
 
   # Custom modules
-  modules.android-dev.enable = true;
+  modules = {
+    gaming = {
+      enable = true;
+      steam = true;
+      minecraft = true;
+      gamescope = true;
+    };
+
+    android-dev.enable = true;
+  };
 
   # VM
   virtualisation.vmVariant = {
