@@ -1,11 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ./home-manager.nix
     ./nvidia.nix
-    ./android-dev.nix
-    ./gaming.nix
   ];
 
   # NixOS system
@@ -51,12 +48,6 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
-  virtualisation.vmVariant = {
-    virtualisation.qemu.options = [
-      "-device virtio-vga-gl" # niri requires opengl
-      "-display gtk,gl=on" # enable opengl support
-    ];
-  };
 
   # Users
   users = {
@@ -70,6 +61,7 @@
     };
   };
 
+  # Security
   security.sudo = {
     enable = true;
     extraRules = [
@@ -91,5 +83,18 @@
         groups = [ "wheel" ];
       }
     ];
+  };
+
+  # Custom modules
+  modules.android-dev.enable = true;
+
+  # VM
+  virtualisation.vmVariant = {
+    virtualisation.qemu.options = [
+      "-device virtio-vga-gl" # niri requires opengl
+      "-display gtk,gl=on" # enable opengl support
+    ];
+
+    networking.interfaces.eno1.wakeOnLan.enable = lib.mkForce false;
   };
 }

@@ -4,26 +4,23 @@
     let
       home-manager = inputs.home-manager.nixosModules.home-manager;
       nixosSystem = inputs.nixpkgs.lib.nixosSystem;
+      custom-modules = ../modules;
     in
     {
       hp-laptop = nixosSystem {
         modules = [
           ./hp-laptop/configuration.nix
           home-manager
+          custom-modules
         ];
       };
 
       teclast-laptop = nixosSystem {
-        # TODO
         modules = [
           ./teclast-laptop/configuration.nix
           home-manager
+          custom-modules
         ];
-      };
-
-      black-box = nixosSystem {
-        # TODO
-        modules = [ ];
       };
 
       server = nixosSystem {

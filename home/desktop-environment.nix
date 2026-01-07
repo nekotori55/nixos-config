@@ -32,11 +32,10 @@
 
   programs.quickshell.enable = true;
 
-  services = {
-    # Notification daemon
-    # mako.enable = true;
-  };
-
   # Font managment
   fonts.fontconfig.enable = true;
+
+  xdg.configFile."niri/config.kdl" = {
+    source = ./niri-config.kdl;
+  };
 }
