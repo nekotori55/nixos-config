@@ -21,6 +21,11 @@
   # General system
   networking.hostName = "hp-laptop";
   networking.networkmanager.enable = true;
+  services.sshd.enable = true;
+
+  # Wake on Lan
+  networking.interfaces.eno1.wakeOnLan.enable = true;
+  networking.firewall.allowedUDPPorts = [ 9 ];
 
   # Locale/Time Settings
   time.timeZone = "Europe/Istanbul";
@@ -62,5 +67,28 @@
 
       hashedPassword = "$y$j9T$EBOHnjpSHK4Vp86O4A.SP0$4nF/TaJSlLQt9Q0rRb8JnWfmRSbl1jmGfqN5b7gO3SB";
     };
+  };
+
+  security.sudo = {
+    enable = true;
+    extraRules = [
+      {
+        commands = [
+          {
+            command = "${pkgs.systemd}/bin/systemctl suspend";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "${pkgs.systemd}/bin/reboot";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "${pkgs.systemd}/bin/poweroff";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+        groups = [ "wheel" ];
+      }
+    ];
   };
 }
