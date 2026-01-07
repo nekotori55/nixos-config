@@ -5,6 +5,7 @@
     ./home-manager.nix
     ./nvidia.nix
     ./android-dev.nix
+    ./gaming.nix
   ];
 
   # NixOS system

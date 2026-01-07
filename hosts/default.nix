@@ -26,5 +26,11 @@
         modules = [ ];
       };
 
+      server = nixosSystem {
+        modules = [
+          ./server/configuration.nix
+        ];
+      };
+
     };
 }

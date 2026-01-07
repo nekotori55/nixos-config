@@ -24,7 +24,6 @@
 
       languages.language = [
         {
-          # TODO LSP
           name = "nix";
           auto-format = true;
           formatter.command = "nixfmt-rfc-style";
@@ -33,7 +32,25 @@
             "nil"
           ];
         }
+
+        {
+          name = "markdown";
+          auto-format = true;
+          language-servers = [
+            "marksman"
+            "mpls"
+          ];
+        }
       ];
+
+      languages.language-server.mpls = {
+        command = "mpls";
+        args = [
+          "--dark-mode"
+        ];
+        # An example args entry showing how to specify flags with values:
+        # args = ["--port", "8080", "--browser", "google-chrome", "--theme", "gruvbox-dark"]
+      };
 
       settings = {
         editor.auto-save = {
@@ -70,6 +87,10 @@
     nil
     nixd
     nixfmt-rfc-style
+
+    # Markdown LSP
+    marksman
+    mpls
 
     # Useful
     bitwarden-desktop
