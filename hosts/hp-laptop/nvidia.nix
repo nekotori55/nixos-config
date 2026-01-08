@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   services.xserver.videoDrivers = [
     "nvidia"
@@ -11,15 +16,14 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-
     nvidiaSettings = true;
 
     powerManagement = {
-      enable = false;
+      enable = true;
       finegrained = false;
     };
 
-    # package =
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
       # There are three options:
@@ -29,22 +33,22 @@
       # except if you call the dGPU specifically by "offloading" an application to it
       #
       # offload = {
-      #   enable = true;
-      #   enableOffloadCmd = true;
+      # enable = true;
+      # enableOffloadCmd = true;
       # };
 
       # SYNC_MODE:
       # rendering is completely delegated to the dGPU,
       # while the iGPU only displays the rendered framebuffers copied from the dGPU
       #
-      sync.enable = true;
+      # sync.enable = true;
 
       # REVERSE_SYNC_MODE:
       # The difference between regular sync mode and reverse sync mode is that
       # the dGPU is configured as the primary output device,
       # allowing displaying to external displays wired to it and not the iGPU (more common).
       #
-      # reverseSync.enable = true;
+      reverseSync.enable = true;
 
       # PRIME sync and reverse sync modes are X11-only and do not work under Wayland.
       # https://wiki.nixos.org/wiki/NVIDIA#Hybrid_graphics_with_PRIME

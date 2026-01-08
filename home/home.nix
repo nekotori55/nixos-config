@@ -2,10 +2,11 @@
 {
   imports = [
     ./desktop-environment.nix
+    ./modules
   ];
 
   # System settings
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.05"; # TODO check if correct
 
   programs = {
     # Essentials

@@ -1,0 +1,6 @@
+{ ... }:
+{
+  imports = [
+    ./ricing-mode.nix
+  ];
+}

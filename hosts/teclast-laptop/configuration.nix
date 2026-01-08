@@ -7,10 +7,18 @@
   # NixOS system
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "26.05";
+  # system.stateVersion = "26.05";
+    nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  programs.nh.enable = true;
+  programs.nh.flake = "/home/nekotori55/.config/nixos";  
 
   # General system
   networking.hostname = "teclast-laptop";
+  networking.networkmanager.enable = true;
+  services.sshd.enable = true;
 
   # Locale/Time Settings
   time.timeZone = "Europe/Istanbul";
@@ -25,10 +33,25 @@
 
   # Users
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
 
     nekotori55 = {
-      initialPassword = "123";
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      hashedPassword = "$y$j9T$jZ0ULg5WpZVNrN.TrCJKV/$t4XLZsQY/EHzeuOdvX7sTjKFerO7ZIx4kr2NvjdwOM2";
     };
   };
+
+  # Display Manager
+  services.displayManager.sddm = {
+    enable = true;
+    wayland = true;
+  };
+
+  # Compositor
+  programs.niri.enable = true;
+  environments.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
 }

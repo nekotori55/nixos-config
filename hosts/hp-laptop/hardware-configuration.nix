@@ -11,8 +11,10 @@
       device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
       options = [
-        "fmask=0022"
-        "dmask=0022"
+        "uid=0"
+        "gid=0"
+        "fmask=0077"
+        "dmask=0077"
       ];
     };
   };
@@ -39,7 +41,18 @@
       efiSupport = true;
       useOSProber = true;
       default = "saved";
+      # extraConfig = ''
+      # terminal_input console
+      # terminal_output console
+      # '';
+      gfxmodeEfi = "1920x1080";
     };
+    # systemd-boot = {
+    #   enable = true;
+    #   # consoleMode = "max";
+    #   configurationLimit = 10;
+    # };
+
     efi.canTouchEfiVariables = true;
   };
 

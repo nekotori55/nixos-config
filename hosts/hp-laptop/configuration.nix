@@ -5,6 +5,9 @@
     ./nvidia.nix
   ];
 
+  # TODO
+  # 1. make on-the-go/single-display specialisation
+
   # NixOS system
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
@@ -20,6 +23,10 @@
   networking.hostName = "hp-laptop";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
+  boot.kernelParams = [
+    "video=HDMI-A-1:e"
+    "video=HDMI-A-2:e"
+  ];
 
   # Wake on Lan
   networking.interfaces.eno1.wakeOnLan.enable = true;
@@ -27,7 +34,7 @@
 
   # Locale/Time Settings
   time.timeZone = "Europe/Istanbul";
-  time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = false;
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Packages

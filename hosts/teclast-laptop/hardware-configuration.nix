@@ -3,14 +3,14 @@
   # Filesystems
   fileSystems = {
     "/" = {
-      # device = "/dev/disk/by-label/nixos";
-      device = "/dev/disk/by-uuid/0e776749-b0ac-4201-8869-d1a8cdc802bd";
+      device = "/dev/disk/by-label/nixos";
+      # device = "/dev/disk/by-uuid/0e776749-b0ac-4201-8869-d1a8cdc802bd";
       fsType = "ext4";
     };
 
     "/boot" = {
-      # device = "/dev/disk/by-label/boot";
-      device = "/dev/disk/by-uuid/6462-890A";
+      device = "/dev/disk/by-label/BOOT";
+      # device = "/dev/disk/by-uuid/6462-890A";
       fsType = "vfat";
       options = [
         "fmask=0022"
@@ -30,6 +30,7 @@
   hardware.bluetooth = {
     enable = true;
   };
+  services.blueman.enable = true;
 
   # Bootloader
   boot.loader = {
@@ -42,4 +43,6 @@
     };
     efi.canTouchEfiVariables = true;
   };
+
+  hardware.enableRedistributableFirmware = true;
 }
