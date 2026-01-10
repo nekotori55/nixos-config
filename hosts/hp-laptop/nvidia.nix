@@ -32,10 +32,10 @@
       # Puts your dGPU to sleep and lets the iGPU handle all tasks,
       # except if you call the dGPU specifically by "offloading" an application to it
       #
-      # offload = {
-      # enable = true;
-      # enableOffloadCmd = true;
-      # };
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       # SYNC_MODE:
       # rendering is completely delegated to the dGPU,
@@ -48,7 +48,7 @@
       # the dGPU is configured as the primary output device,
       # allowing displaying to external displays wired to it and not the iGPU (more common).
       #
-      reverseSync.enable = true;
+      # reverseSync.enable = true;
 
       # PRIME sync and reverse sync modes are X11-only and do not work under Wayland.
       # https://wiki.nixos.org/wiki/NVIDIA#Hybrid_graphics_with_PRIME
