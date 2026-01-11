@@ -2,11 +2,14 @@
 let
   inherit (lib)
     mkEnableOption
-    mkOptions
+    mkOption
     mkMerge
     mkIf
     mapAttrs
+    types
     ;
+
+  inherit (lib.types) submodule attrsOf nullOr bool lines ;
 
   ricingEnabled = config.ricing-mode.enable;
   ricingMode = config.ricing-mode.files;
@@ -18,7 +21,48 @@ in
 
   options.ricing-mode = {
     enable = mkEnableOption ''Replace nix-store symlinks with actual editable files'';
-    files = mkOptions { };
+    # files = mkOption {
+    #   type = attrsOf (submodule {
+    #     options = {
+    #       enable = mkOption {
+    #         type = bool;
+    #         default = true;
+    #       };
+          
+    #       executable = mkOption {
+    #         type = nullOr bool;
+    #         default = null;
+    #       };
+
+    #       force = mkOption {
+    #         type = bool; E
+    #         default = false;
+    #       };
+
+    #       ignoreLinks = mkOption {
+    #         type = bool;
+    #         default = false;
+    #       };
+
+    #       onChange = mkOption {
+    #         type = lines;
+    #         default = "";
+    #       };
+
+    #       recursive = mkOption {
+    #         type = bool;
+    #         default = false;
+    #       };
+
+    #       source = mkOption {
+    #         type = types.path;
+            
+    #       };
+    #     };
+      # });
+    # };
+    #
+    files = 
   };
 
   # config = mkMerge [
