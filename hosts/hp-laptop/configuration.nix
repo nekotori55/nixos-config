@@ -104,6 +104,10 @@
     android-dev.enable = true;
   };
 
+  services.printing = {
+    enable = true;
+  };
+
   # VM
   virtualisation.vmVariant = {
     virtualisation.qemu.options = [

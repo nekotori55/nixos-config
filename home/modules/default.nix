@@ -1,6 +1,6 @@
 { ... }:
 {
   imports = [
-    ./ricing-mode.nix
+    # ./ricing-mode.nix
   ];
 }

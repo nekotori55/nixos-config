@@ -1,4 +1,9 @@
-{ osConfig, lib, inputs, ... }:
+{
+  osConfig,
+  lib,
+  inputs,
+  ...
+}:
 {
   home-manager = {
     verbose = true;
@@ -10,6 +15,8 @@
 
     users.nekotori55 = import ../home/home.nix;
 
-    modules = [] + lib.optionals osConfig. ;
+    # modules = [ ];
+
+    extraSpecialArgs = { inherit inputs; };
   };
 }

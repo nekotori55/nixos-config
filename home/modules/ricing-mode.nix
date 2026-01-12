@@ -1,4 +1,10 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   inherit (lib)
     mkEnableOption
@@ -9,10 +15,28 @@ let
     types
     ;
 
-  inherit (lib.types) submodule attrsOf nullOr bool lines ;
+  inherit (lib.types)
+    submodule
+    attrsOf
+    nullOr
+    bool
+    lines
+    ;
 
   ricingEnabled = config.ricing-mode.enable;
   ricingMode = config.ricing-mode.files;
+
+  # fileType =
+  #   (import (inputs.home-manager.src + "/modules/lib/file-type.nix") {
+  #     inherit (config.home) homeDirectory;
+  #     inherit lib pkgs;
+  #   }).fileType;
+  #
+  fileType =
+    (import "${inputs.home-manager}/lib/file-type.nix" {
+      inherit (config.home) homeDirectory;
+      inherit lib pkgs;
+    }).fileType;
 in
 {
   # TODO decide if option should be declared in nixos module or in home-manager module
@@ -28,7 +52,7 @@ in
     #         type = bool;
     #         default = true;
     #       };
-          
+
     #       executable = mkOption {
     #         type = nullOr bool;
     #         default = null;
@@ -56,13 +80,13 @@ in
 
     #       source = mkOption {
     #         type = types.path;
-            
+
     #       };
     #     };
-      # });
+    # });
     # };
     #
-    files = 
+    # files =
   };
 
   # config = mkMerge [
