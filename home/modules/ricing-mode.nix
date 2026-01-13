@@ -24,16 +24,11 @@ let
     ;
 
   ricingEnabled = config.ricing-mode.enable;
-  ricingMode = config.ricing-mode.files;
+  ricingDisabled = !config.ricing-mode.enable;
+  ricingMode = config.ricing-mode;
 
-  # fileType =
-  #   (import (inputs.home-manager.src + "/modules/lib/file-type.nix") {
-  #     inherit (config.home) homeDirectory;
-  #     inherit lib pkgs;
-  #   }).fileType;
-  #
   fileType =
-    (import "${inputs.home-manager}/lib/file-type.nix" {
+    (import "${inputs.home-manager}/modules/lib/file-type.nix" {
       inherit (config.home) homeDirectory;
       inherit lib pkgs;
     }).fileType;
@@ -45,57 +40,28 @@ in
 
   options.ricing-mode = {
     enable = mkEnableOption ''Replace nix-store symlinks with actual editable files'';
-    # files = mkOption {
-    #   type = attrsOf (submodule {
-    #     options = {
-    #       enable = mkOption {
-    #         type = bool;
-    #         default = true;
-    #       };
-
-    #       executable = mkOption {
-    #         type = nullOr bool;
-    #         default = null;
-    #       };
-
-    #       force = mkOption {
-    #         type = bool; E
-    #         default = false;
-    #       };
-
-    #       ignoreLinks = mkOption {
-    #         type = bool;
-    #         default = false;
-    #       };
-
-    #       onChange = mkOption {
-    #         type = lines;
-    #         default = "";
-    #       };
-
-    #       recursive = mkOption {
-    #         type = bool;
-    #         default = false;
-    #       };
-
-    #       source = mkOption {
-    #         type = types.path;
-
-    #       };
-    #     };
-    # });
-    # };
-    #
-    # files =
+    files = mkOption {
+      type = fileType "xdg.configFile" "null" config.xdg.configHome;
+      default = { };
+      description = ''Attribute set of files (relative to XDG_CONFIG_DIR), see xdg.configFile'';
+    };
   };
 
-  # config = mkMerge [
-  #   (mkIf ricingEnabled {
-  #     xdg.configFile = mapAttrs (name: file: {
-  #       inherit (file)
-  #     }) ricingFiles;
-  #   })
+  config = mkMerge [
+    (mkIf ricingDisabled {
+      home.file = lib.mkMerge [
+        (lib.mapAttrs' (
+          name: file: lib.nameValuePair "${config.xdg.configHome}/${name}" file
+        ) ricingMode.files)
+      ];
+    })
 
-  # ];
-
+    (mkIf ricingEnabled {
+      home.activation = {
+        ricingFiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+            
+        '';
+      };
+    })
+  ];
 }

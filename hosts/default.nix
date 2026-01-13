@@ -17,6 +17,7 @@
           custom-modules
           agenix
         ];
+        specialArgs = { inherit inputs; };
       };
 
       teclast-laptop = nixosSystem {
