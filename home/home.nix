@@ -72,6 +72,13 @@
       };
     };
 
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+      silent = true;
+    };
+
     firefox = {
       enable = true;
       package = pkgs.librewolf;
