@@ -42,6 +42,8 @@
     git
     wget
     helix
+
+    system-config-printer
   ];
 
   # Display Manager
@@ -104,8 +106,12 @@
     android-dev.enable = true;
   };
 
+  # Printing
   services.printing = {
     enable = true;
+    drivers = with pkgs; [
+      samsung-unified-linux-driver
+    ];
   };
 
   # VM
