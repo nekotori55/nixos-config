@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     ./desktop-environment.nix
@@ -17,6 +22,11 @@
         user.name = "nekotori55";
       };
       lfs.enable = true;
+
+      ignores = [
+        ".direnv/"
+        ".envrc"
+      ];
     };
 
     helix = {
@@ -67,6 +77,8 @@
       shellAliases = {
         config = "cd ~/.config/nixos; hx ./flake.nix";
         conf = "config";
+        home = "cd ~/.config/nixos/home; hx ./home.nix";
+
         dev = "nix develop";
         flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";
       };
