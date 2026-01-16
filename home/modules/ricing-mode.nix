@@ -34,6 +34,10 @@ let
     }).fileType;
 in
 {
+  # XXX HACK: `rm -f $target.hm.old` is a bad solution to annoying home-manager failures
+  # should at least pass backup extension to ricing mode
+  # or just use backup command and store files somewhere safe
+  #
   # TODO: refactor this module, git rid of lib. prefixes
   #
   # TODO: Add safeMode switch that will not rewrite files
@@ -157,6 +161,9 @@ in
                   else
                     echo "no link"
                   fi
+
+                  # DIRTY 
+                  rm -f $target.hm.old
 
                   # Create target file with contents
                   touch $target
