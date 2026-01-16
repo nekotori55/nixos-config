@@ -34,7 +34,14 @@ let
     }).fileType;
 in
 {
-  # XXX REFACTOR: this module
+  # TODO: refactor this module, git rid of lib. prefixes
+  #
+  # TODO: Add safeMode switch that will not rewrite files
+  # if ricingMode was activated before rebuild
+  #
+  # TODO: Add (or don't add) symlink mode that will place symlink to flake directory file
+  # instead of creating new files (need to specify flake dir manually)
+
   options.ricing-mode = {
     enable = mkEnableOption ''Replace nix-store symlinks with actual editable files'';
     files = mkOption {
@@ -103,7 +110,7 @@ in
                           };
                         }
                       ) (lib.fileset.toList file.source)
-                    else if lib.readFileType file.source == "regular" then
+                    else if builtins.readFileType file.source == "regular" then
                       let
                         fullPath = config.home.homeDirectory + "/" + file.target;
                       in
@@ -112,7 +119,7 @@ in
                         value = {
                           inherit (file) executable;
                           text = lib.readFile file.source;
-                          target = config.home.homeDirectory + file.target;
+                          target = fullPath;
                         };
                       }
                     else
@@ -132,7 +139,7 @@ in
               NEW_MODE=1
             fi
 
-            if [ NEW_MODE ]; then
+            if [ $NEW_MODE ]; then
               ${lib.concatStringsSep "\n\n" (
                 lib.mapAttrsToList (name: file: ''
                   target=${file.target}
