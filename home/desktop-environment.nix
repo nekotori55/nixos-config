@@ -35,7 +35,7 @@
   # Font managment
   fonts.fontconfig.enable = true;
 
-  xdg.configFile."niri/config.kdl" = {
+  ricing-mode.files."niri/config.kdl" = {
     source = ./niri-config.kdl;
   };
 }
