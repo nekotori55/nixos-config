@@ -35,7 +35,7 @@
   # Display Manager
   services.displayManager.sddm = {
     enable = true;
-    wayland = true;
+    wayland.enable = true;
   };
 
   # Compositor
