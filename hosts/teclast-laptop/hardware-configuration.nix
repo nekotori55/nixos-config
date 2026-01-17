@@ -4,17 +4,17 @@
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
-      # device = "/dev/disk/by-uuid/0e776749-b0ac-4201-8869-d1a8cdc802bd";
       fsType = "ext4";
     };
 
     "/boot" = {
       device = "/dev/disk/by-label/BOOT";
-      # device = "/dev/disk/by-uuid/6462-890A";
       fsType = "vfat";
       options = [
-        "fmask=0022"
-        "dmask=0022"
+        "uid=0"
+        "gid=0"
+        "fmask=0077"
+        "dmask=0077"
       ];
     };
   };
@@ -38,8 +38,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      # useOSProber = true;
-      default = "saved";
+      # default = "saved";
     };
     efi.canTouchEfiVariables = true;
   };
