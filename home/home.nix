@@ -15,4 +15,7 @@ in
 
   # System settings
   home.stateVersion = "25.05"; # TODO check if correct
+
+  # Enable management of XDG base directories
+  xdg.enable = true;
 }
