@@ -17,6 +17,10 @@
             packages = with pkgs; [
               kdePackages.qtdeclarative
             ];
+
+            shellHook = ''
+              touch .qmlls.ini
+            '';
           };
         };
     };

@@ -1,4 +1,3 @@
-// pragma ComponentBehavior: Bound
 import Quickshell
 
 Scope {
@@ -23,3 +22,4 @@ Scope {
         }
     }
 }
+

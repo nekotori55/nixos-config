@@ -141,6 +141,8 @@ in
             if [ ! -f "$RICING_MODE_FILE" ]; then
               touch "$RICING_MODE_FILE"
               NEW_MODE=1
+            else
+              NEW_MODE=0
             fi
 
             if [ $NEW_MODE ]; then

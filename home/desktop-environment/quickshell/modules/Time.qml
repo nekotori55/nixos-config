@@ -25,3 +25,4 @@ Singleton {
         onTriggered: dateProc.running = true
     }
 }
+

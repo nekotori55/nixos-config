@@ -18,4 +18,6 @@ in
 
   # Enable management of XDG base directories
   xdg.enable = true;
+
+  # ricing-mode.enable = true;
 }
