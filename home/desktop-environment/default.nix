@@ -13,10 +13,6 @@
     nerd-fonts.fira-code
     font-awesome
   ];
-
-  # Niri config
-  # <put config here>
-
   programs.waybar = {
     enable = true;
   };
@@ -30,11 +26,14 @@
     };
   };
 
-  programs.quickshell.enable = true;
+  programs.quickshell = {
+    enable = true;
+  };
 
   # Font managment
   fonts.fontconfig.enable = true;
 
+  # Niri config
   ricing-mode.files."niri/config.kdl" = {
     source = ./niri-config.kdl;
   };
