@@ -101,9 +101,9 @@ in
                       lib.map (
                         source:
                         let
-                          pathOfSourceFolder = toString (file.source + "./..");
-                          pathRelativeToConfigHome = lib.replaceString pathOfSourceFolder "" (toString source);
-                          fullPath = config.xdg.configHome + pathRelativeToConfigHome;
+                          pathOfImportDir = toString (file.source); # /nix/blabla/flake/dotfiles/coolfrog
+                          pathRelativeToImportDir = lib.replaceString pathOfImportDir "" (toString source); # /file.txt
+                          fullPath = config.home.homeDirectory + "/" + file.target + pathRelativeToImportDir; # /home/user/.config/dotfiles/coolfrog/file.txt
                         in
                         {
                           name = toString fullPath;
@@ -163,9 +163,6 @@ in
                   else
                     echo "no link"
                   fi
-
-                  # DIRTY 
-                  rm -f $target.hm.old
 
                   # Create target file with contents
                   touch $target

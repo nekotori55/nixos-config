@@ -1,18 +1,12 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./quickshell
+  ];
+
   # Niri
   ricing-mode.files."niri/config.kdl" = {
     source = ./niri-config.kdl;
-  };
-
-  # Quickshell
-  programs.quickshell = {
-    enable = true;
-    systemd.enable = true;
-  };
-
-  ricing-mode.files."quickshell" = {
-    source = ./quickshell;
   };
 
   # Terminal
