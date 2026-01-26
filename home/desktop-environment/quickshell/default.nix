@@ -2,7 +2,7 @@
 {
   # Quickshell
   programs.quickshell = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
   };
 

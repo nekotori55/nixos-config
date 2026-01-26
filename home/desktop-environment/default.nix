@@ -18,6 +18,10 @@
     };
   };
 
+  programs.waybar = {
+    enable = true;
+  };
+
   # Required programs
   home.packages = with pkgs; [
     xwayland-satellite

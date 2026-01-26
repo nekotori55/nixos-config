@@ -9,6 +9,10 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 //
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 debug {
     render-drm-device "/dev/dri/card1"
 }
@@ -127,9 +131,9 @@ output "HDMI-A-1" {
 }
 
 output "HDMI-A-2" {
-    mode "1920x1080@120"
+    mode "1920x1080@143.981"
 
-    off 
+    // off 
     scale 1
 
     transform "normal"
@@ -332,6 +336,16 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id="librewolf"
+    open-maximized true
 }
 
 // Open the Firefox picture-in-picture player as floating by default.

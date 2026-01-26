@@ -1,17 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ./nvidia.nix
   ];
 
-  # TODO
-  # 1. make on-the-go/single-display specialisation
-
   # NixOS system
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = {
+    system = "aarch64-linux";
+  };
+  tPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "26.05";
+  # system.stateVersion = "26.05";
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -20,20 +19,15 @@
   programs.nh.flake = "/home/nekotori55/.config/nixos";
 
   # General system
-  networking.hostName = "hp-laptop";
+  networking.hostName = "black-box";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
   boot.kernelParams = [
-    # "video=HDMI-A-1:e"
-    # "video=HDMI-A-2:e"
+
   ];
 
-  # Wake on Lan
-  networking.interfaces.eno1.wakeOnLan.enable = true;
-  networking.firewall.allowedUDPPorts = [ 9 ];
-
   # Locale/Time Settings
-  time.timeZone = "Europe/Istanbul";
+  time.timeZone = "Europe/Instanbul";
   time.hardwareClockInLocalTime = false;
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -42,8 +36,6 @@
     git
     wget
     helix
-
-    system-config-printer
   ];
 
   # Display Manager
@@ -58,7 +50,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # Users
   users = {
     mutableUsers = false;
 
@@ -66,7 +57,7 @@
       isNormalUser = true;
       extraGroups = [ "wheel" ];
 
-      hashedPassword = "$y$j9T$EBOHnjpSHK4Vp86O4A.SP0$4nF/TaJSlLQt9Q0rRb8JnWfmRSbl1jmGfqN5b7gO3SB";
+      hashedPassword = "$y$j9T$a1jAVDivYi1NOjqUg69pj1$.Wv/PFpglwKzkECtVu67Oo1zS3rq4kvnDdud8/t/zPD";
     };
   };
 
@@ -103,15 +94,7 @@
       gamescope = true;
     };
 
-    android-dev.enable = true;
-  };
-
-  # Printing
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      samsung-unified-linux-driver
-    ];
+    android-dev.enable = false;
   };
 
   # VM
@@ -120,7 +103,5 @@
       "-device virtio-vga-gl" # niri requires opengl
       "-display gtk,gl=on" # enable opengl support
     ];
-
-    networking.interfaces.eno1.wakeOnLan.enable = lib.mkForce false;
   };
 }

@@ -12,5 +12,9 @@
       ".direnv/"
       ".envrc"
     ];
+
+    delta = {
+      enable = true;
+    };
   };
 }

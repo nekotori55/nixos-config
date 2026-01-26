@@ -29,6 +29,15 @@
         ];
       };
 
+      black-box = nixosSystem {
+        modules = [
+          ./black-box/configuration.nix
+          home-manager
+          custom-modules
+          agenix
+        ];
+      };
+
       server = nixosSystem {
         modules = [
           ./server/configuration.nix

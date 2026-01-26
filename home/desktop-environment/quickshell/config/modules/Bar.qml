@@ -10,10 +10,10 @@ Scope {
             anchors {
                 top: true
                 left: true
-                right: true
+                bottom: true
             }
 
-            implicitHeight: 30
+            implicitWidth: 30
 
             ClockWidget {
                 anchors.centerIn: parent
