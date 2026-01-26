@@ -25,7 +25,8 @@ let
 
   ricingEnabled = config.ricing-mode.enable;
   ricingDisabled = !config.ricing-mode.enable;
-  ricingMode = config.ricing-mode;
+  ricing-mode = config.ricing-mode;
+  symlink-mode = ricing-mode.symlink-mode;
 
   fileType =
     (import "${inputs.home-manager}/modules/lib/file-type.nix" {
@@ -57,26 +58,62 @@ in
       type = lib.types.path;
       default = "${config.xdg.configHome}/ricing-mode.lock";
     };
+
+    symlink-mode = {
+      enable = mkEnableOption ''Symlink dotfiles to flake folder instead'';
+      globalFlakePath = mkOption {
+        type = lib.types.path;
+        description = "global path of the root of the flake ( /home/user/nixos-config )";
+      };
+      nixStoreFlakePath = mkOption {
+        type = lib.types.path;
+        description = "path of flake root in nix store (you can use simple relative paths like ../../)";
+      };
+    };
   };
 
   config = mkMerge [
     (mkIf ricingDisabled {
-      home.file = lib.mkMerge [
-        (lib.mapAttrs' (
-          name: file: lib.nameValuePair "${config.xdg.configHome}/${name}" file
-        ) ricingMode.files)
-      ];
+      # home.file = lib.mkMerge [
+      # (lib.mapAttrs' (
+      # name: file: lib.nameValuePair "${config.xdg.configHome}/${name}" file
+      # ) ricing-mode.files)
+      # ];
+
+      xdg.configFile = ricing-mode.files;
 
       home.activation = {
         ricingModeDeactivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          if [ -e ${ricingMode.ricingLockfileLocation} ]; then
-            rm ${ricingMode.ricingLockfileLocation}
+          if [ -e ${ricing-mode.ricingLockfileLocation} ]; then
+            rm ${ricing-mode.ricingLockfileLocation}
           fi 
         '';
       };
     })
 
-    (mkIf ricingEnabled {
+    (mkIf (ricingEnabled && symlink-mode.enable) {
+      home.file = lib.mkMerge [
+        (lib.mapAttrs (
+          name: file:
+          (
+            file
+            // (
+              let
+                pathOfFileRelativeToFlakeRoot = lib.replaceString (toString symlink-mode.nixStoreFlakePath) "" (
+                  toString file.source
+                );
+                globalPathOfFile = symlink-mode.globalFlakePath + pathOfFileRelativeToFlakeRoot;
+              in
+              {
+                source = break (config.lib.file.mkOutOfStoreSymlink globalPathOfFile);
+              }
+            )
+          )
+        ) (lib.filterAttrs (name: file: file ? source) ricing-mode.files))
+      ];
+    })
+
+    (mkIf (ricingEnabled && !symlink-mode.enable) {
       home.activation = {
         ricingModeActivation =
           let
@@ -101,7 +138,7 @@ in
                       lib.map (
                         source:
                         let
-                          pathOfImportDir = toString (file.source); # /nix/blabla/flake/dotfiles/coolfrog
+                          pathOfImportDir = toString (file.source); # /nix/store/blabla/flake/dotfiles/coolfrog
                           pathRelativeToImportDir = lib.replaceString pathOfImportDir "" (toString source); # /file.txt
                           fullPath = config.home.homeDirectory + "/" + file.target + pathRelativeToImportDir; # /home/user/.config/dotfiles/coolfrog/file.txt
                         in
@@ -132,11 +169,11 @@ in
                 )
               );
 
-            files = flattenFiles ricingMode.files;
+            files = flattenFiles ricing-mode.files;
 
           in
           lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-            RICING_MODE_FILE="${ricingMode.ricingLockfileLocation}"
+            RICING_MODE_FILE="${ricing-mode.ricingLockfileLocation}"
 
             if [ ! -f "$RICING_MODE_FILE" ]; then
               touch "$RICING_MODE_FILE"
