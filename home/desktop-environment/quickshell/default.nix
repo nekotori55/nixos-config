@@ -2,12 +2,13 @@
 {
   # Quickshell
   programs.quickshell = {
-    enable = false;
-    systemd.enable = true;
+    enable = true;
+    systemd.enable = false;
   };
 
   ricing-mode.files."quickshell" = {
     source = ./config;
+    recursive = true;
   };
 
   home.sessionVariables = {

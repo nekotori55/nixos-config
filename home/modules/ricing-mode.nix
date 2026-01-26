@@ -35,17 +35,7 @@ let
     }).fileType;
 in
 {
-  # XXX HACK: `rm -f $target.hm.old` is a bad solution to annoying home-manager failures
-  # should at least pass backup extension to ricing mode
-  # or just use backup command and store files somewhere safe
-  #
   # TODO: refactor this module, git rid of lib. prefixes
-  #
-  # TODO: Add safeMode switch that will not rewrite files
-  # if ricingMode was activated before rebuild
-  #
-  # TODO: Add (or don't add) symlink mode that will place symlink to flake directory file
-  # instead of creating new files (need to specify flake dir manually)
 
   options.ricing-mode = {
     enable = mkEnableOption ''Replace nix-store symlinks with actual editable files'';
