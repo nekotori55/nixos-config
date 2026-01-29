@@ -17,6 +17,7 @@ in
     steam = mkEnableOption "";
     minecraft = mkEnableOption "Install Prism Minecraft Launcher";
     gamescope = mkEnableOption "Install Valve compositor gamescope";
+    osu = mkEnableOption "Install OSU!";
   };
 
   config = mkIf gaming.enable {
@@ -47,6 +48,7 @@ in
       with pkgs;
       [
       ]
-      ++ lib.optional gaming.minecraft prismlauncher;
+      ++ lib.optional gaming.minecraft prismlauncher
+      ++ lib.optional gaming.osu osu-lazer-bin;
   };
 }

@@ -70,30 +70,6 @@
     };
   };
 
-  # Security
-  security.sudo = {
-    enable = true;
-    extraRules = [
-      {
-        commands = [
-          {
-            command = "${pkgs.systemd}/bin/systemctl suspend";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "${pkgs.systemd}/bin/reboot";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "${pkgs.systemd}/bin/poweroff";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-        groups = [ "wheel" ];
-      }
-    ];
-  };
-
   # Custom modules
   modules = {
     gaming = {
@@ -101,6 +77,7 @@
       steam = true;
       minecraft = true;
       gamescope = true;
+      osu = true;
     };
 
     android-dev.enable = true;
@@ -112,6 +89,11 @@
     drivers = with pkgs; [
       samsung-unified-linux-driver
     ];
+  };
+
+  # VM-HOST
+  virtualisation.virtualbox.host = {
+    enable = true;
   };
 
   # VM

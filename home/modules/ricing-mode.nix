@@ -70,7 +70,7 @@ in
       # ) ricing-mode.files)
       # ];
 
-      xdg.configFile = ricing-mode.files;
+      home.file = ricing-mode.files;
 
       home.activation = {
         ricingModeDeactivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
