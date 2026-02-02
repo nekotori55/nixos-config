@@ -18,9 +18,9 @@
     };
   };
 
-  programs.waybar = {
-    enable = true;
-  };
+  # programs.waybar = {
+  #   enable = true;
+  # };
 
   # Required programs
   home.packages = with pkgs; [

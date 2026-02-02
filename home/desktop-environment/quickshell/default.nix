@@ -3,7 +3,7 @@
   # Quickshell
   programs.quickshell = {
     enable = true;
-    systemd.enable = false;
+    systemd.enable = true;
   };
 
   ricing-mode.files."quickshell" = {
