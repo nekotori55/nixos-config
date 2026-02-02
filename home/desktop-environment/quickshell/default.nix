@@ -8,7 +8,6 @@
 
   ricing-mode.files."quickshell" = {
     source = ./config;
-    recursive = true;
   };
 
   home.sessionVariables = {

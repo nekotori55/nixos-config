@@ -36,6 +36,9 @@
     # wallpapers
     waypaper
     swww
+
+    # icons
+    papirus-icon-theme
   ];
 
   xdg.configFile."waypaper/config.ini" = {

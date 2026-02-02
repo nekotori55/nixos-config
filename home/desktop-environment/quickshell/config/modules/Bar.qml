@@ -1,10 +1,13 @@
 import Quickshell
+import QtQuick
+import QtQuick.Layouts
 
 Scope {
     Variants {
         model: Quickshell.screens
 
         PanelWindow {
+            color: Qt.color("gray")
             required property var modelData
             screen: modelData
             anchors {
@@ -16,10 +19,14 @@ Scope {
             implicitWidth: 30
 
             ClockWidget {
+                id: clock
                 anchors.centerIn: parent
-                time: Time.time
+            }
+
+            SystemTrayWidget {
+                anchors.bottom: parent.bottom
+                padding: 16
             }
         }
     }
 }
-
