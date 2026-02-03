@@ -6,5 +6,6 @@
     ./home-manager.nix
     ./ssh.nix
     ./kdeconnect.nix
+    ./logitech.nix
   ];
 }

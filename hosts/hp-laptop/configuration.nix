@@ -3,7 +3,6 @@
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
-    ./logitech.nix
   ];
 
   # TODO
@@ -86,6 +85,7 @@
 
     android-dev.enable = true;
     kdeconnect.enable = true;
+    logitech.enable = true;
   };
 
   # Printing
