@@ -32,16 +32,16 @@
       # Puts your dGPU to sleep and lets the iGPU handle all tasks,
       # except if you call the dGPU specifically by "offloading" an application to it
       #
-      # offload = {
-      # enable = true;
-      # enableOffloadCmd = true;
-      # };
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
       # SYNC_MODE:
       # rendering is completely delegated to the dGPU,
       # while the iGPU only displays the rendered framebuffers copied from the dGPU
       #
-      sync.enable = true;
+      # sync.enable = true;
 
       # REVERSE_SYNC_MODE:
       # The difference between regular sync mode and reverse sync mode is that

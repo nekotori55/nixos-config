@@ -13,14 +13,20 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// debug {
-//     render-drm-device "/dev/dri/card1"
-// }
+debug {
+    render-drm-device "/dev/dri/card1"
+}
 
 environment {
     NVD_BACKEND "direct"
     LIBVA_DRIVER_NAME "nvidia"
     __GLX_VENDOR_LIBRARY_NAME "nvidia"
+
+    // offload EVERYTHING on nvidia
+    __NV_PRIME_RENDER_OFFLOAD "1"
+    __NV_PRIME_RENDER_OFFLOAD_PROVIDER "NVIDIA-G0"
+    __VK_LAYER_NV_optimus "NVIDIA_only"
+    
 }
 
 input {
@@ -121,7 +127,7 @@ output "eDP-1" {
 }
 
 output "HDMI-A-1" {
-    mode "1920x1080@143.981"
+    mode "1920x1080@120"
 
     scale 1
 
@@ -131,7 +137,7 @@ output "HDMI-A-1" {
 }
 
 output "HDMI-A-2" {
-    mode "1920x1080@143.981"
+    mode "1920x1080@120"
 
     // off 
     scale 1
