@@ -85,6 +85,7 @@
     };
 
     android-dev.enable = true;
+    kdeconnect.enable = true;
   };
 
   # Printing
