@@ -2,12 +2,13 @@
 {
   flake.nixosConfigurations =
     let
-      # Inputs shorthands
-      home-manager = inputs.home-manager.nixosModules.home-manager;
-      agenix = inputs.agenix.nixosModules.default;
-
       nixosSystem = inputs.nixpkgs.lib.nixosSystem;
       custom-modules = ../modules;
+
+      # Inputs
+      home-manager = inputs.home-manager.nixosModules.home-manager;
+      agenix = inputs.agenix.nixosModules.default;
+      solaar = inputs.solaar.nixosModules.default;
     in
     {
       hp-laptop = nixosSystem {
@@ -16,6 +17,7 @@
           home-manager
           custom-modules
           agenix
+          solaar
         ];
         specialArgs = { inherit inputs; };
       };

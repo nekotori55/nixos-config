@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
+    ./logitech.nix
   ];
 
   # TODO
@@ -44,6 +45,8 @@
     helix
 
     system-config-printer
+
+    nautilus
   ];
 
   # Display Manager
@@ -54,6 +57,7 @@
 
   # Compositor
   programs.niri.enable = true;
+  programs.niri.useNautilus = true;
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };

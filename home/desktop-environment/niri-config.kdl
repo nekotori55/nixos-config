@@ -13,9 +13,9 @@ hotkey-overlay {
     skip-at-startup
 }
 
-debug {
-    render-drm-device "/dev/dri/card1"
-}
+// debug {
+//     render-drm-device "/dev/dri/card1"
+// }
 
 environment {
     NVD_BACKEND "direct"

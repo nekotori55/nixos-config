@@ -5,5 +5,6 @@
     ./gaming.nix
     ./home-manager.nix
     ./ssh.nix
+    ./kdeconnect.nix
   ];
 }
