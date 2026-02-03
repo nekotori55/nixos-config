@@ -1,9 +1,11 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   flake.nixosConfigurations =
     let
       nixosSystem = inputs.nixpkgs.lib.nixosSystem;
-      custom-modules = ../modules;
+
+      fs = lib.fileset;
+      custom-modules = fs.toList (fs.fileFilter (file: file.hasExt "nix") ../modules);
 
       # Inputs
       home-manager = inputs.home-manager.nixosModules.home-manager;
@@ -15,10 +17,10 @@
         modules = [
           ./hp-laptop/configuration.nix
           home-manager
-          custom-modules
           agenix
           solaar
-        ];
+        ]
+        ++ custom-modules;
         specialArgs = { inherit inputs; };
       };
 

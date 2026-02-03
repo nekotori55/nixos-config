@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -69,7 +74,7 @@
       isNormalUser = true;
       extraGroups = [ "wheel" ];
 
-      hashedPassword = "$y$j9T$EBOHnjpSHK4Vp86O4A.SP0$4nF/TaJSlLQt9Q0rRb8JnWfmRSbl1jmGfqN5b7gO3SB";
+      hashedPasswordFile = config.age.secrets.hp-laptop-password.path;
     };
   };
 
@@ -86,6 +91,8 @@
     android-dev.enable = true;
     kdeconnect.enable = true;
     logitech.enable = true;
+
+    secrets.installAgenixCli = true;
   };
 
   # Printing
