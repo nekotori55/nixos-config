@@ -8,7 +8,7 @@
       {
         name = "nix";
         auto-format = true;
-        formatter.command = "nixfmt-rfc-style";
+        formatter.command = "nixfmt";
         language-servers = [
           "nixd"
           "nil"
@@ -48,7 +48,7 @@
     # Nix LSP
     nil
     nixd
-    nixfmt-rfc-style
+    nixfmt
 
     # Markdown LSP
     marksman

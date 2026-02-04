@@ -9,7 +9,7 @@ let
 in
 {
   options.modules.android-dev = {
-    enable = mkEnableOption ''Enable AndroidStudio and ADB'';
+    enable = mkEnableOption "Enable AndroidStudio and ADB";
   };
 
   config = mkIf config.modules.android-dev.enable {
