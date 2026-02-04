@@ -5,10 +5,7 @@
   ];
 
   # NixOS system
-  nixpkgs.hostPlatform = {
-    system = "aarch64-linux";
-  };
-  tPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
   # system.stateVersion = "26.05";
   nix.settings.experimental-features = [
