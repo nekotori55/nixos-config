@@ -41,5 +41,7 @@ in
       "/etc/ssh/ssh_host_ed25519_key"
     ];
     age.secrets.ash-twin-password = mkSecret true { file = "passwords/ash-twin.age"; };
+    age.secrets.brittle-hollow-password = mkSecret true { file = "passwords/brittle-hollow.age"; };
+    age.secrets.interloper-password = mkSecret true { file = "passwords/interloper.age"; };
   };
 }

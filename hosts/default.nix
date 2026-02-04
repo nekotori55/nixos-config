@@ -57,13 +57,17 @@
       };
 
       # Teclast-F5 laptop
-      # interloper = nixosSystem {
-      # hostname = "interloper";
-      # };
+      interloper = nixosSystem {
+        hostname = "interloper";
+        system = "x86_64-linux";
+        profile = "workstation";
+      };
 
       # Old repurposed PC
-      # brittle-hollow = nixosSystem {
-      # hostname = "brittle-hollow";
-      # };
+      brittle-hollow = nixosSystem {
+        hostname = "brittle-hollow";
+        system = "x86_64-linux";
+        profile = "workstation";
+      };
     };
 }

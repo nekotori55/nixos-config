@@ -26,10 +26,7 @@
   time.hardwareClockInLocalTime = false;
 
   # Change password
-  users.users.nekotori55 = {
-    password = null;
-    hashedPasswordFile = config.age.secrets.ash-twin-password.path;
-  };
+  users.users.nekotori55.hashedPasswordFile = config.age.secrets.ash-twin-password.path;
 
   # Custom modules
   modules = {

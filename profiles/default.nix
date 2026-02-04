@@ -50,10 +50,11 @@ in
       # Setup user
       users = {
         mutableUsers = mkDefault false;
-        users.nekotori55 = {
+        users.nekotori55 = rec {
           isNormalUser = true;
           extraGroups = [ "wheel" ];
-          password = mkDefault "changeme";
+          hashedPasswordFile = mkDefault null;
+          password = mkDefault (if (hashedPasswordFile == null) then "changeme" else null);
         };
       };
 
