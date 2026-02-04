@@ -2,52 +2,68 @@
 {
   flake.nixosConfigurations =
     let
-      nixosSystem = inputs.nixpkgs.lib.nixosSystem;
-
+      # Lib helpers
       fs = lib.fileset;
+      inherit (lib) singleton concatLists;
+
+      # Collect all files from modules folder that has .nix extension
       custom-modules = fs.toList (fs.fileFilter (file: file.hasExt "nix") ../modules);
 
-      # Inputs
-      home-manager = inputs.home-manager.nixosModules.home-manager;
-      agenix = inputs.agenix.nixosModules.default;
-      solaar = inputs.solaar.nixosModules.default;
+      # default.nix from profiles folder
+      profiles = "${inputs.self}/profiles";
+
+      # All inputs
+      common-modules = [
+        inputs.home-manager.nixosModules.home-manager
+        inputs.agenix.nixosModules.default
+        inputs.solaar.nixosModules.default
+
+        profiles
+      ]
+      ++ custom-modules;
+
+      # Wrapper around nixpkgs.lib.nixosSystem that includes all common-modules by default
+      # (so you dont need to add inputs to every host)
+      nixosSystem =
+        {
+          hostname,
+          system,
+          profile,
+          extra-modules ? [ ],
+          specialArgs ? {
+            inherit
+              inputs
+              hostname
+              system
+              profile
+              ;
+          },
+        }:
+        inputs.nixpkgs.lib.nixosSystem {
+          modules = concatLists [
+            [ "${inputs.self}/hosts/${hostname}/configuration.nix" ]
+            common-modules
+            extra-modules
+          ];
+          inherit specialArgs;
+        };
     in
     {
+      # [Main] HP-Pavilion Gaming 15 laptop running NixOS
       ash-twin = nixosSystem {
-        modules = [
-          ./ash-twin/configuration.nix
-          home-manager
-          agenix
-          solaar
-        ]
-        ++ custom-modules;
-        specialArgs = { inherit inputs; };
+        hostname = "ash-twin";
+        system = "x86_64-linux";
+        profile = "workstation";
       };
 
-      interloper = nixosSystem {
-        modules = [
-          ./interloper/configuration.nix
-          home-manager
-          custom-modules
-          agenix
-        ];
-      };
+      # Teclast-F5 laptop
+      # interloper = nixosSystem {
+      # hostname = "interloper";
+      # };
 
-      brittle-hollow = nixosSystem {
-        modules = [
-          ./brittle-hollow/configuration.nix
-          home-manager
-          custom-modules
-          agenix
-        ];
-      };
-
-      server = nixosSystem {
-        modules = [
-          ./server/configuration.nix
-          agenix
-        ];
-      };
-
+      # Old repurposed PC
+      # brittle-hollow = nixosSystem {
+      # hostname = "brittle-hollow";
+      # };
     };
 }

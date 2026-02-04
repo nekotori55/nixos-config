@@ -7,7 +7,6 @@
 let
   # FIXME find a better way
   system = config.nixpkgs.hostPlatform.system;
-  secretsPath = "${inputs.self}/other/secrets";
 
   # https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/parts/lib/secrets.nix
   mkSecret = (

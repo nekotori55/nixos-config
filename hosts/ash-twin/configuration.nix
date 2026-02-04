@@ -14,64 +14,21 @@
   # 1. make on-the-go/single-display specialisation
 
   # NixOS system
-  nixpkgs.hostPlatform = "x86_64-linux";
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "26.05";
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  programs.nh.enable = true;
-  programs.nh.flake = "/home/nekotori55/.config/nixos";
-
-  # General system
-  networking.hostName = "ash-twin";
-  networking.networkmanager.enable = true;
-  services.sshd.enable = true;
 
   # Wake on Lan
-  networking.interfaces.eno1.wakeOnLan.enable = true;
+  networking.interfaces = lib.mkIf (!config.modules.meta.isVmVariant) {
+    eno1.wakeOnLan.enable = true;
+  };
   networking.firewall.allowedUDPPorts = [ 9 ];
 
-  # Locale/Time Settings
-  time.timeZone = "Europe/Istanbul";
+  # For dualbooting
   time.hardwareClockInLocalTime = false;
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  # Packages
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    helix
-
-    system-config-printer
-
-    nautilus
-  ];
-
-  # Display Manager
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
-  # Compositor
-  programs.niri.enable = true;
-  programs.niri.useNautilus = true;
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
-  # Users
-  users = {
-    mutableUsers = false;
-
-    users.nekotori55 = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-
-      hashedPasswordFile = config.age.secrets.ash-twin-password.path;
-    };
+  # Change password
+  users.users.nekotori55 = {
+    password = null;
+    hashedPasswordFile = config.age.secrets.ash-twin-password.path;
   };
 
   # Custom modules
@@ -83,12 +40,7 @@
       gamescope = true;
       osu = true;
     };
-
     android-dev.enable = true;
-    kdeconnect.enable = true;
-    logitech.enable = true;
-
-    secrets.installAgenixCli = true;
   };
 
   # Printing
@@ -98,19 +50,12 @@
       samsung-unified-linux-driver
     ];
   };
+  environment.systemPackages = with pkgs; [
+    system-config-printer
+  ];
 
   # VM-HOST
   virtualisation.virtualbox.host = {
     enable = true;
-  };
-
-  # VM
-  virtualisation.vmVariant = {
-    virtualisation.qemu.options = [
-      "-device virtio-vga-gl" # niri requires opengl
-      "-display gtk,gl=on" # enable opengl support
-    ];
-
-    networking.interfaces.eno1.wakeOnLan.enable = lib.mkForce false;
   };
 }
