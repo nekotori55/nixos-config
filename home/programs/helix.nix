@@ -53,5 +53,8 @@
     # Markdown LSP
     marksman
     mpls
+
+    # Useful utilities
+    scooter # interactive find and replace
   ];
 }
