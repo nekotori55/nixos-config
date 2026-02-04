@@ -28,10 +28,6 @@
   networking.hostName = "hp-laptop";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
-  boot.kernelParams = [
-    # "video=HDMI-A-1:e"
-    # "video=HDMI-A-2:e"
-  ];
 
   # Wake on Lan
   networking.interfaces.eno1.wakeOnLan.enable = true;
