@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # Messengers
+    # Social
     telegram-desktop
-    ungoogled-chromium
+    vesktop
 
-    # Useful
+    # Utilities
     bitwarden-desktop
   ];
 }
