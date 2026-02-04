@@ -25,7 +25,7 @@
   programs.nh.flake = "/home/nekotori55/.config/nixos";
 
   # General system
-  networking.hostName = "hp-laptop";
+  networking.hostName = "ash-twin";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
 
@@ -70,7 +70,7 @@
       isNormalUser = true;
       extraGroups = [ "wheel" ];
 
-      hashedPasswordFile = config.age.secrets.hp-laptop-password.path;
+      hashedPasswordFile = config.age.secrets.ash-twin-password.path;
     };
   };
 

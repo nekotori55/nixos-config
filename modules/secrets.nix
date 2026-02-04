@@ -41,6 +41,6 @@ in
       "/home/nekotori55/.ssh/id_ed25519"
       "/etc/ssh/ssh_host_ed25519_key"
     ];
-    age.secrets.hp-laptop-password = mkSecret true { file = "hp-laptop.age"; };
+    age.secrets.ash-twin-password = mkSecret true { file = "passwords/ash-twin.age"; };
   };
 }

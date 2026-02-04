@@ -13,9 +13,9 @@
       solaar = inputs.solaar.nixosModules.default;
     in
     {
-      hp-laptop = nixosSystem {
+      ash-twin = nixosSystem {
         modules = [
-          ./hp-laptop/configuration.nix
+          ./ash-twin/configuration.nix
           home-manager
           agenix
           solaar
@@ -24,18 +24,18 @@
         specialArgs = { inherit inputs; };
       };
 
-      teclast-laptop = nixosSystem {
+      interloper = nixosSystem {
         modules = [
-          ./teclast-laptop/configuration.nix
+          ./interloper/configuration.nix
           home-manager
           custom-modules
           agenix
         ];
       };
 
-      black-box = nixosSystem {
+      brittle-hollow = nixosSystem {
         modules = [
-          ./black-box/configuration.nix
+          ./brittle-hollow/configuration.nix
           home-manager
           custom-modules
           agenix

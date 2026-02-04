@@ -16,7 +16,7 @@
   programs.nh.flake = "/home/nekotori55/.config/nixos";
 
   # General system
-  networking.hostname = "teclast-laptop";
+  networking.hostname = "interloper";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
 

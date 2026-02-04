@@ -19,7 +19,7 @@
   programs.nh.flake = "/home/nekotori55/.config/nixos";
 
   # General system
-  networking.hostName = "black-box";
+  networking.hostName = "brittle-hollow";
   networking.networkmanager.enable = true;
   services.sshd.enable = true;
   boot.kernelParams = [
