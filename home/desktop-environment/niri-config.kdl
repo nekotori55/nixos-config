@@ -403,8 +403,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Shift+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+T { spawn "cool-retro-term"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+Shift+T { spawn "cool-retro-term"; }
     Mod+W hotkey-overlay-title="Open LibreWolf" { spawn "librewolf"; }
     Mod+E hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
