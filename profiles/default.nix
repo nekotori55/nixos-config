@@ -24,6 +24,9 @@ in
   config = lib.mkMerge [
     # DEFAULT
     {
+      # Default hardware
+      hardware.enableRedistributableFirmware = mkDefault true;
+
       # Nix settings
       nixpkgs.hostPlatform = system;
       nixpkgs.config.allowUnfree = true;

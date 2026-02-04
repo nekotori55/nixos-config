@@ -70,6 +70,4 @@
     pulse.enable = true;
   };
 
-  # Firmware
-  hardware.enableRedistributableFirmware = true;
 }
