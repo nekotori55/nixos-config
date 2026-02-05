@@ -14,7 +14,7 @@ hotkey-overlay {
 }
 
 debug {
-    render-drm-device "/dev/dri/card1"
+    render-drm-device "/dev/dri/card2"
 }
 
 environment {
