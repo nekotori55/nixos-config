@@ -1,22 +1,24 @@
 {
-  osConfig,
-  lib,
+  config,
   inputs,
   ...
 }:
+let
+  username = config.modules.meta.username;
+in
 {
+  # TODO make a toggle
   home-manager = {
     verbose = true;
 
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    # Change
     backupFileExtension = "hm.old";
 
-    users.nekotori55 = import ../home/home.nix;
+    users.${username} = import "${inputs.self}/home/home.nix";
 
-    # modules = [ ];
-
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs username; };
   };
 }

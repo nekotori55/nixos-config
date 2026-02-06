@@ -21,11 +21,7 @@ in
   xdg.enable = true;
 
   ricing-mode = {
-    # enable = true;
-    symlink-mode = {
-      enable = true;
-      globalFlakePath = config.xdg.configHome + "/nixos";
-      nixStoreFlakePath = ./..;
-    };
+    enable = true;
+    globalFlakePath = config.xdg.configHome + "/nixos";
   };
 }

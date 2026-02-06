@@ -5,23 +5,23 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
-  inherit (lib) mkIf;
+  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) optional;
 
-  gaming = config.modules.gaming;
+  cfg = config.modules.gaming;
 in
 {
   options.modules.gaming = {
     enable = mkEnableOption "Install gaming packages, apply tweaks";
 
-    steam = mkEnableOption "";
+    steam = mkEnableOption "Install Steam";
     minecraft = mkEnableOption "Install Prism Minecraft Launcher";
     gamescope = mkEnableOption "Install Valve compositor gamescope";
     osu = mkEnableOption "Install OSU!";
   };
 
-  config = mkIf gaming.enable {
-    programs.steam = mkIf gaming.steam {
+  config = mkIf cfg.enable {
+    programs.steam = mkIf cfg.steam {
       enable = true;
       package = pkgs.steam.override {
         extraPkgs =
@@ -40,7 +40,7 @@ in
       };
     };
 
-    programs.gamescope = mkIf gaming.gamescope {
+    programs.gamescope = mkIf cfg.gamescope {
       enable = true;
     };
 
@@ -48,7 +48,7 @@ in
       with pkgs;
       [
       ]
-      ++ lib.optional gaming.minecraft prismlauncher
-      ++ lib.optional gaming.osu osu-lazer-bin;
+      ++ optional cfg.minecraft prismlauncher
+      ++ optional cfg.osu osu-lazer-bin;
   };
 }

@@ -4,7 +4,7 @@
     let
       # Lib helpers
       fs = lib.fileset;
-      inherit (lib) singleton concatLists;
+      inherit (lib) concatLists;
 
       # Collect all files from modules folder that has .nix extension
       custom-modules = fs.toList (fs.fileFilter (file: file.hasExt "nix") ../modules);

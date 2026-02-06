@@ -5,12 +5,14 @@
   ...
 }:
 let
+  inherit (lib) mkIf mkEnableOption;
+
   cfg = config.modules.logitech;
 in
 {
-  options.modules.logitech.enable = lib.mkEnableOption "enable logitech devices management";
+  options.modules.logitech.enable = mkEnableOption "Enable logitech devices managers";
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       logiops
     ];

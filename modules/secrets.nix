@@ -2,12 +2,17 @@
   config,
   lib,
   inputs,
+  system,
   ...
 }:
 let
-  # FIXME find a better way
-  system = config.nixpkgs.hostPlatform.system;
+  inherit (lib) mkIf mkEnableOption mkOption;
+  inherit (lib.types) path bool;
 
+  cfg = config.modules.secrets;
+  username = config.modules.meta.username;
+
+  # TODO move to lib
   # https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/parts/lib/secrets.nix
   mkSecret = (
     enableCondition:
@@ -17,7 +22,7 @@ let
       group ? "root",
       mode ? "400",
     }:
-    lib.mkIf enableCondition {
+    mkIf enableCondition {
       file = "${inputs.self}/other/secrets/${file}";
       inherit group owner mode;
     }
@@ -25,21 +30,32 @@ let
 in
 {
   options.modules.secrets = {
-    installAgenixCli = lib.mkEnableOption "whether to install agenix from flake input or not";
-    secretsLocation = lib.mkOption {
-      type = lib.types.path;
+    enabled = mkOption {
+      type = bool;
+      default = true;
+      description = "Flag that allows config to run on machines without decryption keys";
+    };
+
+    installAgenixCli = mkEnableOption "Install agenix cli from input";
+
+    secretsLocation = mkOption {
+      type = path;
       readOnly = true;
-      default = ../other/secrets;
+      default = "${inputs.self}/other/secrets";
     };
   };
 
-  config = lib.mkIf config.modules.secrets.installAgenixCli {
-    environment.systemPackages = [ inputs.agenix.packages."${system}".default ];
+  config = mkIf cfg.enabled {
+    environment.systemPackages = mkIf cfg.installAgenixCli [
+      inputs.agenix.packages."${system}".default
+    ];
 
     age.identityPaths = [
-      "/home/nekotori55/.ssh/id_ed25519"
+      "/home/${username}/.ssh/id_ed25519"
       "/etc/ssh/ssh_host_ed25519_key"
     ];
+
+    # TODO move to host-specific folders?
     age.secrets.ash-twin-password = mkSecret true { file = "passwords/ash-twin.age"; };
     age.secrets.brittle-hollow-password = mkSecret true { file = "passwords/brittle-hollow.age"; };
     age.secrets.interloper-password = mkSecret true { file = "passwords/interloper.age"; };

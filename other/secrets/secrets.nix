@@ -1,5 +1,5 @@
 let
-  ssh-keys = import ../ssh-keys.nix;
+  ssh-keys = import ../keys.nix;
 in
 {
   # Host passwords

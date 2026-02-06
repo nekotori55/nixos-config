@@ -1,18 +1,28 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
-  ssh-keys = import ../other/ssh-keys.nix;
+  inherit (lib) mkOption;
+  inherit (lib) mapAttrsToList;
+  inherit (lib.types) listOf str;
+
+  ssh-keys = import "${inputs.self}/other/keys.nix";
+  username = config.modules.meta.username;
 in
 {
   options.modules.ssh = {
-    workstationKeys = lib.mkOption {
+    workstationKeys = mkOption {
       readOnly = true;
-      type = lib.types.listOf lib.types.str;
-      default = lib.mapAttrsToList (n: v: v) ssh-keys.workstations;
+      type = listOf str;
+      default = mapAttrsToList (n: v: v) ssh-keys.workstations;
     };
   };
 
   # TODO move?
   config = {
-    users.users.nekotori55.openssh.authorizedKeys.keys = config.modules.ssh.workstationKeys;
+    users.users.${username}.openssh.authorizedKeys.keys = config.modules.ssh.workstationKeys;
   };
 }

@@ -6,13 +6,15 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
+
+  cfg = config.modules.android-dev;
 in
 {
   options.modules.android-dev = {
     enable = mkEnableOption "Enable AndroidStudio and ADB";
   };
 
-  config = mkIf config.modules.android-dev.enable {
+  config = mkIf cfg.enable {
     # Setup additional groups for unprivileged access
     # TODO abstract
     users.users.nekotori55.extraGroups = [

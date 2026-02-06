@@ -1,13 +1,17 @@
 { config, lib, ... }:
 let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.modules.kdeconnect;
 in
 {
   options.modules.kdeconnect = {
-    enable = lib.mkEnableOption "Enable KDE Connect and open firewall ports";
+    enable = mkEnableOption "Enable KDE Connect and open firewall ports";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
+    programs.kdeconnect.enable = true;
+
     networking.firewall = rec {
       allowedTCPPortRanges = [
         {
@@ -17,8 +21,5 @@ in
       ];
       allowedUDPPortRanges = allowedTCPPortRanges;
     };
-
-    programs.kdeconnect.enable = true;
-
   };
 }
