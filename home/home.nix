@@ -21,7 +21,7 @@ in
   xdg.enable = true;
 
   ricing-mode = {
-    enable = true;
+    # enable = true;
     globalFlakePath = config.xdg.configHome + "/nixos";
   };
 }

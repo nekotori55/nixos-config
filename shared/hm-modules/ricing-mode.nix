@@ -19,7 +19,6 @@ let
 
   cfg = config.ricing-mode;
   configHome = config.xdg.configHome;
-  storeFlakePath = inputs.self;
 
   # https://github.com/nix-community/home-manager/issues/5170
   fileType =
@@ -43,6 +42,13 @@ in
       type = path;
       description = "Global path of the root of the flake e.g. /etc/nixos";
     };
+
+    storeFlakePath = mkOption {
+      type = path;
+      description = "Nix store flake path";
+      example = "\"\${inputs.self}\"";
+      default = "${inputs.self}";
+    };
   };
 
   config = mkMerge [
@@ -59,7 +65,9 @@ in
             file
             // (
               let
-                pathOfFileRelativeToFlakeRoot = replaceString (toString storeFlakePath) "" (toString file.source);
+                pathOfFileRelativeToFlakeRoot = replaceString (toString cfg.storeFlakePath) "" (
+                  toString file.source
+                );
                 globalPathOfFile = cfg.globalFlakePath + pathOfFileRelativeToFlakeRoot;
               in
               {

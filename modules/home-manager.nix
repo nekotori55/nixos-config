@@ -20,5 +20,7 @@ in
     users.${username} = import "${inputs.self}/home/home.nix";
 
     extraSpecialArgs = { inherit inputs username; };
+
+    sharedModules = [ inputs.self.homeManagerModules.ricing-mode ];
   };
 }
