@@ -3,22 +3,17 @@
   flake.nixosConfigurations =
     let
       # Lib helpers
-      fs = lib.fileset;
       inherit (lib) concatLists;
+      fs = lib.fileset;
 
       # Collect all files from modules folder that has .nix extension
       custom-modules = fs.toList (fs.fileFilter (file: file.hasExt "nix") ../modules);
-
-      # default.nix from profiles folder
-      profiles = "${inputs.self}/profiles";
 
       # All inputs
       common-modules = [
         inputs.home-manager.nixosModules.home-manager
         inputs.agenix.nixosModules.default
         inputs.solaar.nixosModules.default
-
-        profiles
       ]
       ++ custom-modules;
 

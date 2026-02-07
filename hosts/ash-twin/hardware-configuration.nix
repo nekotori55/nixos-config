@@ -37,7 +37,6 @@
       # };
      # };
   };
-  services.blueman.enable = true;
 
   # Bootloader
   boot.loader = {

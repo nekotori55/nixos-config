@@ -14,8 +14,8 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    # Change
-    backupFileExtension = "hm.old";
+    backupCommand = "trash";
+    # backupCommand = "\${pkgs.trash-cli}/bin/trash";
 
     users.${username} = import "${inputs.self}/home/home.nix";
 

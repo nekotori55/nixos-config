@@ -6,6 +6,7 @@
     vesktop
 
     # Utilities
+    trash-cli
     bitwarden-desktop
   ];
 }

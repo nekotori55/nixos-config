@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    # ./ricing-mode.nix
     ./hardware.nix
+    ./desktop-environment
   ];
 }

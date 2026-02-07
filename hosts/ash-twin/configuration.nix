@@ -25,9 +25,6 @@
   # For dualbooting
   time.hardwareClockInLocalTime = false;
 
-  # Change password
-  users.users.nekotori55.hashedPasswordFile = config.age.secrets.ash-twin-password.path;
-
   # Custom modules
   modules = {
     gaming = {
@@ -43,9 +40,6 @@
   # Printing
   services.printing = {
     enable = true;
-    drivers = with pkgs; [
-      samsung-unified-linux-driver
-    ];
   };
   environment.systemPackages = with pkgs; [
     system-config-printer
