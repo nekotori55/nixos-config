@@ -6,7 +6,7 @@
 
   # system.stateVersion = "26.05";
 
-  users.nekotori55 = {
+  users.users.nekotori55 = {
     hashedPasswordFile = config.age.secrets.interloper-password.path;
   };
 
