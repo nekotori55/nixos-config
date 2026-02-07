@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -14,8 +15,8 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    backupCommand = "trash";
-    # backupCommand = "\${pkgs.trash-cli}/bin/trash";
+    # backupCommand = "trash";
+    backupCommand = "${pkgs.trash-cli}/bin/trash";
 
     users.${username} = import "${inputs.self}/home/home.nix";
 

@@ -4,9 +4,9 @@
     enable = true;
     shellAliases = {
       config = "cd ~/.config/nixos; hx ./flake.nix";
-      conf = "config";
+      c = "config";
       home = "cd ~/.config/nixos/home; hx ./home.nix";
-      qs = "cd ~/.config/quickshell";
+      h = "home";
 
       dev = "nix develop";
       flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";

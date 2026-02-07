@@ -7,10 +7,10 @@
   };
 
   ricing-mode.files."quickshell" = {
-    source = ./config;
+    source = ./dotfiles/quickshell;
   };
 
-  home.sessionVariables = {
-    "QS_NO_RELOAD_POPUP" = 1;
-  };
+  # home.sessionVariables = {
+  # "QS_NO_RELOAD_POPUP" = 1;
+  # };
 }
