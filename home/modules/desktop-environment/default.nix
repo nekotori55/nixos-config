@@ -5,6 +5,7 @@
     ./foot.nix
     ./niri.nix
     ./waypaper.nix
+    ./matugen.nix
   ];
 
   # Required programs
@@ -22,7 +23,6 @@
     # icons
     papirus-icon-theme
   ];
-
 
   # Font managment
   fonts.fontconfig.enable = true;

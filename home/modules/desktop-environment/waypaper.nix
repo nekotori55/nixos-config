@@ -30,6 +30,7 @@
         mpvpaper_sound = false;
         mpvpaper_options = "";
         use_xdg_state = "True";
+        post_command = "matugen image $wallpaper";
       };
     };
   };

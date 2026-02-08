@@ -1,13 +1,13 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
 
 Scope {
     Variants {
         model: Quickshell.screens
 
         PanelWindow {
-            color: Qt.color("gray")
+            color: Colors.background
+            
             required property var modelData
             screen: modelData
             anchors {
@@ -27,6 +27,7 @@ Scope {
                 anchors.bottom: parent.bottom
                 padding: 16
             }
+
         }
     }
 }
