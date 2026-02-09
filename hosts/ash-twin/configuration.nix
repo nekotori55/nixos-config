@@ -34,7 +34,8 @@
       gamescope = true;
       osu = true;
     };
-    android-dev.enable = true;
+    android-dev.enable = false;
+    gamedev.enable = true;
   };
 
   # Printing
