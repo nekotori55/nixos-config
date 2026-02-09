@@ -14,10 +14,9 @@ Rectangle {
 
         anchors.centerIn: parent
 
-        color: Colors.on_background
+        color: Colors.primary
         font.family: Config.fontFamily
 
-        // font.bold: true
         font.pixelSize: 16
 
         SystemClock {
