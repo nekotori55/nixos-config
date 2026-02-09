@@ -59,6 +59,10 @@ input_path = './kitty.conf'
 output_path = '~/.config/kitty/themes/Matugen.conf'
 post_hook = "kitty +kitten themes --config-file-name=themes.conf --reload-in=all Matugen && pkill kitty --signal SIGUSR1"
 
+[templates.niri]
+input_path = './niri.kdl'
+output_path = '~/.cache/matugen/niri/colors.kdl'
+
 # [templates.name1]
 # Relative paths will be resolved from the path `config.toml` is in.
 # input_path = "./colors.whatever-extension"

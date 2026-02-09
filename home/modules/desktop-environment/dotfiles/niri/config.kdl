@@ -653,3 +653,5 @@ binds {
 
     Mod+O { spawn "waypaper"; }
 }
+
+include "/home/nekotori55/.cache/matugen/niri/colors.kdl"
