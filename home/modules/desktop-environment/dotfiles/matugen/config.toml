@@ -49,6 +49,15 @@ input_path = "./quickshell.qml"
 # The output path is optional if you just want to import the template anyways,
 output_path = "~/.cache/matugen/quickshell/Colors_gen.qml"
 
+[templates.helix]
+input_path = "./helix.toml"
+output_path = "~/.config/helix/themes/matugen-theme.toml"
+
+[templates.kitty]
+input_path = './kitty.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --config-file-name=themes.conf --reload-in=all Matugen && pkill kitty --signal SIGUSR1"
+
 # [templates.name1]
 # Relative paths will be resolved from the path `config.toml` is in.
 # input_path = "./colors.whatever-extension"

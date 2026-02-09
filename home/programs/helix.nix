@@ -40,7 +40,8 @@
         after-delay.timeout = 3000;
         focus-lost = true;
       };
-      theme = "dark-synthwave";
+      # theme = "dark-synthwave";
+      theme = "matugen-theme";
     };
   };
 
