@@ -6,6 +6,9 @@ in
   programs.kitty = {
     enable = true;
     extraConfig = "include themes.conf";
+    settings = {
+      confirm_os_window_close = 0;
+    };
   };
 
   home.activation = mkIf config.programs.kitty.enable {
