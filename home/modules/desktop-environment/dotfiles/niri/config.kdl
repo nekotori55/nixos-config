@@ -652,6 +652,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+O { spawn "waypaper"; }
+    Mod+P { spawn "waypaper" "--random";} 
 }
 
 include "/home/nekotori55/.cache/matugen/niri/colors.kdl"
