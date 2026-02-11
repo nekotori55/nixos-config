@@ -3,8 +3,8 @@ let
 in
 {
   # Host passwords
-  "passwords/ash-twin.age".publicKeys = ssh-keys.workstations;
-  "passwords/interloper.age".publicKeys = ssh-keys.workstations;
-  "passwords/brittle-hollow.age".publicKeys = ssh-keys.workstations;
-  "passwords/ember-twin.age".publicKeys = ssh-keys.workstations;
+  "passwords/ash-twin.age".publicKeys = [ ssh-keys.workstations.ash-twin ];
+  "passwords/interloper.age".publicKeys = [ ssh-keys.workstations.interloper ];
+  "passwords/brittle-hollow.age".publicKeys = [ ssh-keys.workstations.brittle-hollow ];
+  "passwords/ember-twin.age".publicKeys = [ ssh-keys.workstations.ember-twin ];
 }
