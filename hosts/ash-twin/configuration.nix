@@ -36,6 +36,7 @@
     };
     android-dev.enable = false;
     gamedev.enable = true;
+    throne.enable = true;
   };
 
   # Printing
