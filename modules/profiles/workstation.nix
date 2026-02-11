@@ -44,6 +44,15 @@ in
       NIXOS_OZONE_WL = "1";
     };
 
+    # Hardware
+    #
+    # DO NOT EVER SWITCH TO HEADSET PROFILE
+    services.pipewire.wireplumber.extraConfig."11-bluetooth-policy" = {
+      "wireplumber.settings" = {
+        "bluetooth.autoswitch-to-headset-profile" = false;
+      };
+    };
+
     # Don't even know where to put this
     virtualisation.vmVariant = {
       # For niri to be able to start in vmVariant
