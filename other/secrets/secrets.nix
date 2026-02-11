@@ -6,4 +6,5 @@ in
   "passwords/ash-twin.age".publicKeys = ssh-keys.workstations;
   "passwords/interloper.age".publicKeys = ssh-keys.workstations;
   "passwords/brittle-hollow.age".publicKeys = ssh-keys.workstations;
+  "passwords/ember-twin.age".publicKeys = ssh-keys.workstations;
 }
