@@ -37,6 +37,9 @@
     android-dev.enable = false;
     gamedev.enable = true;
     throne.enable = true;
+
+    # Studying
+    packettracer.enable = true;
   };
 
   # Printing
