@@ -16,6 +16,7 @@
     # fonts
     nerd-fonts.fira-code
     font-awesome
+    noto-fonts-cjk-serif
 
     # wallpapers
     swww
