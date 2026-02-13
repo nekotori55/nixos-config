@@ -14,6 +14,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.agenix.nixosModules.default
         inputs.solaar.nixosModules.default
+        inputs.zapret.nixosModules.default
       ]
       ++ custom-modules;
 

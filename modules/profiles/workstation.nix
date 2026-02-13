@@ -15,7 +15,7 @@ in
       kdeconnect.enable = mkDefault true;
       logitech.enable = mkDefault true;
       secrets.installAgenixCli = mkDefault true;
-      # ssh.sshd
+      zapret.enable = mkDefault true;
     };
 
     # Enable flake-related commands
