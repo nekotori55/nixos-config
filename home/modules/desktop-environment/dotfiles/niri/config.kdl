@@ -146,4 +146,5 @@ window-rule {
 include "keybinds.kdl"
 
 // COLORS
+// TODO make path username-independent and/or put it somewhere else
 include "/home/nekotori55/.cache/matugen/niri/colors.kdl"
