@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -10,6 +11,7 @@ in
 {
   imports = [
     ./modules
+    ./desktop-environment
   ]
   ++ programs;
 
