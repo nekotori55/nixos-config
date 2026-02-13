@@ -53,6 +53,9 @@ in
       };
     };
 
+    # Enable USB automount
+    services.udisks2.enable = true;
+
     # Don't even know where to put this
     virtualisation.vmVariant = {
       # For niri to be able to start in vmVariant
