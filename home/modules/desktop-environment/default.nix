@@ -12,6 +12,8 @@
   home.packages = with pkgs; [
     fuzzel # app launcher
     pavucontrol # audio settings
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
 
     # fonts
     nerd-fonts.fira-code
