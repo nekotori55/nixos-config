@@ -10,7 +10,7 @@
       services.mpris-proxy.enable = true;
     })
 
-    (lib.mkIf osConfig.servces.udisk2.enable {
+    (lib.mkIf osConfig.services.udisks2.enable {
       services.udiskie = {
         enable = true;
         settings = {
