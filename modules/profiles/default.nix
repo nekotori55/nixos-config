@@ -5,21 +5,15 @@
 }:
 let
   inherit (lib) mkOption;
-  inherit (lib.types) enum;
+  inherit (lib.types) enum nullOr;
 in
 {
-  # imports = [
-  #   ./common.nix
-  #   ./workstation.nix
-  #   ./server.nix
-  # ];
-
   options.modules.profiles = {
     profile = mkOption {
-      type = enum [
+      type = nullOr (enum [
         "workstation"
         "server"
-      ];
+      ]);
       default = profile;
     };
   };

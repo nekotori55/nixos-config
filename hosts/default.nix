@@ -24,7 +24,7 @@
         {
           hostname,
           system,
-          profile,
+          profile ? null,
           extra-modules ? [ ],
           specialArgs ? {
             inherit
@@ -50,6 +50,13 @@
         hostname = "ash-twin";
         system = "x86_64-linux";
         profile = "workstation";
+      };
+
+      # [Main] HP-Paviliong Gaming 15 laptop WSL
+      ember-twin = nixosSystem {
+        hostname = "ember-twin";
+        system = "x86_64-linux";
+        extra-modules = [ inputs.nixos-wsl.nixosModules.wsl ];
       };
 
       # Teclast-F5 laptop

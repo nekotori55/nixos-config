@@ -15,6 +15,7 @@ in
     createThemesConf = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       KITTY_THEMES_FILE=${config.xdg.configHome}/kitty/themes.conf
       if [ ! -f "$KITTY_THEMES_FILE" ]; then
+        mkdir -p `dirname $KITTY_THEMES_FILE`
         touch "$KITTY_THEMES_FILE"
       fi
     '';
