@@ -30,7 +30,7 @@
 
     repositories =
       let
-        reposPath = "/home/nekotori55/";
+        reposPath = "/home/nekotori55";
       in
       {
         wallpapers = {
