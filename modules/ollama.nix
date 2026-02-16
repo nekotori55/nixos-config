@@ -29,6 +29,8 @@ in
     services.ollama = {
       enable = true;
       package = pkgs."ollama-${cfg.acceleration}";
+
+      environmentVariables.OLLAMA_KEEP_ALIVE = "1m";
     };
 
     services.open-webui = mkIf cfg.web-ui {
