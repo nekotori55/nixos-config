@@ -111,6 +111,9 @@ prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+// Restore wallpaper on startup
+spawn-at-startup "waypaper" "--restore"
+
 animations {
     // off
     slowdown 1.2
