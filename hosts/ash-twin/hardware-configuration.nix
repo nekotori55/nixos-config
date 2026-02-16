@@ -32,11 +32,15 @@
     enable = true;
 
     # settings = {
-      # General = {
-        # Enable = "Source,Sink,Media,Socket";
-      # };
-     # };
+    # General = {
+    # Enable = "Source,Sink,Media,Socket";
+    # };
+    # };
   };
+
+  boot.extraModprobeConfig = ''
+    options btusb autosuspend=0
+  '';
 
   # Bootloader
   boot.loader = {
