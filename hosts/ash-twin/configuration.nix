@@ -40,6 +40,10 @@
 
     # Studying
     packettracer.enable = true;
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
   };
 
   # Printing
