@@ -24,3 +24,8 @@ layout {
         color "{{colors.primary.default.hex}}80"
     }
 }
+
+overview {
+    backdrop-color "{{colors.background.default.hex}}"
+}
+
