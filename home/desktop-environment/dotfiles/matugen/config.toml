@@ -6,7 +6,7 @@ version_check = false
 # The color which should be used as the source_color if no good color was found from an image.
 # Can be defined in any css format.
 # The cli flag will override this if used.
-fallback_color = "#ffbf9b"
+fallback_color = "#000000"
 
 # Enables caching which will cache the colorscheme, custom colors, etc. into a cache folder located in
 # Windows: C:\Users\user\AppData\Roaming\InioX\matugen\cache\images\<file>
@@ -16,7 +16,7 @@ fallback_color = "#ffbf9b"
 # For example: testimage.png.0cfd2d624b3d09bf6246b7be9ca79e207e7aa1189d961d44949628b99811bb9d.json
 # You can modify the cache and it will then be loaded when using the same image.
 # The colors are defined using the #RRGGBBAA format.
-caching = true
+# caching = true
 
 # Changing the syntax
 # Expr is for keywords like {{ <keyword> }}

@@ -139,6 +139,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
 	// Waypaper
-    Mod+O { spawn "waypaper"; }
-    Mod+P { spawn "waypaper" "--random";} 
+    Mod+B { spawn "waypaper"; }
+    Mod+Shift+B { spawn "waypaper" "--random";} 
+    Mod+Ctrl+B { spawn "waypaper" "--restore";} 
 }
