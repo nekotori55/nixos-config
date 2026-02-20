@@ -18,16 +18,25 @@ Scope {
 
             implicitWidth: 30
 
+            WorkspaceIndicator {
+                // anchors.top: parent.top
+                // anchors.left: parent.left
+                // anchors.right: parent.right
+                anchors.fill: parent
+            }
+
             ClockWidget {
                 id: clock
-                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 16
             }
 
             SystemTrayWidget {
-                anchors.bottom: parent.bottom
+                id: tray
+                anchors.bottom: clock.top
                 padding: 16
             }
-
         }
     }
 }
