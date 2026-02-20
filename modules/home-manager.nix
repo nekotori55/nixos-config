@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  hostname,
   ...
 }:
 let
@@ -20,7 +21,7 @@ in
 
     users.${username} = import "${inputs.self}/home/home.nix";
 
-    extraSpecialArgs = { inherit inputs username; };
+    extraSpecialArgs = { inherit inputs username hostname; };
 
     sharedModules = [ inputs.self.homeManagerModules.ricing-mode ];
   };
