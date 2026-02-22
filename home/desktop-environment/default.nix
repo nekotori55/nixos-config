@@ -6,11 +6,11 @@
     ./niri.nix
     ./waypaper.nix
     ./matugen.nix
+    ./fuzzel.nix
   ];
 
   # Required programs
   home.packages = with pkgs; [
-    fuzzel # app launcher
     pavucontrol # audio settings
     kdePackages.dolphin
     kdePackages.dolphin-plugins

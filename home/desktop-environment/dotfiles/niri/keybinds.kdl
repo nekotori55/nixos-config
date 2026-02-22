@@ -16,6 +16,9 @@ binds {
     // App-launcher
     Mod+E hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
+    Mod+S { spawn-sh "WSNAME=`fuzzel -d --lines 0 -a center --placeholder 'New Name'`; if [[ -z $WSNAME ]] ; then niri msg action unset-workspace-name ; else niri msg action set-workspace-name \"$WSNAME\"; fi"; }
+    Mod+Shift+S { spawn-sh "niri msg action unset-workspace-name"; }
+
 	// Volume keys
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
