@@ -17,9 +17,10 @@ Rectangle {
 
         text: parent.workspaceName + "  " + workspaceIcon
 
-        font.capitalization: Font.AllUppercase
+        // font.capitalization: Font.AllUppercase
         font.pointSize: 12
         font.weight: 400
+        font.family: Config.fontFamily
 
         anchors.centerIn: parent
 

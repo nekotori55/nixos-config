@@ -1,7 +1,7 @@
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
-workspace "home"
+workspace "Home"
 
 // Disable help popup at startup
 hotkey-overlay {
