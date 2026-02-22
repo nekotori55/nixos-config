@@ -42,6 +42,7 @@ input {
 
     mouse {
         accel-profile "flat"
+        accel-speed 0.0
         scroll-factor horizontal=-2.0
         
     }
