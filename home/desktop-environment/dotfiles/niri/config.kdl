@@ -43,11 +43,9 @@ input {
     mouse {
         accel-profile "flat"
         accel-speed 0.0
-        scroll-factor horizontal=-2.0
-        
     }
 
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 }
 
 // TODO move to host-specific folder
