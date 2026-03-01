@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     pavucontrol # audio settings
     brightnessctl
+    playerctl
     kdePackages.dolphin
     kdePackages.dolphin-plugins
 

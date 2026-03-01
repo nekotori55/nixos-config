@@ -7,7 +7,7 @@
 {
   config = lib.mkMerge [
     (lib.mkIf osConfig.hardware.bluetooth.enable {
-      services.mpris-proxy.enable = true;
+      # services.mpris-proxy.enable = true;
     })
 
     (lib.mkIf osConfig.services.udisks2.enable {
