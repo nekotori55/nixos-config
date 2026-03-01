@@ -8,6 +8,7 @@ in
     extraConfig = "include themes.conf";
     settings = {
       confirm_os_window_close = 0;
+      window_margin_width = "8 8";
     };
   };
 
