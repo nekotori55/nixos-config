@@ -25,6 +25,10 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
+    // Brightness keys
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "s" "+50";}
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "50-";}
+
 	// Essential Niri keybinds
     Mod+X repeat=false { toggle-overview; }
     Mod+Q { close-window; }
