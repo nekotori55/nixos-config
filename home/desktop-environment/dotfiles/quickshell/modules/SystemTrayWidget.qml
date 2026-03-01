@@ -20,6 +20,8 @@ Column {
             implicitHeight: 16
             implicitWidth: 16
 
+            id: area
+
             required property SystemTrayItem modelData
 
             acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -28,7 +30,10 @@ Column {
                 if (event.button === Qt.LeftButton)
                     modelData.activate();
                 else
-                    modelData.secondaryActivate();
+                    if (modelData.hasMenu)
+                        menu.open();
+                    else
+                        modelData.secondaryActivate();
             }
 
             IconImage {
@@ -39,6 +44,14 @@ Column {
                 source: {
                     // console.log(Qt.resolvedUrl(parent.modelData.icon));
                     return (parent.modelData.icon);
+                }
+            }
+
+            QsMenuAnchor {
+                id: menu
+                menu: area.modelData.menu
+                anchor {
+                    item: area
                 }
             }
         }
