@@ -39,11 +39,11 @@
     throne.enable = true;
 
     # Studying
-    packettracer.enable = true;
-    ollama = {
-      enable = true;
-      acceleration = "cuda";
-    };
+    # packettracer.enable = true;
+    # ollama = {
+    # enable = true;
+    # acceleration = "cuda";
+    # };
   };
 
   # Printing
