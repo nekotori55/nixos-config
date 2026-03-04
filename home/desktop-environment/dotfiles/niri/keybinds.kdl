@@ -154,5 +154,6 @@ binds {
 	// Waypaper
     Mod+B { spawn "waypaper"; }
     Mod+Shift+B { spawn "waypaper" "--random";} 
-    Mod+Ctrl+B { spawn "waypaper" "--restore";} 
+    Mod+Ctrl+B { spawn "waypaper" "--restore";}
+    Mod+Alt+B { spawn "colorgen"; }
 }
