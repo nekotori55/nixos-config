@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -43,6 +44,12 @@ in
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
+
+    # environment.systemPackages = with pkgs; [
+    #   papirus-icon-theme
+    #   adwaita-icon-theme
+    # ];
+    # xdg.icons.enable = true;
 
     # Hardware
     #
