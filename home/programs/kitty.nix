@@ -10,6 +10,9 @@ in
       confirm_os_window_close = 0;
       window_margin_width = "8 8";
     };
+    keybindings = {
+      "alt+t" = "new_os_window_with_cwd";
+    };
   };
 
   home.activation = mkIf config.programs.kitty.enable {
