@@ -2,11 +2,15 @@
   lib,
   config,
   pkgs,
+  inputs,
+  system,
   ...
 }:
 let
   inherit (lib) mkIf mkDefault;
   username = config.modules.meta.username;
+
+  niri-git = inputs.niri-git.packages.${system}.niri;
 in
 {
   config = mkIf (config.modules.profiles.profile == "workstation") {
@@ -41,6 +45,7 @@ in
     };
 
     programs.niri.enable = true;
+    programs.niri.package = niri-git;
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
