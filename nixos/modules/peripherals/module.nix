@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./devshell
-    ./shared
+    ./logitech.nix
   ];
 }
