@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   fs = lib.fileset;
 
@@ -9,4 +9,11 @@ let
 in
 {
   imports = gui-programs ++ shell-programs;
+
+  home.packages = with pkgs; [
+    vesktop
+    telegram-desktop
+    obsidian
+    bitwarden-desktop
+  ];
 }
