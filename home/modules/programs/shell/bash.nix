@@ -8,9 +8,7 @@
       c = "config";
       cc = "configdir";
       home = "cd ~/.config/nixos/home; hx ./home.nix";
-      hostconfig = "cd ~/.config/nixos/hosts/${hostname}; hx ./configuration.nix";
-      # todo = "fasole ~/notes/TODO.md";
-      mode = ''MODE=`cat ~/.config/mode.conf`; if [ ''${MODE:-dark} == "dark" ] ; then echo "light" > ~/.config/mode.conf ; else echo "dark" > ~/.config/mode.conf ; fi ; waypaper --restore; echo $MODE '';
+      hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./configuration.nix";
       ws = "niri msg action set-workspace-name";
       wr = "niri msg action unset-workspace-name";
 
