@@ -38,3 +38,15 @@ output_path = '~/.config/gtk-3.0/colors.css'
 [templates.gtk4]
 input_path = './gtk.css'
 output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.qt]
+input_path = './qt5.conf'
+output_path = '~/.cache/matugen/qt5.conf'
+
+[templates.kde]
+input_path = './kdeglobals'
+output_path = '~/.config/kdeglobals'
+
+# [templates.qt6]
+# input_path = './qt6.conf'
+# output_path = '~/.cache/matugen/qt6.conf'

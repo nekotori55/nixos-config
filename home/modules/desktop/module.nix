@@ -13,6 +13,7 @@
     ./matugen.nix
     ./fuzzel.nix
     ./gtk.nix
+    ./qt.nix
   ];
 
   # Required programs
