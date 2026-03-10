@@ -50,4 +50,4 @@ symbol = '󱄅 '
 format = "[](fg:color8 bg:color7)[${symbol}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $state](fg:color3 bg:color4)[](fg:color4) "
 
 [git_status]
-format = '[ \[${all_status}${ahead_behind}\]](fg:color3 bg:color4)[](fg:color4 bg:color7) '
+format = '[ \[](fg:color3 bg:color4)[${all_status}${ahead_behind}](fg:color8 bg:color4)[\]](fg:color3 bg:color4)[](fg:color4 bg:color7) '
