@@ -14,4 +14,8 @@ in
     package = pkgs.librewolf;
     # TODO add extensions and parameters
   };
+
+  home.packages = with pkgs; [
+    pywalfox-native
+  ];
 }
