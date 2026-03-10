@@ -20,7 +20,7 @@ in
       misc.kdeconnect.enable = mkDefault true;
       peripherals.logitech.enable = mkDefault true;
       secrets.installAgenixCli = mkDefault true;
-      antiblock.zapret.enable = mkDefault true;
+      # antiblock.zapret.enable = mkDefault true;
     };
 
     # Enable flake-related commands
