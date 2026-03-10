@@ -60,7 +60,9 @@ output "eDP-1" {
 }
 
 output "HDMI-A-1" {
-    mode "1920x1080@120"
+    mode "1920x1080@143.981"
+
+    variable-refresh-rate on-demand=true
 
     scale 1
 
@@ -70,9 +72,12 @@ output "HDMI-A-1" {
 }
 
 output "HDMI-A-2" {
-    mode "1920x1080@120"
+    // mode "1920x1080@120"
+    mode "1920x1080@143.981"
 
-    // off 
+    // off
+    // 
+    variable-refresh-rate on-demand=true
     scale 1
 
     transform "normal"
@@ -129,6 +134,7 @@ window-rule {
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
