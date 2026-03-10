@@ -27,5 +27,11 @@
   home.packages = with pkgs; [
     # darkly-qt5 # Not compiling, try after update FIXME
     kdePackages.qqc2-desktop-style
+    libsForQt5.qt5ct
+    qt6Packages.qt6ct
   ];
+
+  ricing-mode.files = {
+    "dolphinrc".source = ./dotfiles/dolphinrc;
+  };
 }
