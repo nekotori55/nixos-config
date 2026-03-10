@@ -55,3 +55,8 @@ output_path = '~/.config/kdeglobals'
 input_path = './firefox.json'
 output_path = '~/.cache/wal/colors.json'
 post_hook = 'pywalfox update'
+
+[templates.btop]
+input_path = './btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
