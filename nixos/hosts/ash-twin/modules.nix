@@ -9,5 +9,6 @@
       osu = true;
     };
     antiblock.throne.enable = true;
+    virtualisation.waydroid.enable = true;
   };
 }
