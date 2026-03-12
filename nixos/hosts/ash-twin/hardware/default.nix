@@ -7,4 +7,6 @@
     ./boot.nix
     ./audio.nix
   ];
+
+  powerManagement.enable = true;
 }
