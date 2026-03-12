@@ -149,11 +149,15 @@ binds {
 
     Ctrl+Alt+Delete { quit; }
 
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+Alt+Ctrl+P { power-off-monitors; }
 
 	// Waypaper
     Mod+B { spawn "waypaper"; }
     Mod+Shift+B { spawn "waypaper" "--random";} 
     Mod+Ctrl+B { spawn "waypaper" "--restore";}
     Mod+Alt+B { spawn "colorgen"; }
+
+    // Color picker
+    Mod+P { spawn "hyprpicker" "-a"; }
+    Mod+Shift+P { spawn "hyprpicker" "-a" "-f" "rgb"; } 
 }
