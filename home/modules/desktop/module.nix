@@ -18,6 +18,7 @@
 
   # Required programs
   home.packages = with pkgs; [
+    wl-clipboard
     pavucontrol # audio settings
     brightnessctl
     playerctl
