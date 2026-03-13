@@ -38,4 +38,15 @@
   virtualisation.virtualbox.host = {
     enable = true;
   };
+
+  services.logind.settings.Login = {
+    LidSwitch = "suspend-then-hibernate";
+    PowerKey = "suspend-then-hibernate";
+    PowerKeyLongPress = "poweroff";
+  };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec = 30m
+    SuspendState=mem
+  '';
 }
