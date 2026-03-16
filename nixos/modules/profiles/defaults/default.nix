@@ -13,10 +13,6 @@ let
   passwordFile = config.age.secrets."${hostname}-password";
 in
 {
-  modules = {
-    misc.ssh.enableSshd = true;
-  };
-
   # Set hostname
   networking.hostName = mkDefault hostname;
 

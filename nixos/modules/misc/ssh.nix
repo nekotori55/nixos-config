@@ -7,7 +7,7 @@
 let
   inherit (lib) mkOption mkEnableOption;
   inherit (lib) mapAttrsToList;
-  inherit (lib.types) listOf str;
+  inherit (lib.types) listOf str bool;
 
   cfg = config.modules.misc.ssh;
   ssh-keys = import "${inputs.self}/keys.nix";
@@ -21,7 +21,11 @@ in
       default = mapAttrsToList (n: v: v) ssh-keys.workstations;
     };
 
-    enableSshd = mkEnableOption "Enable sshd";
+    enableSshd = mkOption {
+      default = true;
+      type = bool;
+      description = "Enable sshd";
+    };
   };
 
   config = {
