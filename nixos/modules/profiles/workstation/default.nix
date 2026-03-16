@@ -17,6 +17,7 @@ in
     # Modules defaults
     # Ideally, this would be the only attrset here
     modules = {
+      home.enableHomeManager = mkDefault true;
       misc.kdeconnect.enable = mkDefault true;
       peripherals.logitech.enable = mkDefault true;
       secrets.installAgenixCli = mkDefault true;
