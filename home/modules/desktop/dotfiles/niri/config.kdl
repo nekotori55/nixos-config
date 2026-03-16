@@ -62,8 +62,6 @@ output "eDP-1" {
 output "HDMI-A-1" {
     mode "1920x1080@143.981"
 
-    variable-refresh-rate on-demand=true
-
     scale 1
 
     transform "normal"
@@ -77,7 +75,6 @@ output "HDMI-A-2" {
 
     // off
     // 
-    variable-refresh-rate on-demand=true
     scale 1
 
     transform "normal"
