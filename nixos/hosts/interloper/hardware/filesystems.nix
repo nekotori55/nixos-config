@@ -1,6 +1,5 @@
 { ... }:
 {
-  # Filesystems
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
@@ -19,29 +18,9 @@
     };
   };
 
-  # Swap
   swapDevices = [
     {
       device = "/dev/disk/by-label/swap";
     }
   ];
-
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-  };
-  services.blueman.enable = true;
-
-  # Bootloader
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # default = "saved";
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
-  hardware.enableRedistributableFirmware = true;
 }

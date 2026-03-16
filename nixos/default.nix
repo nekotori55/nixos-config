@@ -63,11 +63,11 @@
       #   extra-modules = [ inputs.nixos-wsl.nixosModules.wsl ];
       # };
 
-      # # Teclast-F5 laptop
-      # interloper = nixosSystem {
-      #   hostname = "interloper";
-      #   profile = "workstation";
-      # };
+      # Teclast-F5 laptop
+      interloper = nixosSystem {
+        hostname = "interloper";
+        profile = "workstation";
+      };
 
       # # Old repurposed PC
       # brittle-hollow = nixosSystem {
