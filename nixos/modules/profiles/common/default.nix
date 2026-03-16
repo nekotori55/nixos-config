@@ -13,18 +13,16 @@ let
   passwordFile = config.age.secrets."${hostname}-password";
 in
 {
+  imports = [
+    ./hardware.nix
+  ];
+
   # Set hostname
   networking.hostName = mkDefault hostname;
 
   # Nix settings
   nixpkgs.hostPlatform = system;
   nixpkgs.config.allowUnfree = mkDefault true;
-
-  # Enable redistributable firmware by default
-  hardware.enableRedistributableFirmware = mkDefault true;
-
-  # Enable blueman if bluetooth is enabled
-  services.blueman.enable = mkDefault config.hardware.bluetooth.enable;
 
   # Locale/Time Settings
   time.timeZone = mkDefault "Europe/Istanbul";
@@ -38,6 +36,7 @@ in
   ];
 
   # Setup default user
+  # TODO maybe move to profiles?
   users = {
     mutableUsers = mkDefault false;
     users.${username} = {

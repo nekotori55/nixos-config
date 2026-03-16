@@ -19,7 +19,7 @@ in
   };
 
   imports = [
-    ./defaults
+    ./common
     ./workstation
     ./server
   ];
