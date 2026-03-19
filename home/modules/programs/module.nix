@@ -14,6 +14,6 @@ in
     vesktop
     telegram-desktop
     obsidian
-    bitwarden-desktop
+    # bitwarden-desktop
   ];
 }
