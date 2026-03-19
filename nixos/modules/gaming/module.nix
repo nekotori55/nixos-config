@@ -42,6 +42,30 @@ in
 
     programs.gamescope = mkIf cfg.gamescope {
       enable = true;
+      # capSysNice = true;
+      args = [
+        # "--rt"
+        "-w 1920 -h 1080"
+        "-W 1920 -H 1080"
+        "-r 144"
+        "-S integer"
+        "--prefer-vk-device 10de:1f91"
+        "-F nearest"
+        "--sharpness 0"
+        "-f"
+      ];
+    };
+
+    services.ananicy = mkIf cfg.gamescope {
+      enable = true;
+      package = pkgs.ananicy-cpp;
+      rulesProvider = pkgs.ananicy-cpp;
+      extraRules = [
+        {
+          "name" = "gamescope";
+          "nice" = -20;
+        }
+      ];
     };
 
     programs.gamemode.enable = true;
