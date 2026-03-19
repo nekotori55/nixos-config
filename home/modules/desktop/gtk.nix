@@ -3,12 +3,6 @@
   gtk = {
     enable = true;
     colorScheme = "dark";
-    # TODO change, not like it works lol
-    cursorTheme = {
-      package = pkgs.vanilla-dmz;
-      name = "Vanilla-DMZ";
-      size = 24;
-    };
     font = {
       package = pkgs.comfortaa;
       name = "Comfortaa";
