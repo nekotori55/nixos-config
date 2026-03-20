@@ -63,7 +63,7 @@ in
       extraRules = [
         {
           "name" = "gamescope";
-          "nice" = -20;
+          "nice" = -18;
         }
       ];
     };
