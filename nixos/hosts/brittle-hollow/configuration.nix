@@ -12,11 +12,11 @@
 
   # Custom modules
   modules = {
-    gaming = {
-      # enable = true;
-      steam = true;
-      minecraft = true;
-      gamescope = true;
-    };
+    # gaming = {
+    # enable = true;
+    # steam = true;
+    # minecraft = true;
+    # gamescope = true;
+    # };
   };
 }

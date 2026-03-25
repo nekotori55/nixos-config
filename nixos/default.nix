@@ -69,10 +69,10 @@
         profile = "workstation";
       };
 
-      # # Old repurposed PC
-      # brittle-hollow = nixosSystem {
-      #   hostname = "brittle-hollow";
-      #   profile = "workstation";
-      # };
+      # Old repurposed PC
+      brittle-hollow = nixosSystem {
+        hostname = "brittle-hollow";
+        profile = "server";
+      };
     };
 }
