@@ -26,6 +26,7 @@ in
 
     godot
     blender
+    obs-studio
 
     unzip
   ];
