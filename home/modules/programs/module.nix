@@ -29,5 +29,7 @@ in
     obs-studio
 
     unzip
+    filezilla
+    reaper
   ];
 }
