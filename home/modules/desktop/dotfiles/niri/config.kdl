@@ -118,8 +118,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 spawn-at-startup "waypaper" "--restore"
 
 animations {
-    // off
-    slowdown 1.2
+    off
+    // slowdown 1.2
 }
 
 window-rule {

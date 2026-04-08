@@ -65,6 +65,10 @@ in
           "name" = "gamescope";
           "nice" = -18;
         }
+        {
+          "name" = "java";
+          "nice" = -18;
+        }
       ];
     };
 
