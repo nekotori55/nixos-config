@@ -8,6 +8,7 @@
       c = "config";
       cc = "configdir";
       home = "cd ~/.config/nixos/home; hx ./home.nix";
+      desktop = "cd ~/.config/nixos/home/modules/desktop/; hx ./module.nix";
       hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./configuration.nix";
       ws = "niri msg action set-workspace-name";
       wr = "niri msg action unset-workspace-name";
