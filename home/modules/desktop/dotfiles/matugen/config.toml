@@ -64,3 +64,8 @@ post_hook = 'pkill -USR2 btop || true'
 [templates.starship]
 input_path = './starship.toml'
 output_path = '~/.config/starship.toml'
+
+[templates.dunst]
+input_path = './dunst'
+output_path = '~/.config/dunst/dunstrclive'
+post_hook = 'dunstctl reload'

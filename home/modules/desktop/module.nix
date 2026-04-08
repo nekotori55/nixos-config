@@ -14,6 +14,7 @@
     ./fuzzel.nix
     ./gtk.nix
     ./qt.nix
+    ./notifications.nix
   ];
 
   # Required programs
