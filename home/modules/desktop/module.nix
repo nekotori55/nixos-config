@@ -15,6 +15,7 @@
     ./gtk.nix
     ./qt.nix
     ./notifications.nix
+    ./lockscreen.nix
   ];
 
   # Required programs

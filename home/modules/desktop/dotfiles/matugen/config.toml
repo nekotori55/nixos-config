@@ -69,3 +69,8 @@ output_path = '~/.config/starship.toml'
 input_path = './dunst'
 output_path = '~/.config/dunst/dunstrclive'
 post_hook = 'dunstctl reload'
+
+[templates.hyprlock]
+input_path = './hyprlock.conf'
+output_path = '~/.config/hypr/colors.conf'
+
