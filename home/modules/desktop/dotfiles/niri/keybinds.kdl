@@ -35,6 +35,8 @@ binds {
     XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "s" "5%+";}
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "5%-";}
 
+    XF86Sleep { spawn "hyprlock"; }
+
 	// Essential Niri keybinds
     Mod+X repeat=false { toggle-overview; }
     Mod+Q { close-window; }

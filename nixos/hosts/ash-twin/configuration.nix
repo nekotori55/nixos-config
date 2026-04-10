@@ -40,9 +40,11 @@
   };
 
   services.logind.settings.Login = {
-    LidSwitch = "suspend-then-hibernate";
-    PowerKey = "suspend-then-hibernate";
-    PowerKeyLongPress = "poweroff";
+    HandleSuspendKey = "ignore";
+    HandleSuspendKeyLongPress = "suspend-then-hibernate";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandlePowerKey = "hibernate";
+    HandlePowerKeyLongPress = "poweroff";
   };
 
   # programs.gamescope.env = {

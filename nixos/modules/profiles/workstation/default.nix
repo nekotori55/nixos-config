@@ -33,5 +33,10 @@ in
 
     # Enable network manager
     networking.networkmanager.enable = mkDefault true;
+
+    services.displayManager.autoLogin = {
+      enable = true;
+      user = username;
+    };
   };
 }
