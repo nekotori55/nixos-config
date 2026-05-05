@@ -31,5 +31,7 @@ in
     unzip
     filezilla
     reaper
+
+    tasktimer
   ];
 }
