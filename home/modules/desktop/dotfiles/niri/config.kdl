@@ -87,7 +87,7 @@ output "HDMI-A-2" {
 
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 8
 
     center-focused-column "never"
     // center-focused-column "on-overflow"
@@ -149,7 +149,7 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 4
     clip-to-geometry true
 }
 
