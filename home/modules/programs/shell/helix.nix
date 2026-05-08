@@ -41,8 +41,8 @@
         focus-lost = true;
       };
       # theme = "dark-synthwave";
-      # theme = "matugen-theme";
-      theme = "bogster";
+      theme = "matugen-theme";
+      # theme = "bogster";
     };
   };
 
