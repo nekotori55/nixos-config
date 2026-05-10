@@ -20,8 +20,9 @@ binds {
     Mod+Shift+S { spawn-sh "niri msg action unset-workspace-name"; }
 
 	// Volume keys
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
+    
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
@@ -161,5 +162,7 @@ binds {
 
     // Color picker
     Mod+P { spawn "hyprpicker" "-a"; }
-    Mod+Shift+P { spawn "hyprpicker" "-a" "-f" "rgb"; } 
+    Mod+Shift+P { spawn "hyprpicker" "-a" "-f" "rgb"; }
+
+    Mod+K { spawn "kitty" "btop"; }
 }
