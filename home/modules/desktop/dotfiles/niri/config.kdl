@@ -27,9 +27,7 @@ environment {
     
 }
 
-overview {
-    zoom 0.6
-}
+
 
 input {
     keyboard {
@@ -88,9 +86,23 @@ output "HDMI-A-2" {
     position x=0 y=0
 }
 
+
+overview {
+    zoom 0.6
+    workspace-shadow {
+        off
+    }
+}
+
+layer-rule {
+    match namespace="^awww-daemon$"
+    place-within-backdrop true
+}
+
 layout {
     // Set gaps around windows in logical pixels.
     gaps 8
+    background-color "transparent"
 
     center-focused-column "never"
     // center-focused-column "on-overflow"
