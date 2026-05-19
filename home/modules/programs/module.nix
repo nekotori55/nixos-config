@@ -33,5 +33,7 @@ in
     reaper
 
     tasktimer
+    koreader
+    kdePackages.elisa
   ];
 }
