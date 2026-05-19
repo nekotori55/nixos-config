@@ -32,7 +32,11 @@ in
 
       extraSpecialArgs = { inherit inputs username hostname; };
 
-      sharedModules = [ inputs.self.homeManagerModules.ricing-mode ];
+      # TODO move to hosts file?
+      sharedModules = [
+        inputs.self.homeManagerModules.ricing-mode
+        inputs.agenix.homeManagerModules.default
+      ];
     };
   };
 }

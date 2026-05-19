@@ -44,7 +44,7 @@ in
     secretsLocation = mkOption {
       type = path;
       readOnly = true;
-      default = "${inputs.self}/secrets";
+      default = secretsPath;
     };
   };
 
