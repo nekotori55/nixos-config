@@ -10,5 +10,6 @@
     };
     antiblock.throne.enable = true;
     virtualisation.waydroid.enable = true;
+    peripherals.logitech.enable = true;
   };
 }
