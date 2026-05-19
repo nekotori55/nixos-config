@@ -120,3 +120,4 @@ ForegroundVisited={{colors.secondary.default.red}},{{colors.secondary.default.gr
 ColorScheme=Matugen
 Name=Matugen
 shadeSortColumn=true
+TerminalApplication=kitty
