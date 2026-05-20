@@ -23,7 +23,7 @@
       finegrained = false;
     };
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
       # There are three options:

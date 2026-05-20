@@ -49,7 +49,7 @@ in
         "-W 1920 -H 1080"
         "-r 144"
         "-S integer"
-        "--prefer-vk-device 10de:1f91"
+        # "--prefer-vk-device 10de:1f91"
         "-F nearest"
         "--sharpness 0"
         "-f"
@@ -63,11 +63,11 @@ in
       extraRules = [
         {
           "name" = "gamescope";
-          "nice" = -18;
+          "nice" = -10;
         }
         {
           "name" = "java";
-          "nice" = -18;
+          "nice" = -10;
         }
       ];
     };

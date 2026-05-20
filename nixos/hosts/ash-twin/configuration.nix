@@ -47,14 +47,8 @@
     HandlePowerKeyLongPress = "poweroff";
   };
 
-  # programs.gamescope.env = {
-  #   __NV_PRIME_RENDER_OFFLOAD = "1";
-  #   __VK_LAYER_NV_optimus = "NVIDIA_only";
-  #   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  # };
-
-  # systemd.sleep.extraConfig = ''
-  # HibernateDelaySec = 30m
-  # SuspendState=mem
-  # '';
+  # Gaming performance tweaks
+  powerManagement.cpuFreqGovernor = "performance";
+  boot.kernelParams = [ "nowatchdog" ];
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_stable;
 }

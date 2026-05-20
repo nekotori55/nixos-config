@@ -11,20 +11,14 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// TODO move to host-specific
 debug {
     render-drm-device "/dev/dri/by-path/pci-0000:01:00.0-card"
 }
+
 environment {
     NVD_BACKEND "direct"
     LIBVA_DRIVER_NAME "nvidia"
-    __GLX_VENDOR_LIBRARY_NAME "nvidia"
-
-    // offload EVERYTHING on nvidia
-    __NV_PRIME_RENDER_OFFLOAD "1"
-    __NV_PRIME_RENDER_OFFLOAD_PROVIDER "NVIDIA-G0"
-    __VK_LAYER_NV_optimus "NVIDIA_only"
-    
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"    
 }
 
 overview {
