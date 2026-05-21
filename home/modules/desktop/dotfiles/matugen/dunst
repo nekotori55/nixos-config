@@ -1,6 +1,6 @@
 [global]
-monitor = 1
-follow = none
+# monitor = 2
+follow = mouse
 width = 400
 height = 400
 origin = top-right
@@ -20,7 +20,7 @@ horizontal_padding = 8
 text_icon_padding = 0
 frame_width = 1
 sort = yes
-font = Comfortaa 12
+font = Comfortaa 14
 line_height = 0
 markup = full
 format = "<b>%s</b>\n%b"
