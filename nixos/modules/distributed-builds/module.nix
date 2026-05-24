@@ -18,7 +18,7 @@ let
 
   cfg = config.modules.distributed-builds;
   ssh-keys = import "${inputs.self}/keys.nix";
-  key-path = "${config.users.users.${config.meta.username}.home}/.ssh/id_edd25519";
+  key-path = "${config.users.users.${config.modules.meta.username}.home}/.ssh/id_edd25519";
 in
 {
   options.modules.distributed-builds = {
@@ -40,7 +40,7 @@ in
         hostName = builder;
         sshUser = "remotebuild";
         sshKey = key-path;
-        system = pkgs.stdenv.hostplatform.system;
+        system = pkgs.stdenv.hostPlatform.system;
         supportedFeatures = [
           "nixos-test"
           "big-parallel"
