@@ -6,4 +6,6 @@
     little-scout = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHgZMpZ0/meROz7ZsAyzVGjln/GqM5BkH93aFCxL8DEL";
     interloper = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsm2SL6Fpux4w6wUVk0hchLXFB/IHrzh+IihkFg+eN2 nekotori55@nixos";
   };
+
+  remote-builder = "SHA256:fNeuT97FV3yho1M7c1ofGlRoBqw0ttSkn46u0HzRsxU";
 }

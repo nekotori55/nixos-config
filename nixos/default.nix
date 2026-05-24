@@ -38,8 +38,10 @@
               hostname
               system
               profile
+              builders
               ;
           },
+          ...
         }:
         inputs.nixpkgs.lib.nixosSystem {
           modules = concatLists [
@@ -49,30 +51,37 @@
           ];
           inherit specialArgs;
         };
+
+      builders = lib.mapAttrsToList (n: v: v.hostname) (
+        lib.filterAttrs (n: v: (builtins.hasAttr "is-builder" v) && (v.is-builder)) hosts
+      );
+
+      hosts = {
+        # [Main] HP-Pavilion Gaming 15 laptop running NixOS
+        ash-twin = {
+          hostname = "ash-twin";
+          profile = "workstation";
+          is-builder = true;
+        };
+
+        # # [Main] HP-Paviliong Gaming 15 laptop WSL
+        # ember-twin = nixosSystem {
+        #   hostname = "ember-twin";
+        #   extra-modules = [ inputs.nixos-wsl.nixosModules.wsl ];
+        # };
+
+        # Teclast-F5 laptop
+        interloper = {
+          hostname = "interloper";
+          profile = "workstation";
+        };
+
+        # Old repurposed PC
+        brittle-hollow = {
+          hostname = "brittle-hollow";
+          profile = "server";
+        };
+      };
     in
-    {
-      # [Main] HP-Pavilion Gaming 15 laptop running NixOS
-      ash-twin = nixosSystem {
-        hostname = "ash-twin";
-        profile = "workstation";
-      };
-
-      # # [Main] HP-Paviliong Gaming 15 laptop WSL
-      # ember-twin = nixosSystem {
-      #   hostname = "ember-twin";
-      #   extra-modules = [ inputs.nixos-wsl.nixosModules.wsl ];
-      # };
-
-      # Teclast-F5 laptop
-      interloper = nixosSystem {
-        hostname = "interloper";
-        profile = "workstation";
-      };
-
-      # Old repurposed PC
-      brittle-hollow = nixosSystem {
-        hostname = "brittle-hollow";
-        profile = "server";
-      };
-    };
+    lib.mapAttrs (n: v: nixosSystem v) hosts;
 }
