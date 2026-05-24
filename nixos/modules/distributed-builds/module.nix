@@ -17,7 +17,10 @@ let
     ;
 
   cfg = config.modules.distributed-builds;
-  ssh-keys = import "${inputs.self}/keys.nix";
+  ssh-keys-set = import "${inputs.self}/keys.nix";
+
+  allowed-keys = builtins.attrValues ssh-keys-set.workstations;
+
   key-path = "${config.users.users.${config.modules.meta.username}.home}/.ssh/id_edd25519";
 in
 {
@@ -55,11 +58,12 @@ in
         group = "remotebuild";
         useDefaultShell = true;
 
-        openssh.authorizedKeys.keys = builtins.attrValues ssh-keys.workstations;
+        openssh.authorizedKeys.keys = allowed-keys;
       };
 
       users.groups.remotebuild = { };
       nix.settings.trusted-users = [ "remotebuild" ];
+
     })
   ];
 }

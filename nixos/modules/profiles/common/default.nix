@@ -4,6 +4,7 @@
   hostname,
   pkgs,
   config,
+  inputs,
   ...
 }:
 let
@@ -47,4 +48,8 @@ in
       password = mkDefault (if secrets.enabled then null else "changeme");
     };
   };
+
+  services.openssh.knownHosts = lib.mapAttrs (n: v: {
+    publicKey = v;
+  }) (import "${inputs.self}/keys.nix").workstations;
 }
