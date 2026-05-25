@@ -11,6 +11,6 @@
     antiblock.throne.enable = true;
     virtualisation.waydroid.enable = true;
     peripherals.logitech.enable = true;
-    modules.distributed-builds.enable = true;
+    distributed-builds.enable = true;
   };
 }
