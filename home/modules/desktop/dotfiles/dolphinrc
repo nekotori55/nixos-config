@@ -3,7 +3,12 @@ MenuBar=Disabled
 [CompactMode]
 PreviewSize=64
 
+[DetailsMode]
+ExpandableFolders=false
+
 [General]
+DoubleClickViewAction=none
+RememberOpenedTabs=false
 Version=202
 ViewPropsTimestamp=2026,3,4,16,4,47.82
 
@@ -13,6 +18,9 @@ Places Icons Static Size=22
 
 [MainWindow]
 MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=cursorthumbnail,imagethumbnail,ebookthumbnail,jpegthumbnail,comicbookthumbnail,kraorathumbnail,directorythumbnail,exrthumbnail,windowsexethumbnail,appimagethumbnail,audiothumbnail,djvuthumbnail,svgthumbnail,windowsimagethumbnail,opendocumentthumbnail
 
 [UiSettings]
 ColorScheme=*
