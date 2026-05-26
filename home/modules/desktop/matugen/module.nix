@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 let
   colorgen-pkg = pkgs.writeShellScriptBin "colorgen" ''
     COLOR=`${pkgs.hyprpicker}/bin/hyprpicker -b`
@@ -11,13 +15,18 @@ let
   '';
 in
 {
+  imports = [ inputs.matugen.nixosModules.default ];
+
   home.packages = with pkgs; [
-    matugen
     hyprpicker
     colorgen-pkg
   ];
 
-  ricing-mode.files."matugen" = {
-    source = ./dotfiles/matugen;
+  desktop.matugen.enable = true;
+
+  programs.matugen = {
+    enable = true;
+    type = "scheme-content";
+    variant = "dark";
   };
 }

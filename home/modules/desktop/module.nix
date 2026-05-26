@@ -10,7 +10,6 @@
     ./foot.nix
     ./niri.nix
     ./waypaper.nix
-    ./matugen.nix
     ./fuzzel.nix
     ./gtk.nix
     ./qt.nix
