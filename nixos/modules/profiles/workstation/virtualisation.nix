@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   username = config.modules.meta.username;
 in
@@ -9,6 +9,8 @@ in
       "-device virtio-vga-gl"
       "-display gtk,gl=on"
     ];
+
+    services.timesyncd.enable = lib.mkForce false;
 
     # share user keys to be able to decrypt agenix files
     virtualisation.sharedDirectories = {

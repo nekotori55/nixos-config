@@ -1,14 +1,4 @@
 { lib, pkgs, ... }:
-let
-  discord-with-vencord = (
-    pkgs.discord.override {
-      withVencord = true;
-    }
-  );
-
-  # TODO collect files
-  # TODO make a graphic applications switch
-in
 {
   home.packages = with pkgs; [
     # Fileviewers
@@ -16,8 +6,6 @@ in
     kdePackages.elisa # music player
 
     # Social
-    vesktop
-    discord-with-vencord
     telegram-desktop
 
     # Editors

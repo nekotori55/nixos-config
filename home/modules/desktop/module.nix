@@ -5,26 +5,12 @@
   ...
 }:
 {
-  imports = [
-    ./quickshell.nix
-    ./foot.nix
-    ./niri.nix
-    ./waypaper.nix
-    ./fuzzel.nix
-    ./gtk.nix
-    ./qt.nix
-    ./notifications.nix
-    ./lockscreen.nix
-  ];
-
   # Required programs
   home.packages = with pkgs; [
     wl-clipboard
     pavucontrol # audio settings
     brightnessctl
     playerctl
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins
 
     # fonts
     nerd-fonts.fira-code

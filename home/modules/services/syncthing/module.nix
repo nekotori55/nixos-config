@@ -2,6 +2,7 @@
   config,
   osConfig,
   lib,
+  inputs,
   ...
 }:
 let
@@ -25,8 +26,11 @@ in
       autoAcceptFolders = true;
     };
     overrideFolders = false;
-    tray = {
-      enable = true;
-    };
   };
+
+  age.secrets."syncthing" = {
+    file = "${inputs.self}/secrets/passwords/syncthing.age";
+    mode = "400";
+  };
+
 }

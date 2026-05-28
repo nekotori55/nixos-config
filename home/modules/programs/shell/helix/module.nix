@@ -74,4 +74,10 @@
     # Useful utilities
     scooter # interactive find and replace
   ];
+  ricing-mode.files."matugen-templates/helix/matugen-theme.toml".source = ./theme.toml;
+  programs.matugen.templates."helix" = {
+    input_path = "~/.config/matugen-templates/helix/matugen-theme.toml";
+    output_path = "~/.config/helix/themes/matugen-theme.toml";
+    post_hook = "pkill hx --signal SIGUSR1";
+  };
 }

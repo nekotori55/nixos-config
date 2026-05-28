@@ -5,7 +5,7 @@
   ];
 
   ricing-mode.files."waypaper/config.ini" = {
-    source = ./dotfiles/waypaper.ini;
+    source = ./waypaper.ini;
     # text = lib.generators.toINI { } {
     #    Settings = {
     #      language = "en";

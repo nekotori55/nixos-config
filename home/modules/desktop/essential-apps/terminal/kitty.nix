@@ -31,5 +31,15 @@ in
         fi
       '';
     };
+
+    ricing-mode.files."matugen-templates/kitty/matugen-theme.conf" = {
+      source = ./kitty-matugen-theme.conf;
+    };
+
+    programs.matugen.templates."kitty" = {
+      input_path = "~/.config/matugen-templates/kitty/matugen-theme.conf";
+      output_path = "~/.config/kitty/themes/Matugen.conf";
+      post_hook = "kitty +kitten themes --config-file-name=themes.conf --reload-in=all Matugen && pkill kitty --signal SIGUSR1";
+    };
   };
 }

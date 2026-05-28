@@ -27,12 +27,6 @@ in
     age = {
       identityPaths = osConfig.age.identityPaths;
       secretsDir = "${config.xdg.cacheHome}/asix";
-      secrets = {
-        "syncthing" = mkSecret true {
-          file = "passwords/syncthing.age";
-          symlink = false;
-        };
-      };
     };
   };
 }
