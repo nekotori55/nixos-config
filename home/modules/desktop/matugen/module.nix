@@ -89,7 +89,7 @@ in
   };
 
   config = lib.mkMerge [
-    {
+    (lib.mkIf config.modules.graphics.enabled {
       home.packages = with pkgs; [
         hyprpicker
         colorgen-pkg
@@ -103,9 +103,9 @@ in
         type = "scheme-content";
         variant = "dark";
       };
-    }
+    })
 
-    (lib.mkIf true {
+    (lib.mkIf config.modules.graphics.enabled {
       xdg.configFile."matugen/config.toml" =
         let
           settingsFormat = pkgs.formats.toml { };

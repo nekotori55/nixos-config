@@ -2,6 +2,7 @@
   pkgs,
   lib,
   osConfig,
+  config,
   ...
 }:
 let
@@ -9,19 +10,21 @@ let
   headless = osConfig.modules.meta.headless;
 in
 {
-  programs.firefox = mkIf (!headless) {
-    enable = true;
-    package = pkgs.librewolf;
-  };
+  config = lib.mkIf config.modules.graphics.enabled {
+    programs.firefox = mkIf (!headless) {
+      enable = true;
+      package = pkgs.librewolf;
+    };
 
-  home.packages = with pkgs; [
-    pywalfox-native
-  ];
+    home.packages = with pkgs; [
+      pywalfox-native
+    ];
 
-  ricing-mode.files."matugen-templates/firefox/pywalfox.json".source = ./firefox.json;
-  programs.matugen.templates."firefox" = {
-    input_path = "~/.config/matugen-templates/firefox/pywalfox.json";
-    output_path = "~/.cache/wal/colors.json";
-    post_hook = "pywalfox update";
+    ricing-mode.files."matugen-templates/firefox/pywalfox.json".source = ./firefox.json;
+    programs.matugen.templates."firefox" = {
+      input_path = "~/.config/matugen-templates/firefox/pywalfox.json";
+      output_path = "~/.cache/wal/colors.json";
+      post_hook = "pywalfox update";
+    };
   };
 }

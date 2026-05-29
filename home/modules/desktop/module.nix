@@ -2,38 +2,44 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
+let
+  graphicsEnabled = config.modules.graphics.enabled;
+in
 {
-  # Required programs
-  home.packages = with pkgs; [
-    wl-clipboard
-    pavucontrol # audio settings
-    brightnessctl
-    playerctl
+  config = lib.mkIf graphicsEnabled {
+    # Required programs
+    home.packages = with pkgs; [
+      wl-clipboard
+      pavucontrol # audio settings
+      brightnessctl
+      playerctl
 
-    # fonts
-    nerd-fonts.fira-code
-    font-awesome
-    noto-fonts-cjk-serif
-    comfortaa
+      # fonts
+      nerd-fonts.fira-code
+      font-awesome
+      noto-fonts-cjk-serif
+      comfortaa
 
-    # wallpapers
-    swww
+      # wallpapers
+      swww
 
-    papirus-icon-theme
-    papirus-folders
-  ];
+      papirus-icon-theme
+      papirus-folders
+    ];
 
-  # Font managment
-  fonts.fontconfig.enable = true;
+    # Font managment
+    fonts.fontconfig.enable = true;
 
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
-    gtk.enable = true;
-    x11.enable = true;
+    home.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 16;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
   };
-
 }

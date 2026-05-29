@@ -1,6 +1,11 @@
-{ pkgs, ... }:
 {
-  config = {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf config.modules.graphics.enabled {
     home.packages = with pkgs; [
       kdePackages.dolphin
       kdePackages.dolphin-plugins

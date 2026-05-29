@@ -1,11 +1,21 @@
-{ ... }:
+{ config, lib, ... }:
+let
+  inherit (lib) mkIf;
+in
 {
-  services.openssh = {
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
+  config = mkIf (config.modules.profiles.profile == "server") {
+    services.openssh = {
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
+
+    services.timesyncd.enable = true;
+
+    virtualisation.vmVariant = {
+      services.timesyncd.enable = lib.mkForce false;
+      modules.secrets.enabled = false;
     };
   };
-
-  services.timesyncd.enable = true;
 }

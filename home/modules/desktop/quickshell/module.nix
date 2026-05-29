@@ -1,27 +1,33 @@
-{ pkgs, ... }:
 {
-  # Quickshell
-  programs.quickshell = {
-    enable = true;
-    systemd.enable = true;
-  };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  config = lib.mkIf config.modules.graphics.enabled {
+    # Quickshell
+    programs.quickshell = {
+      enable = true;
+      systemd.enable = true;
+    };
 
-  home.sessionVariables = {
-    # "QS_NO_RELOAD_POPUP" = 1;
-  };
+    home.sessionVariables = {
+      # "QS_NO_RELOAD_POPUP" = 1;
+    };
 
-  ricing-mode.files."quickshell" = {
-    source = ./config;
-  };
+    ricing-mode.files."quickshell" = {
+      source = ./config;
+    };
 
-  # Matugen theming
-  ricing-mode.files."matugen-templates/quickshell/colors.qml" = {
-    source = ./colors.qml;
-  };
+    # Matugen theming
+    ricing-mode.files."matugen-templates/quickshell/colors.qml" = {
+      source = ./colors.qml;
+    };
 
-  programs.matugen.templates."quickshell" = {
-    input_path = "~/.config/matugen-templates/quickshell/colors.qml";
-    output_path = "~/.cache/matugen/quickshell/Colors_gen.qml";
+    programs.matugen.templates."quickshell" = {
+      input_path = "~/.config/matugen-templates/quickshell/colors.qml";
+      output_path = "~/.cache/matugen/quickshell/Colors_gen.qml";
+    };
   };
-
 }

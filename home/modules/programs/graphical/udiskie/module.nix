@@ -2,15 +2,16 @@
   osConfig,
   lib,
   pkgs,
+  config,
   ...
 }:
 let
-  headless = osConfig.modules.meta.headless;
+  graphics = config.modules.graphics.enabled;
 in
 {
-  config = lib.mkIf osConfig.services.udisks2.enable {
+  config = lib.mkIf (osConfig.services.udisks2.enabl && graphics) {
     services.udiskie = {
-      enable = !headless;
+      enable = !graphics;
       settings = {
         # workaround for
         # https://github.com/nix-community/home-manager/issues/632

@@ -1,21 +1,28 @@
-{ lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    # Fileviewers
-    koreader # book reader
-    kdePackages.elisa # music player
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  config = lib.mkIf config.modules.graphics.enabled {
+    home.packages = with pkgs; [
+      # Fileviewers
+      koreader # book reader
+      kdePackages.elisa # music player
 
-    # Social
-    telegram-desktop
+      # Social
+      telegram-desktop
 
-    # Editors
-    blender
-    godot
-    reaper # music composing software
-    obsidian
+      # Editors
+      blender
+      godot
+      reaper # music composing software
+      obsidian
 
-    # Utility
-    filezilla # ftp filebrowser
-    obs-studio
-  ];
+      # Utility
+      filezilla # ftp filebrowser
+      obs-studio
+    ];
+  };
 }

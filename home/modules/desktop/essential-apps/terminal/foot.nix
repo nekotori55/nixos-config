@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
   inherit (lib) mkIf;
 in
 {
-  config = {
+  config = lib.mkIf config.modules.graphics.enabled {
     # TODO make wayland condition
     programs.foot = mkIf true {
       enable = true;
