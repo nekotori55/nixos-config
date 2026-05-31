@@ -23,6 +23,7 @@
       # Utility
       filezilla # ftp filebrowser
       obs-studio
+      qbittorrent
     ];
   };
 }

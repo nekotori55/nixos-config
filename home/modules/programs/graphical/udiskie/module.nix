@@ -9,7 +9,7 @@ let
   graphics = config.modules.graphics.enabled;
 in
 {
-  config = lib.mkIf (osConfig.services.udisks2.enabl && graphics) {
+  config = lib.mkIf (osConfig.services.udisks2.enable && graphics) {
     services.udiskie = {
       enable = !graphics;
       settings = {
