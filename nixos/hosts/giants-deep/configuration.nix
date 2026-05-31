@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./hardware
@@ -6,8 +5,11 @@
 
   services.nginx = {
     enable = true;
-    virtualHosts = rec {
-      localhost = {
+    virtualHosts = {
+      "nekotori55.space" = {
+        enableACME = true;
+        forceSSL = true;
+
         locations."/" = {
           return = "200 '<html><body>Under construction</body></html>'";
           extraConfig = ''
@@ -15,9 +17,12 @@
           '';
         };
       };
-
-      "nekotori55.space" = localhost;
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "nekotori55@proton.me";
   };
 
   networking.firewall.allowedTCPPorts = [
