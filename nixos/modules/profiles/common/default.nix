@@ -18,6 +18,11 @@ in
     ./hardware.nix
   ];
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Set hostname
   networking.hostName = mkDefault hostname;
 
@@ -41,6 +46,7 @@ in
   users = {
     mutableUsers = mkDefault false;
     users.${username} = {
+      uid = 1000;
       isNormalUser = true;
       extraGroups = [ "wheel" ];
       # If hashed password file is not set, set password to 'changeme'

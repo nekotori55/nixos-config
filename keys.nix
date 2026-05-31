@@ -7,5 +7,7 @@
     interloper = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsm2SL6Fpux4w6wUVk0hchLXFB/IHrzh+IihkFg+eN2 nekotori55@nixos";
   };
 
-  remote-builder = "SHA256:fNeuT97FV3yho1M7c1ofGlRoBqw0ttSkn46u0HzRsxU";
+  servers = {
+    giants-deep = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0KT6otg/XNuN0g/hFJsTPO8PXZtVgJ4RTz+McVr4Cl";
+  };
 }

@@ -12,10 +12,10 @@ in
     };
 
     services.timesyncd.enable = true;
+    nix.settings.trusted-users = [ "nekotori55" ];
 
     virtualisation.vmVariant = {
       services.timesyncd.enable = lib.mkForce false;
-      modules.secrets.enabled = false;
     };
   };
 }

@@ -53,8 +53,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    matugen = {
-      url = "github:InioX/matugen";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

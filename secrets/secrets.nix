@@ -1,7 +1,7 @@
 let
   ssh-keys = import ../keys.nix;
 
-  inherit (ssh-keys) workstations;
+  inherit (ssh-keys) workstations servers;
   inherit (workstations)
     ash-twin
     interloper
@@ -25,6 +25,10 @@ in
   "passwords/ember-twin.age".publicKeys = [
     ember-twin
     ash-twin
+  ];
+  "passwords/giants-deep.age".publicKeys = [
+    ash-twin
+    servers.giants-deep
   ];
 
   # Personal services passwords

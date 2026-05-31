@@ -21,7 +21,7 @@ let
 
   allowed-keys = builtins.attrValues ssh-keys-set.workstations;
 
-  key-path = "${config.users.users.${config.modules.meta.username}.home}/.ssh/id_edd25519";
+  key-path = "${config.users.users.${config.modules.meta.username}.home}/.ssh/id_ed25519";
 in
 {
   options.modules.distributed-builds = {
