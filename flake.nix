@@ -58,8 +58,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+    foundryvtt = {
+      url = "github:nekotori55/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
