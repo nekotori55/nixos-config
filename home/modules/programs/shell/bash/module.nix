@@ -21,6 +21,10 @@
       gd = "git diff";
       gds = "git diff --staged";
       gr = "git restore --staged";
+
+      deploy = "nh os switch --target-host";
+      deploy-test = "nh os test --target-host";
+      deploy-boot = "nh os boot --target-host";
     };
   };
 }

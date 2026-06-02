@@ -24,6 +24,9 @@
       filezilla # ftp filebrowser
       obs-studio
       qbittorrent
+
+      # Web browsers
+      ungoogled-chromium
     ];
   };
 }

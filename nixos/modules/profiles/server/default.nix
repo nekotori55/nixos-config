@@ -9,6 +9,8 @@ in
         PasswordAuthentication = false;
         PermitRootLogin = "no";
       };
+
+      ports = lib.mkForce [ 32233 ];
     };
 
     services.timesyncd.enable = true;
