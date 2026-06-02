@@ -4,6 +4,8 @@ let
 in
 {
   config = mkIf (config.modules.profiles.profile == "server") {
+
+    # SSH
     services.openssh = {
       settings = {
         PasswordAuthentication = false;
@@ -13,9 +15,16 @@ in
       ports = lib.mkForce [ 32233 ];
     };
 
-    services.timesyncd.enable = true;
+    services.fail2ban = {
+      enable = true;
+      bantime-increment.enable = true;
+    };
+
+    # For deployment
     nix.settings.trusted-users = [ "nekotori55" ];
 
+    # Time sync
+    services.timesyncd.enable = true;
     virtualisation.vmVariant = {
       services.timesyncd.enable = lib.mkForce false;
     };
