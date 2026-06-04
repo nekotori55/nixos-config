@@ -4,35 +4,50 @@
     enable = true;
     defaultEditor = true;
     package = inputs.helix-git.packages.${pkgs.system}.default;
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "nixfmt";
+          language-servers = [
+            "nixd"
+            "nil"
+          ];
+        }
 
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "nixfmt";
-        language-servers = [
-          "nixd"
-          "nil"
-        ];
-      }
+        {
+          name = "markdown";
+          auto-format = true;
+          language-servers = [
+            "marksman"
+            "mpls"
+          ];
+        }
 
-      {
-        name = "markdown";
-        auto-format = true;
-        language-servers = [
-          "marksman"
-          "mpls"
-        ];
-      }
-    ];
-
-    languages.language-server.mpls = {
-      command = "mpls";
-      args = [
-        "--dark-mode"
+        {
+          name = "cmake";
+          auto-format = true;
+          language-servers = [ "neocmakelsp" ];
+        }
       ];
-      # An example args entry showing how to specify flags with values:
-      # args = ["--port", "8080", "--browser", "google-chrome", "--theme", "gruvbox-dark"]
+
+      language-server = {
+        mpls = {
+          command = "mpls";
+          args = [
+            "--dark-mode"
+          ];
+          # An example args entry showing how to specify flags with values:
+          # args = ["--port", "8080", "--browser", "google-chrome", "--theme", "gruvbox-dark"]
+        };
+
+        neocmakelsp = {
+          command = "neocmakelsp";
+          args = [ "stdio" ];
+        };
+      };
+
     };
 
     settings = {
