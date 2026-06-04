@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  osConfig,
   ...
 }:
 let
@@ -11,14 +12,21 @@ in
 {
   imports = modules;
 
-  # System settings
-  home.stateVersion = "25.05"; # TODO check if correct
+  options.modules.graphics.enabled = lib.mkEnableOption "enable graphics";
 
-  # Enable management of XDG base directories
-  xdg.enable = true;
+  config = {
 
-  ricing-mode = {
-    # enable = true;
-    globalFlakePath = config.xdg.configHome + "/nixos";
+    modules.graphics.enabled = !osConfig.modules.meta.headless;
+
+    # System settings
+    home.stateVersion = "25.05"; # TODO check if correct
+
+    # Enable management of XDG base directories
+    xdg.enable = true;
+
+    ricing-mode = {
+      # enable = true;
+      globalFlakePath = config.xdg.configHome + "/nixos";
+    };
   };
 }
