@@ -8,12 +8,15 @@
   imports = [
     ./hardware
     ./wg.nix
+    ./3x.nix
     inputs.foundryvtt.nixosModules.foundryvtt
   ];
 
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
     virtualHosts = {
       "nekotori55.space" = {
         enableACME = true;
@@ -29,6 +32,30 @@
           "/dnd" = {
             proxyPass = "http://localhost:30000";
             proxyWebsockets = true;
+          };
+          # to make ts work first somehow login to panel
+          # and set URI PATH, SAVE (!!!IMPORTANT), RELOAD (!!!IMPORTANT)
+          # then reapply the config if needed
+          # holy wasted hours on debug
+          "/notapanel/" = {
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header Host $host;
+              proxy_set_header X-Forwarded-Host $http_host;
+              proxy_set_header X-Forwarded-Port $server_port;
+
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header Range $http_range;
+              proxy_set_header If-Range $http_if_range;
+
+              proxy_redirect off;
+              proxy_pass http://127.0.0.1:2053;
+            '';
           };
         };
       };
