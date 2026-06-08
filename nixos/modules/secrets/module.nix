@@ -48,18 +48,25 @@ in
     };
   };
 
-  config = mkIf cfg.enabled {
-    environment.systemPackages = mkIf cfg.installAgenixCli [
-      inputs.agenix.packages."${system}".default
-    ];
+  config = lib.mkMerge [
+    (mkIf cfg.enabled {
+      environment.systemPackages = mkIf cfg.installAgenixCli [
+        inputs.agenix.packages."${system}".default
+      ];
 
-    age.identityPaths = [
-      "/home/${username}/.ssh/id_ed25519"
-      "/etc/ssh/ssh_host_ed25519_key"
-    ];
+      age.identityPaths = [
+        "/home/${username}/.ssh/id_ed25519"
+        "/etc/ssh/ssh_host_ed25519_key"
+      ];
 
-    age.secrets."${hostname}-password" = mkSecret true {
-      file = "passwords/${hostname}.age";
-    };
-  };
+      # TODO move to user definition
+      age.secrets."${hostname}-password" = mkSecret true {
+        file = "passwords/${hostname}.age";
+      };
+    })
+
+    (mkIf (!cfg.enabled) {
+      age.secrets = lib.mkForce { };
+    })
+  ];
 }

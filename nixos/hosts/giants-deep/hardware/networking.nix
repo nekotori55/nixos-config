@@ -9,6 +9,12 @@
           prefixLength = 24;
         }
       ];
+      ipv6.addresses = [
+        {
+          address = "2a13:7c00:6:28:f816:3eff:fe96:81d9";
+          prefixLength = 64; # idk??
+        }
+      ];
     };
 
     nameservers = [
@@ -16,5 +22,7 @@
       "1.1.1.1"
     ];
     defaultGateway = "31.56.204.1";
+
+    tempAddresses = "disabled";
   };
 }

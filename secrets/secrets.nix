@@ -33,4 +33,9 @@ in
 
   # Personal services passwords
   "passwords/syncthing.age".publicKeys = workstations;
+
+  # AWG
+  "awg/awg-giants-deep.age".publicKeys = [
+    servers.giants-deep
+  ];
 }

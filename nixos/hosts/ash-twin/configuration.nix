@@ -51,4 +51,6 @@
   powerManagement.cpuFreqGovernor = "performance";
   boot.kernelParams = [ "nowatchdog" ];
   boot.kernelPackages = pkgs.linuxPackages_xanmod_stable;
+
+  # programs.amnezia-vpn.enable = true;
 }

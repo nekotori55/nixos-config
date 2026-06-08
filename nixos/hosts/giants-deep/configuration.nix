@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware
+    ./wg.nix
     inputs.foundryvtt.nixosModules.foundryvtt
   ];
 
@@ -65,7 +66,6 @@
   networking.firewall.allowedTCPPorts = [
     80 # http
     443 # https
-    # 30000
   ];
 
 }
