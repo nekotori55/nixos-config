@@ -46,6 +46,11 @@
           command = "neocmakelsp";
           args = [ "stdio" ];
         };
+
+        clangd = {
+          command = "clangd";
+          args = [ "-header-insertion=never" ];
+        };
       };
 
     };
