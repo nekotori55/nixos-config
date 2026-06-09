@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  using-xui = true;
+in
 {
   imports = [
     ./hardware
@@ -20,8 +23,13 @@
     virtualHosts = {
       "nekotori55.space" = {
         enableACME = true;
-        forceSSL = true;
 
+        listen = lib.mkIf using-xui [
+          {
+            addr = "0.0.0.0";
+            port = 8080;
+          }
+        ];
         locations = {
           "/" = {
             return = "200 '<html><body>Under construction</body></html>'";

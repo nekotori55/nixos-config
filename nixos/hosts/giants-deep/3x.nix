@@ -11,15 +11,16 @@
         };
         volumes = [
           "/srv/xui/db/:/etc/x-ui/"
+          "/var/lib/acme/nekotori55.space/:/etc/certs"
         ];
         environment = {
           XRAY_VMESS_AEAD_FORCED = "false";
           XUI_ENABLE_FAIL2BAN = "true";
         };
-        ports = [
-          "2053:2053"
-        ];
+        extraOptions = [ "--network=host" ];
       };
     };
   };
 }
+
+# to make it work, use default configs, use certs for host, fallback to 8080 (nginx)
