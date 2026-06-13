@@ -37,7 +37,7 @@ in
               default_type text/html;
             '';
           };
-          "/dnd" = {
+          "/foundry" = {
             proxyPass = "http://localhost:30000";
             proxyWebsockets = true;
           };
@@ -85,7 +85,7 @@ in
       minifyStaticFiles = true;
       proxyPort = 443;
       proxySSL = true;
-      routePrefix = "dnd";
+      routePrefix = "foundry";
       language = "ru.ru-ru";
       port = 30000;
       package = foundryvtt-pkg.overrideAttrs (

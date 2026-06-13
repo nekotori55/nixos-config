@@ -23,4 +23,8 @@
   };
 }
 
-# to make it work, use default configs, use certs for host, fallback to 8080 (nginx)
+# to make it work:
+# get to panel settings
+# setup inbound with fallback
+# use no certs
+# set uri path
