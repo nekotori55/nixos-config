@@ -32,7 +32,15 @@ in
         ];
         locations = {
           "/" = {
-            return = "200 '<html><body>Under construction</body></html>'";
+            return = ''
+              200 '<html><body>
+              <div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+              	<div>
+                  	<img src="https://media1.tenor.com/m/fk-IGzO_hAQAAAAd/maxwell-cat-spinning.gif"/>
+                      <h2>Work In Progress... (not really)</h2>
+                   </div>
+              </div>
+              </body></html>'  '';
             extraConfig = ''
               default_type text/html;
             '';
