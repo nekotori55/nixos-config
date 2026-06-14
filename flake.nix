@@ -13,6 +13,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    legacy-nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +46,7 @@
     };
 
     niri-git = {
-      url = "github:niri-wm/niri";
+      url = "github:niri-wm/niri/c5253968b4b2d9fc599c1636b0e295ff32aab52b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
