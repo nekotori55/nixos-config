@@ -89,24 +89,7 @@ let
       profile = "server";
     };
   };
-
-  images = {
-    giants-deep-kexec = inputs.nixos-generators.nixosGenerate {
-      system = "x86_64-linux";
-      modules = [ "${hostsPath}/${hosts.giants-deep.hostname}/kexec.nix" ];
-      format = "kexec-compressed";
-    };
-  };
-
 in
 {
-  flake.nixosConfigurations = (lib.mapAttrs (n: v: nixosSystem v) hosts) // {
-    giants-deep-kexec2 = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/giants-deep/kexec.nix
-      ];
-    };
-  };
-  flake.packages.x86_64-linux = images;
+  flake.nixosConfigurations = (lib.mapAttrs (n: v: nixosSystem v) hosts);
 }
