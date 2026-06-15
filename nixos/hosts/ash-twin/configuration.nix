@@ -30,15 +30,6 @@
     system-config-printer
   ];
 
-  virtualisation.vmVariant = {
-    modules.secrets.enabled = false;
-  };
-
-  # VM-HOST
-  virtualisation.virtualbox.host = {
-    enable = true;
-  };
-
   services.logind.settings.Login = {
     HandleSuspendKey = "ignore";
     HandleSuspendKeyLongPress = "suspend-then-hibernate";
@@ -52,5 +43,8 @@
   boot.kernelParams = [ "nowatchdog" ];
   boot.kernelPackages = pkgs.linuxPackages_xanmod_stable;
 
-  # programs.amnezia-vpn.enable = true;
+  specialisation.undocked.configuration = {
+    powerManagement.cpuFreqGovernor = lib.mkForce "ondemand";
+  };
+
 }
