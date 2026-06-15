@@ -20,8 +20,8 @@ in
     enable = mkEnableOption "enable niri wm";
 
     host-specific-config = mkOption {
-      type = types.nullOr types.lines;
-      default = null;
+      type = types.lines;
+      default = "";
       description = "host specific config that can be used by home manager";
     };
   };
