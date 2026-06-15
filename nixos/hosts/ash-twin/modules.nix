@@ -12,5 +12,17 @@
     virtualisation.waydroid.enable = true;
     peripherals.logitech.enable = true;
     distributed-builds.enable = true;
+
+    desktop.wm.niri.host-specific-config = ''
+      debug {
+          render-drm-device "/dev/dri/by-path/pci-0000:01:00.0-card"
+      }
+
+      environment {
+          NVD_BACKEND "direct"
+          LIBVA_DRIVER_NAME "nvidia"
+          __GLX_VENDOR_LIBRARY_NAME "nvidia"
+      }    
+    '';
   };
 }

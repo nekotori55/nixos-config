@@ -7,11 +7,18 @@
 }:
 let
   inherit (lib) mkIf;
-  cfg = osConfig.programs.niri;
+  cfg = osConfig.modules.desktop.wm.niri;
 in
 {
-  config = lib.mkIf config.modules.graphics.enabled {
-    ricing-mode.files."niri" = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
+    xdg.configFile."niri/config.kdl".text = ''
+      include "config/general.kdl"
+      include "config/keybinds.kdl"
+      include "${config.xdg.cacheHome}/matugen/niri/colors.kdl"
+      ${cfg.host-specific-config}
+    '';
+
+    ricing-mode.files."niri/config" = mkIf cfg.enable {
       source = ./config;
     };
 

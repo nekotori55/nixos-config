@@ -11,18 +11,6 @@ hotkey-overlay {
     skip-at-startup
 }
 
-debug {
-    render-drm-device "/dev/dri/by-path/pci-0000:01:00.0-card"
-}
-
-environment {
-    NVD_BACKEND "direct"
-    LIBVA_DRIVER_NAME "nvidia"
-    __GLX_VENDOR_LIBRARY_NAME "nvidia"    
-}
-
-
-
 input {
     keyboard {
         xkb {
@@ -161,9 +149,3 @@ window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
 }
-
-include "keybinds.kdl"
-
-// COLORS
-// TODO make path username-independent and/or put it somewhere else
-include "/home/nekotori55/.cache/matugen/niri/colors.kdl"

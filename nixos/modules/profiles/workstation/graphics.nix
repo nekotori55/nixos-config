@@ -6,8 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
-  niri-git = inputs.niri-git.packages.${system}.niri;
+  inherit (lib) mkIf mkDefault;
 in
 {
   config = mkIf (config.modules.profiles.profile == "workstation") {
@@ -16,10 +15,6 @@ in
       wayland.enable = true;
     };
 
-    programs.niri.enable = true;
-    programs.niri.package = niri-git;
-    environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-    };
+    modules.desktop.wm.niri.enable = mkDefault true;
   };
 }
