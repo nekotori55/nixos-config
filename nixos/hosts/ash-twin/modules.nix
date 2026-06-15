@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
   inherit (lib) mkIf;
-  default-specialisation = config.specialisation != { };
+  is-default-specialisation = config.specialisation != { };
 in
 {
   modules = {
@@ -12,9 +12,8 @@ in
     };
     antiblock.throne.enable = true;
     peripherals.logitech.enable = true;
-    distributed-builds.enable = true;
 
-    desktop.wm.niri.host-specific-config = mkIf default-specialisation ''
+    desktop.wm.niri.host-specific-config = mkIf is-default-specialisation ''
       debug {
           render-drm-device "/dev/dri/by-path/pci-0000:01:00.0-card"
       }

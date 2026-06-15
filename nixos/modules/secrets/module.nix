@@ -32,6 +32,10 @@ let
   );
 in
 {
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
+
   options.modules.secrets = {
     enabled = mkOption {
       type = bool;

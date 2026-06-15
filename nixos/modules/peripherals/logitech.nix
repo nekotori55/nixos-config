@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -10,6 +11,10 @@ let
   cfg = config.modules.peripherals.logitech;
 in
 {
+  imports = [
+    inputs.solaar.nixosModules.default
+  ];
+
   options.modules.peripherals.logitech.enable = mkEnableOption "Enable logitech devices managers";
 
   config = mkIf cfg.enable {

@@ -13,6 +13,10 @@ let
   username = config.modules.meta.username;
 in
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   options.modules.home = {
     enableHomeManager = mkEnableOption "Whether to enable home manager or not";
   };
