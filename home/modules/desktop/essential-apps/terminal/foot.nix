@@ -3,7 +3,9 @@ let
   inherit (lib) mkIf;
 in
 {
-  config = lib.mkIf config.modules.graphics.enabled {
+  options.modules.programs.foot.enable = lib.mkEnableOption "enable foot";
+
+  config = lib.mkIf config.modules.programs.foot.enable {
     # TODO make wayland condition
     programs.foot = mkIf true {
       enable = true;

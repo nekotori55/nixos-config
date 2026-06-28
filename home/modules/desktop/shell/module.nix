@@ -2,10 +2,11 @@
   config,
   pkgs,
   lib,
+  osConfig,
   ...
 }:
 {
-  config = lib.mkIf config.modules.graphics.enabled {
+  config = lib.mkIf osConfig.modules.wm.niri.enable {
     # Required packages
     home.packages = with pkgs; [
       # darkly-qt5 # Not compiling, try after update FIXME

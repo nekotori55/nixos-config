@@ -1,3 +1,7 @@
+{ lib, ... }:
 {
-  imports = [ ./niri.nix ];
+  imports = [
+    ./niri.nix
+    ./kde.nix
+  ];
 }

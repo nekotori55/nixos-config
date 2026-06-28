@@ -5,6 +5,8 @@
   ...
 }:
 {
+  options.modules.desktop.quickshell.enable = lib.mkEnableOption "";
+
   config = lib.mkIf config.modules.graphics.enabled {
     # Quickshell
     programs.quickshell = {

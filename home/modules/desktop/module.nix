@@ -7,9 +7,11 @@
 }:
 let
   graphicsEnabled = config.modules.graphics.enabled;
+
+  niriEnabled = osConfig.modules.wm.niri.enabled;
 in
 {
-  config = lib.mkIf graphicsEnabled {
+  config = lib.mkIf niriEnabled {
     # Required programs
     home.packages = with pkgs; [
       wl-clipboard
@@ -40,6 +42,5 @@ in
       gtk.enable = true;
       x11.enable = true;
     };
-
   };
 }

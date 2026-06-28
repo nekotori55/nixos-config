@@ -89,7 +89,7 @@ in
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.modules.graphics.enabled {
+    (lib.mkIf config.modules.desktop.matugen.enable {
       home.packages = with pkgs; [
         hyprpicker
         colorgen-pkg

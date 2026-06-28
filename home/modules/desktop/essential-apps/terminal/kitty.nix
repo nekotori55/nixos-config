@@ -6,10 +6,14 @@
 }:
 let
   inherit (lib) mkIf;
-  headless = osConfig.modules.meta.headless;
+  cfg = config.modules.programs.kitty;
 in
 {
-  config = mkIf (!headless) {
+  options.modules.programs.kitty = {
+    enable = lib.mkEnableOption "enable kitty";
+  };
+
+  config = mkIf (cfg.enable) {
     programs.kitty = {
       enable = true;
       extraConfig = "include themes.conf";

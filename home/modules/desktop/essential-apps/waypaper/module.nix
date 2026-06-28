@@ -5,7 +5,9 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.graphics.enabled {
+  options.modules.programs.waypaper.enable = lib.mkEnableOption "";
+
+  config = lib.mkIf config.modules.programs.waypaper.enable {
     home.packages = with pkgs; [
       waypaper
     ];
