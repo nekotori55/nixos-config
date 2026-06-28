@@ -56,7 +56,7 @@ in
 
             # Foundry VTT
             "/foundry" = foundry-redirect;
-            "/dnd" = foundry-redirect;
+            "/dnd".return = "301 https://nekotori55.space/foundry";
 
             # to make ts work first somehow login to panel
             # and set URI PATH, SAVE (!!!IMPORTANT), RELOAD (!!!IMPORTANT)
