@@ -22,9 +22,9 @@
       gds = "git diff --staged";
       gr = "git restore --staged";
 
-      deploy = "nh os switch --target-host nekotori55.space -H giants-deep";
-      deploy-test = "nh os test --target-host nekotori55.space giants-deep";
-      deploy-boot = "nh os boot --target-host nekotori55.space giants-deep";
+      deploy = "nh os switch --target-host nekotori55.space -H giants-deep --impure";
+      deploy-test = "nh os test --target-host nekotori55.space giants-deep --impure";
+      deploy-boot = "nh os boot --target-host nekotori55.space giants-deep --impure";
     };
   };
 }

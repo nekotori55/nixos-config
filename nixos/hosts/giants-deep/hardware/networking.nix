@@ -5,7 +5,7 @@
       useDHCP = false;
       ipv4.addresses = [
         {
-          address = "146.103.113.215";
+          address = "31.56.204.57";
           prefixLength = 24;
         }
       ];
@@ -21,7 +21,7 @@
       "8.8.8.8"
       "1.1.1.1"
     ];
-    defaultGateway = "146.103.113.1";
+    defaultGateway = "31.56.204.1";
 
     tempAddresses = "disabled";
   };

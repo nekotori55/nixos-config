@@ -30,50 +30,59 @@ in
             port = 8080;
           }
         ];
-        locations = {
-          "/" = {
-            return = ''
-              200 '<html><body>
-              <div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
-              	<div>
-                  	<img src="https://media1.tenor.com/m/fk-IGzO_hAQAAAAd/maxwell-cat-spinning.gif"/>
-                      <h2>Work In Progress... (not really)</h2>
-                   </div>
-              </div>
-              </body></html>'  '';
-            extraConfig = ''
-              default_type text/html;
-            '';
-          };
-          "/foundry" = {
-            proxyPass = "http://localhost:30000";
-            proxyWebsockets = true;
-          };
-          # to make ts work first somehow login to panel
-          # and set URI PATH, SAVE (!!!IMPORTANT), RELOAD (!!!IMPORTANT)
-          # then reapply the config if needed
-          # holy wasted hours on debug
-          "/notapanel/" = {
-            proxyWebsockets = true;
-            extraConfig = ''
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
+        locations =
+          let
+            foundry-redirect = {
+              proxyPass = "http://localhost:30000";
+              proxyWebsockets = true;
+            };
+          in
+          {
+            # root website
+            "/" = {
+              return = ''
+                200 '<html><body>
+                <div style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+                	<div>
+                    	<img src="https://media1.tenor.com/m/fk-IGzO_hAQAAAAd/maxwell-cat-spinning.gif"/>
+                        <h2>Work In Progress... (not really)</h2>
+                     </div>
+                </div>
+                </body></html>'  '';
+              extraConfig = ''
+                default_type text/html;
+              '';
+            };
 
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-              proxy_set_header Host $host;
-              proxy_set_header X-Forwarded-Host $http_host;
-              proxy_set_header X-Forwarded-Port $server_port;
+            # Foundry VTT
+            "/foundry" = foundry-redirect;
+            "/dnd" = foundry-redirect;
 
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header Range $http_range;
-              proxy_set_header If-Range $http_if_range;
+            # to make ts work first somehow login to panel
+            # and set URI PATH, SAVE (!!!IMPORTANT), RELOAD (!!!IMPORTANT)
+            # then reapply the config if needed
+            # holy wasted hours on debug
+            "/notapanel/" = {
+              proxyWebsockets = true;
+              extraConfig = ''
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
 
-              proxy_redirect off;
-              proxy_pass http://127.0.0.1:2053;
-            '';
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-Host $http_host;
+                proxy_set_header X-Forwarded-Port $server_port;
+
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Range $http_range;
+                proxy_set_header If-Range $http_if_range;
+
+                proxy_redirect off;
+                proxy_pass http://127.0.0.1:2053;
+              '';
+            };
           };
-        };
       };
     };
   };

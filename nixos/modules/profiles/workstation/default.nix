@@ -26,10 +26,12 @@ in
       "flakes"
     ];
 
-    # Enable nix helper
-    programs.nh.enable = mkDefault true;
-    # TODO extract path to meta option?
-    programs.nh.flake = mkDefault "/home/${username}/.config/nixos";
+    programs.nh = {
+      # Enable nix helper
+      enable = mkDefault true;
+      # TODO extract path to meta option?
+      flake = mkDefault "/home/${username}/.config/nixos";
+    };
 
     # Enable network manager
     networking.networkmanager.enable = mkDefault true;

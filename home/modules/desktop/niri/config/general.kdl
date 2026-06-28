@@ -23,7 +23,7 @@ input {
         // off
         tap
         natural-scroll
-        disabled-on-external-mouse
+        // disabled-on-external-mouse
     }
 
     mouse {
@@ -148,4 +148,9 @@ window-rule {
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+}
+
+window-rule {
+    match title=r#".*(DEBUG)"#
+    open-floating true
 }
