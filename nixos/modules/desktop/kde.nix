@@ -18,8 +18,8 @@ in
     environment.plasma6.excludePackages = with pkgs; [
       kdePackages.kdepim-runtime # Akonadi agents
       kdePackages.kmahjongg
-      kdePackages.konversation # IRC client
-      kdePackages.ksudoku
+      # kdePackages.konversation # IRC client
+      # kdePackages.ksudoku
       kdePackages.ktorrent
     ];
   };

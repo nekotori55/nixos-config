@@ -1,30 +1,20 @@
 {
   pkgs,
   lib,
-  osConfig,
   config,
   ...
 }:
 let
-  inherit (lib) mkIf;
-  headless = osConfig.modules.meta.headless;
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.modules.programs.firefox;
 in
 {
-  config = lib.mkIf config.modules.graphics.enabled {
-    programs.firefox = mkIf (!headless) {
+  options.modules.programs.firefox.enable = mkEnableOption "enable Firefox";
+
+  config = mkIf cfg.enable {
+    programs.firefox = {
       enable = true;
       package = pkgs.librewolf;
-    };
-
-    home.packages = with pkgs; [
-      pywalfox-native
-    ];
-
-    ricing-mode.files."matugen-templates/firefox/pywalfox.json".source = ./firefox.json;
-    programs.matugen.templates."firefox" = {
-      input_path = "~/.config/matugen-templates/firefox/pywalfox.json";
-      output_path = "~/.cache/wal/colors.json";
-      post_hook = "pywalfox update";
     };
   };
 }

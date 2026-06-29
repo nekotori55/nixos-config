@@ -5,13 +5,10 @@
   config,
   ...
 }:
-let
-  graphics = config.modules.graphics.enabled;
-in
 {
-  config = lib.mkIf (osConfig.services.udisks2.enable && graphics) {
+  config = lib.mkIf (osConfig.services.udisks2.enable) {
     services.udiskie = {
-      enable = !graphics;
+      enable = true;
       settings = {
         # workaround for
         # https://github.com/nix-community/home-manager/issues/632

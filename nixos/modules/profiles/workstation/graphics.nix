@@ -15,6 +15,6 @@ in
       wayland.enable = true;
     };
 
-    modules.desktop.wm.niri.enable = mkDefault true;
+    modules.desktop.wm.plasma.enable = mkDefault true;
   };
 }

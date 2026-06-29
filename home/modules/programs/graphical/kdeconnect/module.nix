@@ -6,12 +6,12 @@
 }:
 let
   inherit (lib) mkIf;
-  headless = osConfig.modules.meta.headless;
+  # headless = osConfig.modules.meta.headless;
   enabledOnHost = osConfig.modules.misc.kdeconnect.enable;
 in
 {
-  config = lib.mkIf config.modules.graphics.enabled {
-    services.kdeconnect = mkIf (enabledOnHost && (!headless)) {
+  config = mkIf enabledOnHost {
+    services.kdeconnect = {
       enable = true;
       indicator = true;
     };

@@ -2,14 +2,14 @@
   lib,
   pkgs,
   config,
+  osConfig,
   ...
 }:
 {
-  config = lib.mkIf config.modules.graphics.enabled {
+  config = lib.mkIf (!osConfig.modules.meta.headless) {
     home.packages = with pkgs; [
       # Fileviewers
       koreader # book reader
-      kdePackages.elisa # music player
 
       # Social
       telegram-desktop
