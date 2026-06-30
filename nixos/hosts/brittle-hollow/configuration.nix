@@ -22,7 +22,7 @@
       hostName = "ash-twin";
       sshUser = "remotebuild";
       sshKey = "/home/nekotori55/.ssh/id_ed25519";
-      system = pkgs.stdenv.hostPlatrform.system;
+      system = pkgs.stdenv.hostPlatform.system;
     }
   ];
 }
