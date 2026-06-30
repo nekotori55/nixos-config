@@ -17,11 +17,11 @@
     profile = "workstation";
   };
 
-  # Old repurposed PC (dead)
-  # brittle-hollow = {
-  #   hostname = "brittle-hollow";
-  #   profile = "server";
-  # };
+  # Old repurposed PC
+  brittle-hollow = {
+    hostname = "brittle-hollow";
+    profile = "workstation";
+  };
 
   giants-deep = {
     hostname = "giants-deep";

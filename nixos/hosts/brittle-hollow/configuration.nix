@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     # ./hardware-configuration.nix
@@ -10,13 +10,19 @@
     hashedPasswordFile = config.age.secrets.brittle-hollow-password.path;
   };
 
-  # Custom modules
   modules = {
-    # gaming = {
-    # enable = true;
-    # steam = true;
-    # minecraft = true;
-    # gamescope = true;
-    # };
+
   };
+
+  nix.distributedBuilds = true;
+  nix.settings.builders-use-substitutes = true;
+
+  nix.buildMachines = [
+    {
+      hostName = "ash-twin";
+      sshUser = "remotebuild";
+      sshKey = "/home/nekotori55/.ssh/id_ed25519";
+      system = pkgs.stdenv.hostPlatrform.system;
+    }
+  ];
 }
