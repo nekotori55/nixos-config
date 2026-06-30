@@ -1,4 +1,9 @@
-{ osConfig, lib, ... }:
+{
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.modules = {
     desktop = {
@@ -16,5 +21,9 @@
         kitty.enable = true;
       };
     };
+
+    home.packages = with pkgs; [
+      kdePackages.plasma-browser-integration
+    ];
   };
 }

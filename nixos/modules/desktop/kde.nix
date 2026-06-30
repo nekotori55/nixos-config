@@ -22,5 +22,7 @@ in
       # kdePackages.ksudoku
       kdePackages.ktorrent
     ];
+
+    environment.systemPackages = [ pkgs.polonium ];
   };
 }
