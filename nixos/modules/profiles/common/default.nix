@@ -23,6 +23,11 @@ in
     "flakes"
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
+
   # Set hostname
   networking.hostName = mkDefault hostname;
 
