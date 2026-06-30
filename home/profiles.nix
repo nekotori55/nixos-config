@@ -24,6 +24,9 @@
 
     home.packages = with pkgs; [
       kdePackages.plasma-browser-integration
+      kdePackages.yakuake
+
+      kdePackages.kmines
     ];
   };
 }

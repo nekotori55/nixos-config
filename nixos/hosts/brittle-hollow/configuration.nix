@@ -1,7 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
-    # ./hardware-configuration.nix
+    ./hardware.nix
+    ./disko.nix
+    inputs.disko.nixosModules.disko
   ];
 
   # system.stateVersion = "26.05";
