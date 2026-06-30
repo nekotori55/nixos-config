@@ -55,7 +55,7 @@ in
     };
   };
 
-  services.openssh.knownHosts = lib.mapAttrs (n: v: {
-    publicKey = v;
-  }) (import "${inputs.self}/keys.nix").workstations;
+  # services.openssh.knownHosts = lib.mapAttrs (n: v: {
+  #   publicKey = v;
+  # }) (import "${inputs.self}/keys.nix").workstations;
 }

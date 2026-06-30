@@ -11,7 +11,7 @@
     inputs.disko.nixosModules.disko
   ];
 
-  # system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
 
   users.users.nekotori55 = {
     hashedPasswordFile = config.age.secrets.brittle-hollow-password.path;

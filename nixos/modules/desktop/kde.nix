@@ -23,6 +23,9 @@ in
       kdePackages.ktorrent
     ];
 
-    environment.systemPackages = [ pkgs.polonium ];
+    environment.systemPackages = with pkgs; [
+      kdePackages.krdp
+      kdePackages.krdc
+    ];
   };
 }
