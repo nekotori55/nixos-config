@@ -27,5 +27,19 @@ in
       kdePackages.krdp
       kdePackages.krdc
     ];
+
+    services.xrdp = {
+      enable = true;
+      defaultWindowManager = "startplasma-x11";
+      openFirewall = true;
+    };
+
+    services.xserver = {
+      enable = true;
+      # xkb = {
+      #   layout = "us";
+      #   variant = "";
+      # };
+    };
   };
 }
