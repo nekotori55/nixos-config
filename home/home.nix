@@ -10,7 +10,7 @@ let
   modules = fs.toList (fs.fileFilter (file: file.name == "module.nix") ./modules);
 in
 {
-  imports = modules;
+  imports = modules ++ [ ./profiles.nix ];
 
   options.modules.graphics.enabled = lib.mkEnableOption "enable graphics";
 
