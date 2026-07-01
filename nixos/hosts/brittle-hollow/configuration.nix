@@ -32,4 +32,6 @@
       system = pkgs.stdenv.hostPlatform.system;
     }
   ];
+
+  environment.systemPackages = with pkgs; [ moonlight-qt ];
 }
