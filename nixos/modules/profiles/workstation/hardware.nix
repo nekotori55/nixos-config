@@ -16,6 +16,6 @@ in
     # services.blueman.enable = mkDefault bluetoothEnabled;
 
     # Enable USB automount
-    services.udisks2.enable = mkDefault true;
+    # services.udisks2.enable = mkDefault true;
   };
 }
