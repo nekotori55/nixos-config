@@ -29,6 +29,8 @@
   };
   environment.systemPackages = with pkgs; [
     system-config-printer
+
+    kdePackages.krfb
   ];
 
   services.logind.settings.Login = {
@@ -64,4 +66,25 @@
   users.groups.remotebuild = { };
 
   nix.settings.trusted-users = [ "remotebuild" ];
+
+  services.sunshine = {
+    enable = true;
+    openFirewall = true;
+    capSysAdmin = true;
+
+    #   applications = {
+    #     apps = [
+    #       {
+    #         name = "1440p Desktop";
+    #         prep-cmd = [
+    #           {
+    #             do = "nohup ${pkgs.kdePackages.krfb}/bin/krfb-virtualmonitor --name virtual --password xxxx --port 9999 --resolution 1080x1920 &";
+    #             undo = "pkill krfb";
+    #           }
+    #         ];
+    #         auto-detach = "true";
+    #       }
+    #     ];
+    #   };
+  };
 }

@@ -24,8 +24,8 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
-      kdePackages.krdp
-      kdePackages.krdc
+      # kdePackages.krdp
+      # kdePackages.krdc
     ];
 
   };
