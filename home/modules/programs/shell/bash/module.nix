@@ -27,6 +27,7 @@
       deploy-boot = "nh os boot --target-host nekotori55.space giants-deep --impure";
 
       brittle-mon = "krfb-virtualmonitor --name virtual --password xxxx --port 9999 --resolution 1080x1920 & disown";
+      kill-brittle-mon = "pkill krfb";
     };
   };
 }
