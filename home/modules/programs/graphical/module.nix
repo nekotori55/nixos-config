@@ -27,6 +27,8 @@
 
       # Web browsers
       ungoogled-chromium
+
+      vscode-fhs
     ];
   };
 

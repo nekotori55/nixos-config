@@ -30,7 +30,10 @@
   environment.systemPackages = with pkgs; [
     system-config-printer
 
+    # Virtual Display Creation tool (not really)
     kdePackages.krfb
+
+    jetbrains.idea-oss
   ];
 
   services.logind.settings.Login = {
@@ -67,24 +70,10 @@
 
   nix.settings.trusted-users = [ "remotebuild" ];
 
+  # Remote stream display
   services.sunshine = {
     enable = true;
     openFirewall = true;
     capSysAdmin = true;
-
-    #   applications = {
-    #     apps = [
-    #       {
-    #         name = "1440p Desktop";
-    #         prep-cmd = [
-    #           {
-    #             do = "nohup ${pkgs.kdePackages.krfb}/bin/krfb-virtualmonitor --name virtual --password xxxx --port 9999 --resolution 1080x1920 &";
-    #             undo = "pkill krfb";
-    #           }
-    #         ];
-    #         auto-detach = "true";
-    #       }
-    #     ];
-    #   };
   };
 }
