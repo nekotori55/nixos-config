@@ -34,6 +34,7 @@
     kdePackages.krfb
 
     jetbrains.idea-oss
+    jetbrains.jdk-21
   ];
 
   services.logind.settings.Login = {
