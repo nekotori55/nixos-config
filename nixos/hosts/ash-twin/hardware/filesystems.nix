@@ -24,4 +24,6 @@
       device = "/dev/disk/by-label/swap";
     }
   ];
+
+  services.fstrim.enable = true;
 }

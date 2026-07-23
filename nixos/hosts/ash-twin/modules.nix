@@ -5,6 +5,7 @@
       steam = true;
       minecraft = true;
       gamescope = true;
+      osu = true;
     };
     antiblock.throne.enable = true;
     peripherals.logitech.enable = true;
