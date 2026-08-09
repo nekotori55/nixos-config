@@ -1,14 +1,10 @@
-{ pkgs, ... }:
 {
-  imports = [ ./ssh.nix ];
-
-  home.packages = with pkgs; [
-    # Archiving tools
-    zip
-    unzip
-    rar
-
-    # Productivity
-    tasktimer
+  imports = [
+    ./git.nix
+    ./starship.nix
+    ./ssh.nix
+    ./aliases.nix
+    ./direnv.nix
+    ./helix.nix
   ];
 }

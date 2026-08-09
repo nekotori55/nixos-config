@@ -1,6 +1,6 @@
 {
   programs.ssh = {
-    enable = true;
+    enable = true; # does not enable ssh actually, this is switch for applying settings below
     matchBlocks = {
       "nekotori55.space" = {
         user = "nekotori55";

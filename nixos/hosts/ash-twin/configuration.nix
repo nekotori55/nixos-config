@@ -33,8 +33,10 @@
     # Virtual Display Creation tool (not really)
     kdePackages.krfb
 
-    jetbrains.idea-oss
+    jetbrains.idea
     jetbrains.jdk-21
+
+    blockbench
   ];
 
   services.logind.settings.Login = {
@@ -72,9 +74,9 @@
   nix.settings.trusted-users = [ "remotebuild" ];
 
   # Remote stream display
-  services.sunshine = {
-    enable = true;
-    openFirewall = true;
-    capSysAdmin = true;
-  };
+  # services.sunshine = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   capSysAdmin = true;
+  # };
 }

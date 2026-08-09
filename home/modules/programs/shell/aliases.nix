@@ -1,8 +1,17 @@
-{ hostname, ... }:
 {
-  programs.bash = {
-    enable = true;
-    shellAliases = {
+  hostname,
+  lib,
+  config,
+  ...
+}:
+{
+  options.modules.shell.aliases = {
+    enable = lib.mkEnableOption "enable aliases";
+  };
+
+  config = {
+    home.shellAliases = lib.mkIf config.modules.shell.aliases.enable {
+      # Config related aliases
       config = "cd ~/.config/nixos; hx ./flake.nix";
       configdir = "cd ~/.config/nixos";
       c = "config";
@@ -10,9 +19,8 @@
       home = "cd ~/.config/nixos/home; hx ./home.nix";
       desktop = "cd ~/.config/nixos/home/modules/desktop/; hx ./module.nix";
       hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./configuration.nix";
-      ws = "niri msg action set-workspace-name";
-      wr = "niri msg action unset-workspace-name";
 
+      # nix dev aliases
       dev = "nix develop";
       flakeparts-init = "nix flake init -t github:hercules-ci/flake-parts";
 
@@ -22,12 +30,10 @@
       gds = "git diff --staged";
       gr = "git restore --staged";
 
+      # config deployment aliases
       deploy = "nh os switch --target-host nekotori55.space -H giants-deep --impure";
       deploy-test = "nh os test --target-host nekotori55.space giants-deep --impure";
       deploy-boot = "nh os boot --target-host nekotori55.space giants-deep --impure";
-
-      brittle-mon = "krfb-virtualmonitor --name virtual --password xxxx --port 9999 --resolution 1080x1920 & disown";
-      kill-brittle-mon = "pkill krfb";
     };
   };
 }

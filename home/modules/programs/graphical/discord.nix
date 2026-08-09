@@ -5,10 +5,6 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
-
-  cfg = config.modules.programs.discord;
-
   discord-with-vencord = (
     pkgs.discord.override {
       withVencord = true;
@@ -16,9 +12,9 @@ let
   );
 in
 {
-  options.modules.programs.discord.enable = mkEnableOption "enable discord";
+  options.modules.programs.discord.enable = lib.mkEnableOption "enable discord";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf config.modules.programs.discord.enable {
     home.packages = [
       discord-with-vencord
     ];
