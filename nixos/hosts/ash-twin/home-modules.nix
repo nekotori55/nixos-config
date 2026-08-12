@@ -17,6 +17,7 @@
       };
 
       cli = {
+        bash.enable = true; # needed for the aliases to work
         direnv.enable = true;
         git.enable = true;
         helix.enable = true;

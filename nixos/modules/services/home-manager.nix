@@ -1,4 +1,4 @@
-{ config, lib, inputs, ... }:
+{ config, lib, inputs, hostname, ... }:
 let
   inherit (lib) mkIf mkEnableOption mkOption;
 
@@ -35,7 +35,7 @@ in
       useUserPackages = true;
 
       extraSpecialArgs = {
-        inherit inputs;
+        inherit inputs hostname;
       };
 
       sharedModules = [

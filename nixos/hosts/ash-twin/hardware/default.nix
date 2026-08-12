@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     ./nvidia.nix
@@ -10,4 +10,6 @@
   ];
 
   powerManagement.enable = true;
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+  time.hardwareClockInLocalTime = false;
 }

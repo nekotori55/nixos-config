@@ -1,6 +1,6 @@
 { lib, config, ... }:
 {
-  options.modules.programs.cli.direnv.enable = lib.mkEnableOption "Enable direnv";
+  options.modules.programs.cli.direnv.enable = lib.mkEnableOption "direnv";
 
   config = lib.mkIf config.modules.programs.cli.direnv.enable {
     programs.direnv = {

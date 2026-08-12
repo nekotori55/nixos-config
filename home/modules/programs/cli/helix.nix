@@ -43,9 +43,9 @@ in
           after-delay.timeout = 3000;
           focus-lost = true;
         };
-        editor.file-explorer = {
-          ignore = true;
-        };
+        # editor.file-explorer = {
+        #   ignore = true;
+        # };
         keys.normal.space = {
           E = "file_explorer_in_current_directory";
           space = "@:cd <C-r>%<C-w><ret>";
