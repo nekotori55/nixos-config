@@ -7,5 +7,6 @@
     ./solaar.nix
     ./ssh.nix
     ./throne.nix
+    ./kde-connect.nix
   ];
 }

@@ -24,6 +24,7 @@ in
       solaar.enable = true;
       ssh.enable = true;
       throne.enable = true;
+      kde-connect.enable = true;
 
       printing.enable = true;
 
