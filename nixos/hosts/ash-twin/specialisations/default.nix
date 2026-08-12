@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./undocked/configuration.nix
+  ];
+}
