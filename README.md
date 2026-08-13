@@ -39,6 +39,4 @@
 3. build it like a regular nixos system using `nixos-rebuild` or `nh`
 
 ## TODO
-- fix all warnings
-    - ssh.matchBlocks is deprecated, use ssh.settings instead
-    - ssh.enableDefaultConfig = false
+  - setup personal website autodeploy from github repo
