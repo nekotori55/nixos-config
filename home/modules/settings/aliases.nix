@@ -6,7 +6,7 @@
 }:
 {
   options.modules.settings.aliases = {
-    enable = lib.mkEnableOption "enable aliases";
+    enable = lib.mkEnableOption "a collection of personal aliases";
   };
 
   config = {

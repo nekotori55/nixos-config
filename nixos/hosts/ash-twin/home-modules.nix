@@ -32,6 +32,7 @@
     settings = {
       aliases.enable = true;
       ssh.enable = true;
+      xdg.user-dirs.enable = true;
     };
   };
 }

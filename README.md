@@ -40,3 +40,6 @@
 
 ## TODO
   - setup personal website autodeploy from github repo
+  - setup bitwarden private personal server
+  - setup nextcloud
+  - setup autobackups (!!!!)
