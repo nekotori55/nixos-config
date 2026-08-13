@@ -1,15 +1,10 @@
 { config, lib, ...}:
 let
-  inherit (lib) mkIf mkOption mkDefault;
+  inherit (lib) mkIf mkEnableOption mkDefault;
 in
 {
   options.modules.settings.nix = {
-    enable = mkOption {
-      type = lib.types.bool;
-      default = true;
-
-      description = "Enable convinient nix defaults. Enabled by default but can be disabled if necessity arises";
-    };
+    enable = mkEnableOption "Convinient nix defaults";
   };
 
   config = mkIf config.modules.settings.nix.enable {

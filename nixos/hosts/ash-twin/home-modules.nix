@@ -24,6 +24,11 @@
       };
     };
 
+    services = {
+      agenix.enable = true;
+      syncthing.enable = true;
+    };
+
     settings = {
       aliases.enable = true;
       ssh.enable = true;
