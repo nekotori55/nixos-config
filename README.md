@@ -39,5 +39,6 @@
 3. build it like a regular nixos system using `nixos-rebuild` or `nh`
 
 ## TODO
-- syncthing
 - fix all warnings
+    - ssh.matchBlocks is deprecated, use ssh.settings instead
+    - ssh.enableDefaultConfig = false
