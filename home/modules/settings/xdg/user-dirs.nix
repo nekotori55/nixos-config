@@ -12,7 +12,7 @@ in
     enable = lib.mkEnableOption "user-dirs management";
   };
 
-  config = {
+  config = lib.mkIf config.modules.settings.xdg.user-dirs.enable {
     xdg.userDirs = {
       enable = true;
       createDirectories = true;

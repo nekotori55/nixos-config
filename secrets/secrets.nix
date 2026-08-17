@@ -30,6 +30,10 @@ in
     ash-twin
     servers.giants-deep
   ];
+  "passwords/restic.age".publicKeys = [
+    ash-twin
+    servers.giants-deep
+  ];
 
   # Personal services passwords
   "passwords/syncthing.age".publicKeys = workstations;

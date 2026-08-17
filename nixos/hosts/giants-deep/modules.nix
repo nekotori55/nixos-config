@@ -1,9 +1,15 @@
 let
-  username = "nekotori55";  
+  username = "nekotori55";
 in
 {
   modules = {
-    programs.cli.archive-tools.enable = true;
+    programs.cli = {
+      archive-tools.enable = true;
+      # backuper = {
+      #   enable = true;
+      #   repo = "rest:http://localhost:8000";
+      # };
+    };
 
     services = {
       agenix.enable = true;
@@ -13,7 +19,6 @@ in
         enable = true;
         hardening = true;
       };
-
 
       home-manager = {
         enable = true;
