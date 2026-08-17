@@ -15,6 +15,7 @@ in
           osu.enable = true;
           steam.enable = true;
         };
+        wireshark.enable = true;
       };
     };
     services = {

@@ -1,5 +1,6 @@
 {
   imports = [
     ./gaming
+    ./wireshark.nix
   ];
 }
