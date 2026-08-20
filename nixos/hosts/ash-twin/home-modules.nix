@@ -7,6 +7,7 @@
         ide = {
           enable = true;
           vscode.enable = true;
+          jetbrains.idea.enable = true;
         };
 
         social = {

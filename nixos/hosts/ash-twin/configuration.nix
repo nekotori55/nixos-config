@@ -11,4 +11,7 @@
   system.stateVersion = "26.05";
 
   networking.networkmanager.enable = true;
+
+
+  users.users.nekotori55.extraGroups = [ "wireshark" ];
 }
