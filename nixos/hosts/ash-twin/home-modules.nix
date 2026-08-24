@@ -15,6 +15,12 @@
           discord.enable = true;
           telegram.enable = true;
         };
+
+        editors = {
+          enable = true;
+          blockbench.enable = true;
+          libreoffice.enable = true;
+        };
       };
 
       cli = {
