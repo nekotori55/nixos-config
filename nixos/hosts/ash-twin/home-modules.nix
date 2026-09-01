@@ -7,7 +7,10 @@
         ide = {
           enable = true;
           vscode.enable = true;
-          jetbrains.idea.enable = true;
+          jetbrains = {
+            idea.enable = true;
+            pycharm.enable = true;
+          };
         };
 
         social = {
@@ -20,6 +23,8 @@
           enable = true;
           blockbench.enable = true;
           libreoffice.enable = true;
+          krita.enable = true;
+          obsidian.enable = true;
         };
       };
 

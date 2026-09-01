@@ -17,6 +17,7 @@ in
     vscode.enable = mkEnableOption "vscode-fhs";
     jetbrains = {
       idea.enable = mkEnableOption "IDEA ide";
+      pycharm.enable = mkEnableOption "Pycharm";
     };
   };
 
@@ -24,6 +25,8 @@ in
     home.packages =
       [ ]
       ++ (lib.optional cfg.vscode.enable pkgs.vscode-fhs)
-      ++ (lib.optional cfg.jetbrains.idea.enable pkgs.jetbrains.idea);
+      ++ (lib.optional cfg.jetbrains.idea.enable pkgs.jetbrains.idea)
+      ++ (lib.optional cfg.jetbrains.pycharm.enable pkgs.jetbrains.pycharm)
+      ;
   };
 }
