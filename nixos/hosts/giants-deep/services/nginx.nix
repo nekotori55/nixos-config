@@ -11,17 +11,22 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts = {
-      # prevent host ip access
-      "0.0.0.0" = {
-        addSSL = false;
-        enableACME = false;
+    # virtualHosts = {
+    #   # prevent host ip access
+    #   "0.0.0.0" = {
+    #     # addSSL = false;
+    #     # enableACME = false;
 
-        extraConfig = ''
-          deny all;
-        '';
-      };
-    };
+    #     locations = {
+    #       "/.well-known/acme-challenge/" = {
+    #         extraConfig = ''allow all;'';
+    #     }; 
+        
+    #     # extraConfig = ''
+    #     #   deny all;
+    #     # '';
+    #   };
+    # };
   };
 
   security.acme = {

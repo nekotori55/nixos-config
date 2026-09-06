@@ -19,6 +19,7 @@ in
   services.nginx = {
     virtualHosts."nekotori55.space" = {
       enableACME = true;
+      # addSSL = true;
 
       root = target-folder;
     };

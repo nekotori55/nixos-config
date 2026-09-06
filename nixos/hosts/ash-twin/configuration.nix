@@ -14,4 +14,6 @@
 
 
   users.users.nekotori55.extraGroups = [ "wireshark" ];
+
+  networking.firewall.checkReversePath = false;
 }

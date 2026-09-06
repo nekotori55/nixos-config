@@ -9,5 +9,6 @@
     ./throne.nix
     ./kde-connect.nix
     ./fail2ban.nix
+    ./zapret.nix
   ];
 }

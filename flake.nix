@@ -27,6 +27,11 @@
       inputs.darwin.follows = "";
     };
 
+    zapret = {
+      url = "github:kartavkun/zapret-discord-youtube";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # solaar = {
     #   url = "github:Svenum/Solaar-Flake/main";
     #   inputs.nixpkgs.follows = "nixpkgs";
