@@ -30,6 +30,8 @@ in
 
       printing.enable = true;
 
+      docker.enable = true;
+
       home-manager = {
         enable = true;
         users.${username} = import ./home-modules.nix;

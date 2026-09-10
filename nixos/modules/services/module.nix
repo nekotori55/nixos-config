@@ -10,5 +10,6 @@
     ./kde-connect.nix
     ./fail2ban.nix
     ./zapret.nix
+    ./docker.nix
   ];
 }
