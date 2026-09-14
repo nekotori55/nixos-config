@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: 
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware
@@ -12,8 +12,23 @@
 
   networking.networkmanager.enable = true;
 
-
   users.users.nekotori55.extraGroups = [ "wireshark" ];
 
   networking.firewall.checkReversePath = false;
+  
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      addons = [ pkgs.fcitx5-mozc pkgs.kdePackages.fcitx5-qt ];
+      waylandFrontend = true;
+    };
+  };
+
+
+  documentation = {
+    dev.enable = true;
+    info.enable = true;
+  };
+
 }
