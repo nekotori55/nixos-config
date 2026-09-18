@@ -26,6 +26,10 @@
           krita.enable = true;
           obsidian.enable = true;
         };
+
+        fun = {
+          kteatime = true;
+        };
       };
 
       cli = {

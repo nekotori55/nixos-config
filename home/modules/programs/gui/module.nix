@@ -4,5 +4,6 @@
     ./ide.nix
     ./social.nix
     ./editors.nix
+    ./fun.nix
   ];
 }
