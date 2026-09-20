@@ -31,4 +31,9 @@
     info.enable = true;
   };
 
+  services.displayManager = {
+    autoLogin.enable = true;
+	  autoLogin.user = "nekotori55";
+	};
+
 }

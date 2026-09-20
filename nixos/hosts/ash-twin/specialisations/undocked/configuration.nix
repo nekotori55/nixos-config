@@ -5,5 +5,7 @@
 
     # use ondemand governor by default
     powerManagement.cpuFreqGovernor = lib.mkForce "ondemand";
+
+    services.displayManager.autoLogin.enable = lib.mkForce false;
   };
 }
