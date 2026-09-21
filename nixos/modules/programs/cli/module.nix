@@ -3,5 +3,6 @@
     ./nh.nix
     ./archive-tools.nix
     ./backuper.nix
+    ./tmux.nix
   ];
 }

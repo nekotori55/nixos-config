@@ -8,6 +8,10 @@ in
       cli = {
         archive-tools.enable = true;
         nh.enable = true;
+        tmux = {
+          enable = true;
+          autostart = true;
+        };
       };
       gui = {
         gaming = {
@@ -42,7 +46,6 @@ in
       dm.sddm.enable = true;
       desktop.plasma.enable = true;
     };
-
 
     settings = {
       default-user = {
