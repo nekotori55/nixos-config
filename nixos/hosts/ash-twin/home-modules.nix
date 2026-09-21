@@ -3,6 +3,7 @@
     programs = {
       gui = {
         librewolf.enable = true;
+        chromium.enable = true;
 
         ide = {
           enable = true;
@@ -25,6 +26,12 @@
           libreoffice.enable = true;
           krita.enable = true;
           obsidian.enable = true;
+        };
+
+        utils = {
+          enable = true;
+          kcalc.enable = true;
+          ghostwriter.enable = true;
         };
 
         fun = {
