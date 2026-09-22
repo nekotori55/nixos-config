@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib) mkIf mkEnableOption;
 
@@ -16,7 +16,12 @@ in
       clock24 = true;
       shortcut = "a";
 
-      # extraConfig = '''';
+      extraConfig = ''
+        set -g escape-time 10
+        set -g mouse on
+      '';
+
+      plugins = [ pkgs.tmuxPlugins.better-mouse-mode ];    
     };
   };
 }

@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.bash = {
       enable = true;
-      bashrcExtra = mkIf (tmuxCfg.enable && tmuxCfg.autostart)
+      initExtra = mkIf (tmuxCfg.enable && tmuxCfg.autostart)
       ''
           if [ -x "$(command -v tmux)" ] && [ -z "''${TMUX}" ]; then
               exec tmux new-session -A -s ''${USER} >/dev/null 2>&1
