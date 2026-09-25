@@ -1,4 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
+let
+  setup-mode = false;
+in
 {
   imports = [
     ./hardware
@@ -25,6 +28,7 @@
   #   openssh.authorizedKeys.keys = config.modules.services.ssh.workstationKeys;
   # };
 
+  networking.firewall.allowedTCPPorts = lib.mkIf setup-mode [ 2053 ];
   # users.groups.restic = {};
 
 } 

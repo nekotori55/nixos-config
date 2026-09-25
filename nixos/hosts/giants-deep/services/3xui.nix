@@ -22,12 +22,17 @@
   };
 
   services.nginx.virtualHosts."nekotori55.space" = {
+    enableACME = true;
     # move static website to port 8080
     # so 3xui can listen on 443 port
     listen = [
       {
         addr = "0.0.0.0";
         port = 8080;
+      }
+      {
+        addr = "0.0.0.0";
+        port = 80;
       }
     ];
 
@@ -55,8 +60,18 @@
           proxy_pass http://127.0.0.1:2053;
         '';
       };
+
+      # "/.well-known/acme-challenge/" = {
+      #   root = "/var/lib/acme/acme-challenge";
+      # };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    2096
+    443
+    80
+  ];
 
 }
 

@@ -18,6 +18,7 @@
       cc = "configdir";
       home = "cd ~/.config/nixos/home; hx ./home.nix";
       hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./configuration.nix";
+      servconfig = "cd ~/.config/nixos/nixos/hosts/giants-deep; hx ./configuration.nix";
 
       # nix dev aliases
       dev = "nix develop";

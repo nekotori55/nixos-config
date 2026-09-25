@@ -15,9 +15,10 @@ in
       enable = true;
       clock24 = true;
       shortcut = "a";
+      baseIndex = 1;
+      escapeTime = 10;
 
       extraConfig = ''
-        set -g escape-time 10
         set -g mouse on
       '';
 

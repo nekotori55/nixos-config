@@ -10,7 +10,7 @@ in
         nh.enable = true;
         tmux = {
           enable = true;
-          autostart = true;
+          # autostart = true;
         };
       };
       gui = {

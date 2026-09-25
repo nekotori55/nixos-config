@@ -37,6 +37,6 @@
   networking.firewall.allowedTCPPorts = [
     80 # http
     443 # https
-    2096
+    2096 # subs
   ];
 }

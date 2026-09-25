@@ -22,24 +22,24 @@ in
     brittle-hollow
     ash-twin
   ];
-  "passwords/ember-twin.age".publicKeys = [
-    ember-twin
-    ash-twin
-  ];
+  # "passwords/ember-twin.age".publicKeys = [
+  #   ember-twin
+  #   ash-twin
+  # ];
   "passwords/giants-deep.age".publicKeys = [
     ash-twin
     servers.giants-deep
   ];
-  "passwords/restic.age".publicKeys = [
-    ash-twin
-    servers.giants-deep
-  ];
+  # "passwords/restic.age".publicKeys = [
+  #   ash-twin
+  #   servers.giants-deep
+  # ];
 
   # Personal services passwords
   "passwords/syncthing.age".publicKeys = workstations;
 
   # AWG
-  "awg/awg-giants-deep.age".publicKeys = [
-    servers.giants-deep
-  ];
+  # "awg/awg-giants-deep.age".publicKeys = [
+  #   servers.giants-deep
+  # ];
 }

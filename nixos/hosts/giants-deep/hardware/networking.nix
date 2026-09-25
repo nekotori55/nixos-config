@@ -1,3 +1,16 @@
+{ lib, ... }:
+let
+  inherit (lib) splitStringBy replaceElemAt;
+  calc-gateway =
+    ip:
+    builtins.concatStringsSep "." (
+      replaceElemAt (splitStringBy (prev: curr: builtins.elem curr [ "." ]) false ip) 3 "1"
+    );
+
+
+  ip = "89.110.69.43";
+  gateway = lib.trace (calc-gateway ip) (calc-gateway ip);
+in
 {
   networking = {
     domain = "nekotori55.space";
@@ -5,7 +18,7 @@
       useDHCP = false;
       ipv4.addresses = [
         {
-          address = "31.56.204.57";
+          address = ip;
           prefixLength = 24;
         }
       ];
@@ -21,7 +34,7 @@
       "8.8.8.8"
       "1.1.1.1"
     ];
-    defaultGateway = "31.56.204.1";
+    defaultGateway = gateway;
 
     tempAddresses = "disabled";
   };
