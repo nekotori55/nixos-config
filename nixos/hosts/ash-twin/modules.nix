@@ -7,7 +7,10 @@ in
     programs = {
       cli = {
         archive-tools.enable = true;
-        nh.enable = true;
+        nh = {
+          enable = true;
+          clean = true;
+        };
         tmux = {
           enable = true;
           # autostart = true;
