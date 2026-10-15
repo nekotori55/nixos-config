@@ -15,16 +15,18 @@
   users.users.nekotori55.extraGroups = [ "wireshark" ];
 
   networking.firewall.checkReversePath = false;
-  
+
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
     fcitx5 = {
-      addons = [ pkgs.fcitx5-mozc pkgs.kdePackages.fcitx5-qt ];
+      addons = [
+        pkgs.fcitx5-mozc
+        pkgs.kdePackages.fcitx5-qt
+      ];
       waylandFrontend = true;
     };
   };
-
 
   documentation = {
     dev.enable = true;
@@ -33,7 +35,13 @@
 
   services.displayManager = {
     autoLogin.enable = true;
-	  autoLogin.user = "nekotori55";
-	};
+    autoLogin.user = "nekotori55";
+  };
+
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+
+    btop
+  ];
 
 }

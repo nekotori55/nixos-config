@@ -24,7 +24,7 @@
           enable = true;
           blockbench.enable = true;
           libreoffice.enable = true;
-          krita.enable = true;
+          # krita.enable = true;
           obsidian.enable = true;
         };
 
