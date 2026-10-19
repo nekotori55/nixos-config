@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption optional;
+  inherit (lib) mkIf mkEnableOption optionals;
 
   cfg = config.modules.programs.cli.helix;
 in
@@ -24,7 +24,7 @@ in
       languages = {
         language =
           [ ]
-          ++ (optional cfg.enableNixSupport [
+          ++ (optionals cfg.enableNixSupport [
             {
               name = "nix";
               auto-format = true;
@@ -57,7 +57,7 @@ in
 
 
     home.packages = (
-      optional cfg.enableNixSupport [
+      optionals cfg.enableNixSupport [
         pkgs.nil
         pkgs.nixd
         pkgs.nixfmt
