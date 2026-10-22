@@ -10,12 +10,18 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   system.stateVersion = "26.05";
 
+  # Fixes networking
   networking.networkmanager.enable = true;
 
-  users.users.nekotori55.extraGroups = [ "wireshark" ];
+  users.users.nekotori55.extraGroups = [
+    "wireshark"
+    "kvm"
+  ];
 
+  # Fix Throne Issues
   networking.firewall.checkReversePath = false;
 
+  # Japanese Keyboard
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -33,17 +39,14 @@
     info.enable = true;
   };
 
+  # Autologin
   services.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "nekotori55";
   };
 
-  environment.systemPackages = with pkgs; [
-    qbittorrent
-
-    btop
-  ];
-
+  # Replace power-profiles daemon with TLP
+  # to be able to switch to battery saver mode using terminal
   services.tlp = {
     enable = true;
     settings = {
@@ -59,12 +62,14 @@
       CPU_MAX_PERF_ON_BAT = 40;
     };
   };
-
-  powerManagement = {
-    enable = true;
-  };
-
-
+  powerManagement.enable = true;
   # disable kde power management
   services.power-profiles-daemon.enable = false;
+
+  # Some packages
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+
+    btop
+  ];
 }
