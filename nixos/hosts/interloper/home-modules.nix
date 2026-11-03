@@ -1,0 +1,64 @@
+{
+  modules = {
+    programs = {
+      gui = {
+        librewolf.enable = true;
+        # chromium.enable = true;
+
+        ide = {
+          enable = true;
+          vscode.enable = true;
+          jetbrains = {
+            #   idea.enable = true;
+            # pycharm.enable = true;
+          };
+        };
+
+        social = {
+          enable = true;
+          # discord.enable = true;
+          telegram.enable = true;
+        };
+
+        editors = {
+          enable = false;
+          # blockbench.enable = true;
+          # libreoffice.enable = true;
+          # krita.enable = true;
+          obsidian.enable = true;
+        };
+
+        utils = {
+          enable = true;
+          kcalc.enable = true;
+          # ghostwriter.enable = true;
+        };
+
+        # fun = {
+        #   kteatime = true;
+        # };
+      };
+
+      cli = {
+        bash.enable = true; # needed for the aliases to work
+        direnv.enable = true;
+        git.enable = true;
+        helix = {
+          enable = true;
+          enableNixSupport = true;
+        };
+      };
+    };
+
+    services = {
+      agenix.enable = true;
+      syncthing.enable = true;
+    };
+
+    settings = {
+      aliases.enable = true;
+      ssh.enable = true;
+      xdg.user-dirs.enable = true;
+    };
+  };
+}

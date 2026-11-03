@@ -1,15 +1,19 @@
-{ lib, config, inputs, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.zapret.nixosModules.withTestTools
   ];
-  
-  options.modules.services.zapret.enable = lib.mkEnableOption "zapret";
 
+  options.modules.services.zapret.enable = lib.mkEnableOption "zapret";
 
   config = lib.mkIf config.modules.services.zapret.enable {
     services.zapret-discord-youtube = {
-      enable = false;
+      enable = true;
       configName = "general (FAKE_TLS_AUTO_ALT)";
     };
   };

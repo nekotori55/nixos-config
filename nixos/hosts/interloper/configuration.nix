@@ -1,0 +1,45 @@
+{ lib, pkgs, ... }:
+{
+  imports = [
+    ./hardware
+    # ./specialisations
+    ./modules.nix
+  ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
+  # system.stateVersion = "26.05";
+
+  # Fixes networking
+  networking.networkmanager.enable = true;
+
+  # Fix Throne Issues
+  networking.firewall.checkReversePath = false;
+
+  # Replace power-profiles daemon with TLP
+  # to be able to switch to battery saver mode using terminal
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 40;
+    };
+  };
+  powerManagement.enable = true;
+  # disable kde power management
+  services.power-profiles-daemon.enable = false;
+
+  # Some packages
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+
+    btop
+  ];
+}
