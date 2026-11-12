@@ -1,5 +1,5 @@
 {
   imports = [
-    ./undocked/configuration.nix
+    ./undocked/specialisation.nix
   ];
 }

@@ -1,10 +1,10 @@
 { inputs, lib, ... }:
-let 
+let
   # lib shortcuts
   fs = lib.fileset;
 
   # settings
-  hostEntrypointFileName = "configuration.nix";
+  hostEntrypointFileName = "host.nix";
   hostsPath = ../nixos/hosts;
 
   modulesPath = ../nixos/modules;
@@ -14,31 +14,27 @@ let
   collectPaths = path: filename: fs.toList (fs.fileFilter (file: file.name == filename) path);
 
   hosts = builtins.listToAttrs (
-    lib.map
-      (hostFile: { 
-          name = baseNameOf (lib.removeSuffix hostEntrypointFileName (toString hostFile)); 
-          value = hostFile; 
-      }) 
-    (collectPaths hostsPath hostEntrypointFileName)
+    lib.map (hostFile: {
+      name = baseNameOf (lib.removeSuffix hostEntrypointFileName (toString hostFile));
+      value = hostFile;
+    }) (collectPaths hostsPath hostEntrypointFileName)
   );
 
   modules = collectPaths modulesPath moduleName;
-in 
+in
 {
-  flake.nixosConfigurations = 
-    lib.mapAttrs
-      (host: entrypoint: 
-        inputs.nixpkgs.lib.nixosSystem {
-          modules = [
-            entrypoint
-          ] 
-          ++ modules;
+  flake.nixosConfigurations = lib.mapAttrs (
+    host: entrypoint:
+    inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        entrypoint
+      ]
+      ++ modules;
 
-          specialArgs = {
-            inherit inputs;
-            hostname = host;
-          };
-        } 
-      )
-      hosts;
+      specialArgs = {
+        inherit inputs;
+        hostname = host;
+      };
+    }
+  ) hosts;
 }

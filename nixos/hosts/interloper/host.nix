@@ -2,12 +2,11 @@
 {
   imports = [
     ./hardware
-    # ./specialisations
     ./modules.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
-  # system.stateVersion = "26.05";
+  system.stateVersion = "26.05";
 
   # Fixes networking
   networking.networkmanager.enable = true;

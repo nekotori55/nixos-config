@@ -3,13 +3,7 @@ let
 in
 {
   modules = {
-    programs.cli = {
-      archive-tools.enable = true;
-      # backuper = {
-      #   enable = true;
-      #   repo = "rest:http://localhost:8000";
-      # };
-    };
+    programs.cli.archive-tools.enable = true;
 
     services = {
       agenix.enable = true;
@@ -22,11 +16,7 @@ in
 
       home-manager = {
         enable = true;
-        users.${username} = {
-          modules = {
-            programs.cli.helix.enable = true;
-          };
-        };
+        users.${username}.modules.programs.cli.helix.enable = true;
       };
     };
 
@@ -38,5 +28,8 @@ in
 
       nix.enable = true;
     };
+
+    # HOST-SPECIFIC, SEE ./services
+    foundry.enable = true;
   };
 }

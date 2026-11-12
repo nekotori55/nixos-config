@@ -21,32 +21,42 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.foundryvtt =
-      let
-        foundryvtt-pkg = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt;
-      in
-      {
-        enable = true;
-        hostName = "nekotori55.space";
-        minifyStaticFiles = true;
-        proxyPort = 443;
-        proxySSL = true;
-        routePrefix = "foundry";
-        language = "ru.ru-ru";
-        port = 30000;
-        package = foundryvtt-pkg.overrideAttrs (
-          final: prev:
-          {
-            majorVersion = "14";
-            build = "360";
-          }
-          // prev
-        );
-      };
+    services = {
+      foundryvtt =
+        let
+          # fixes unfree error
+          # https://github.com/nix-foundryvtt/nix-foundryvtt/issues/49#issuecomment-4848367430
+          foundryvtt-pkg = (pkgs.callPackage "${inputs.foundryvtt}/pkgs/foundryvtt" { });
+        in
+        {
+          enable = true;
+          hostName = "nekotori55.space";
+          minifyStaticFiles = true;
+          proxyPort = 443;
+          proxySSL = true;
+          routePrefix = "foundry";
+          language = "ru.ru-ru";
+          port = 30000;
+          package = foundryvtt-pkg.overrideAttrs (
+            final: prev:
+            {
+              majorVersion = "14";
+              build = "360";
+            }
+            // prev
+          );
+        };
 
-    services.nginx.virtualHosts."nekotori55.space".locations."/foundry" = {
-      proxyPass = "http://localhost:30000";
-      proxyWebsockets = true;
+      nginx.virtualHosts."nekotori55.space" = rec {
+        locations = {
+          "/foundry" = {
+            proxyPass = "http://localhost:30000";
+            proxyWebsockets = true;
+          };
+
+          "/dnd" = locations."/foundry";
+        };
+      };
     };
   };
 }

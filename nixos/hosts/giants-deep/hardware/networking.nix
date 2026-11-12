@@ -1,41 +1,59 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
-  inherit (lib) splitStringBy replaceElemAt;
+  # CONFIGURATION
+
+  inherit (lib)
+    splitStringBy
+    replaceElemAt
+    mkOption
+    types
+    ;
+
   calc-gateway =
     ip:
     builtins.concatStringsSep "." (
       replaceElemAt (splitStringBy (prev: curr: builtins.elem curr [ "." ]) false ip) 3 "1"
     );
-
-
-  ip = "89.110.69.43";
-  gateway = lib.trace (calc-gateway ip) (calc-gateway ip);
 in
 {
-  networking = {
-    domain = "nekotori55.space";
-    interfaces."ens3" = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = ip;
-          prefixLength = 24;
-        }
-      ];
-      # ipv6.addresses = [
-      #   {
-      #     address = "2a13:7c00:6:28:f816:3eff:fe96:81d9";
-      #     prefixLength = 64; # idk??
-      #   }
-      # ];
+  options = {
+    ip = mkOption {
+      type = types.str;
+      example = "192.168.1.100";
     };
 
-    nameservers = [
-      "8.8.8.8"
-      "1.1.1.1"
-    ];
-    defaultGateway = gateway;
+    gateway = mkOption {
+      type = types.str;
+      example = "192.168.1.1";
+      default = calc-gateway (config.ip);
+    };
 
-    tempAddresses = "disabled";
+    domain = mkOption {
+      type = types.str;
+      example = "example.com";
+    };
+  };
+
+  config = {
+    networking = {
+      domain = config.domain;
+      interfaces."ens3" = {
+        useDHCP = false;
+        ipv4.addresses = [
+          {
+            address = config.ip;
+            prefixLength = 24;
+          }
+        ];
+      };
+
+      nameservers = [
+        "8.8.8.8"
+        "1.1.1.1"
+      ];
+      defaultGateway = config.gateway;
+
+      tempAddresses = "disabled";
+    };
   };
 }
