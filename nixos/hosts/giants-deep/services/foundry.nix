@@ -47,16 +47,22 @@ in
           );
         };
 
-      nginx.virtualHosts."nekotori55.space" = rec {
-        locations = {
-          "/foundry" = {
-            proxyPass = "http://localhost:30000";
-            proxyWebsockets = true;
-          };
+      nginx.virtualHosts."${config.domain}" =
+        let
+          foundry-url-path = "/foundry";
+        in
+        {
+          locations = {
+            "${foundry-url-path}" = {
+              proxyPass = "http://localhost:30000";
+              proxyWebsockets = true;
+            };
 
-          "/dnd" = locations."/foundry";
+            "/dnd" = {
+              return = "301 https://${config.domain + foundry-url-path}";
+            };
+          };
         };
-      };
     };
   };
 }
