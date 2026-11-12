@@ -1,6 +1,5 @@
 {
   boot.initrd = {
-    systemd.enable = true;
     availableKernelModules = [
       "virtio"
       "virtio_net"
