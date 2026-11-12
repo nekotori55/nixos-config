@@ -41,5 +41,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    foundryvtt = {
+      url = "github:nekotori55/nix-foundryvtt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

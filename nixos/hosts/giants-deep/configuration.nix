@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   setup-mode = false;
 in
@@ -12,10 +17,9 @@ in
   nixpkgs.hostPlatform = "x86_64-linux";
   system.stateVersion = "26.05";
 
-
   # TEST
   # modules.programs.cli.backuper.paths = [
-    # "/home/nekotori55/backuper-test"
+  # "/home/nekotori55/backuper-test"
   # ];
 
   environment.systemPackages = with pkgs; [
@@ -31,4 +35,5 @@ in
   networking.firewall.allowedTCPPorts = lib.mkIf setup-mode [ 2053 ];
   # users.groups.restic = {};
 
-} 
+  modules.foundry.enable = true;
+}

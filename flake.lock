@@ -58,6 +58,26 @@
         "type": "github"
       }
     },
+    "foundryvtt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794325022,
+        "narHash": "sha256-D+te2sGlK1hu60jP3aOCquJwfZCOQdiAduzxJSd4/vg=",
+        "owner": "nekotori55",
+        "repo": "nix-foundryvtt",
+        "rev": "6ac8ba5d7cdadf7deec01d3cc8700fa9932fb182",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nekotori55",
+        "repo": "nix-foundryvtt",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -115,6 +135,7 @@
         "agenix": "agenix",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "zapret": "zapret"

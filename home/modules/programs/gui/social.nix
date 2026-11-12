@@ -12,7 +12,7 @@ let
 
   discord-with-vencord = (
     pkgs.discord.override {
-      withVencord = true;
+      withVencord = false;
     }
   );
 in
@@ -27,6 +27,6 @@ in
     home.packages =
       [ ]
       ++ (lib.optional cfg.telegram.enable pkgs.telegram-desktop)
-      ++ (lib.optional cfg.discord.enable discord-with-vencord);
+      ++ (lib.optional cfg.discord.enable pkgs.discord);
   };
 }
