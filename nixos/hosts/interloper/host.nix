@@ -37,8 +37,6 @@
 
   # Some packages
   environment.systemPackages = with pkgs; [
-    qbittorrent
-
     btop
   ];
 }

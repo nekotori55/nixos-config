@@ -3,15 +3,14 @@
     programs = {
       gui = {
         librewolf.enable = true;
-        # chromium.enable = true;
 
         ide = {
           enable = true;
           vscode.enable = true;
-          jetbrains = {
-            #   idea.enable = true;
-            # pycharm.enable = true;
-          };
+          # jetbrains = {
+          #   idea.enable = true;
+          # pycharm.enable = true;
+          # };
         };
 
         social = {
@@ -25,7 +24,7 @@
           # blockbench.enable = true;
           # libreoffice.enable = true;
           # krita.enable = true;
-          obsidian.enable = true;
+          # obsidian.enable = true;
         };
 
         utils = {

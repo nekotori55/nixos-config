@@ -11,26 +11,26 @@ in
           enable = true;
           clean = true;
         };
-        tmux = {
-          enable = true;
-          # autostart = true;
-        };
+        # tmux = {
+        # enable = true;
+        # autostart = true;
+        # };
       };
-      gui = {
-        gaming = {
-          steam.enable = true;
-        };
-      };
+      # gui = {
+      #   gaming = {
+      #     steam.enable = true;
+      #   };
+      # };
     };
     services = {
-      agenix.enable = true;
+      # agenix.enable = true;
       agenix.install-cli = true;
 
       ssh.enable = true;
       throne.enable = true;
       kde-connect.enable = true;
 
-      printing.enable = true;
+      # printing.enable = true;
 
       # docker.enable = true;
 
