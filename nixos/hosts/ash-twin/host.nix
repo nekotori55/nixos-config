@@ -69,7 +69,10 @@
   # Some packages
   environment.systemPackages = with pkgs; [
     qbittorrent
+    gnome-boxes
 
     btop
   ];
+
+  virtualisation.libvirtd.enable = true;
 }
