@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  hosts = "~/.config/nixos/nixos/hosts";
+in
 {
   options.modules.settings.aliases = {
     enable = lib.mkEnableOption "a collection of personal aliases";
@@ -17,8 +20,9 @@
       c = "config";
       cc = "configdir";
       home = "cd ~/.config/nixos/home; hx ./home.nix";
-      hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./configuration.nix";
-      servconfig = "cd ~/.config/nixos/nixos/hosts/giants-deep; hx ./configuration.nix";
+      hostconfig = "cd ~/.config/nixos/nixos/hosts/${hostname}; hx ./host.nix";
+      servconfig = "cd ~/.config/nixos/nixos/hosts/giants-deep; hx ./host.nix";
+      hh = "cd ${hosts}; hx .";
 
       # nix dev aliases
       dev = "nix develop";
