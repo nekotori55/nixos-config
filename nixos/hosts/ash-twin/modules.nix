@@ -57,5 +57,7 @@ in
 
       nix.enable = true;
     };
+
+    dnd-tools.enable = true;
   };
 }
