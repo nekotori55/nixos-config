@@ -81,15 +81,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1794325022,
-        "narHash": "sha256-D+te2sGlK1hu60jP3aOCquJwfZCOQdiAduzxJSd4/vg=",
-        "owner": "nekotori55",
+        "lastModified": 1794172055,
+        "narHash": "sha256-B3jjBr6nPjyiiQpVjQN0opU9XH8HMEG39obNFlsuFG0=",
+        "owner": "nix-foundryvtt",
         "repo": "nix-foundryvtt",
-        "rev": "6ac8ba5d7cdadf7deec01d3cc8700fa9932fb182",
+        "rev": "f20f57bb17e9b98e54cffa1f63f1dacc018d5eda",
         "type": "github"
       },
       "original": {
-        "owner": "nekotori55",
+        "owner": "nix-foundryvtt",
         "repo": "nix-foundryvtt",
         "type": "github"
       }

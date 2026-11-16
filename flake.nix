@@ -42,7 +42,7 @@
     };
 
     foundryvtt = {
-      url = "github:nekotori55/nix-foundryvtt";
+      url = "github:nix-foundryvtt/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
