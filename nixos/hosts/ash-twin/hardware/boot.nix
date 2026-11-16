@@ -80,9 +80,9 @@
 
   system.activationScripts = {
     bootNixosByDefault = {
-      # deps = [ "bootloader" ];
       text = ''
-        ${pkgs.systemd}/bin/bootctl set-oneshot 3
+        TARGET=`${pkgs.systemd}/bin/bootctl list --json=short | ${pkgs.jq}/bin/jq .[0].id`
+        ${pkgs.systemd}/bin/bootctl set-oneshot $TARGET
       '';
     };
   };
@@ -92,9 +92,15 @@
       reboot-to-windows = pkgs.writeShellScriptBin "reboot-to-windows" ''
         bootctl set-oneshot Windows && reboot
       '';
+
+      reboot-to-last = pkgs.writeShellScriptBin "reboot-to-last" ''
+        TARGET=`bootctl list --json=short | ${pkgs.jq}/bin/jq .[0].id`
+        bootctl set-oneshot $TARGET && reboot
+      '';
     in
     [
       pkgs.sbctl
       reboot-to-windows
+      reboot-to-last
     ];
 }

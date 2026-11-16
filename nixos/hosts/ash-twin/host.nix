@@ -19,9 +19,6 @@
     "kvm"
   ];
 
-  # Fix Throne Issues
-  networking.firewall.checkReversePath = false;
-
   # Japanese Keyboard
   i18n.inputMethod = {
     enable = true;
@@ -33,17 +30,6 @@
       ];
       waylandFrontend = true;
     };
-  };
-
-  documentation = {
-    dev.enable = true;
-    info.enable = true;
-  };
-
-  # Autologin
-  services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = "nekotori55";
   };
 
   # Replace power-profiles daemon with TLP
@@ -70,10 +56,6 @@
   # Some packages
   environment.systemPackages = with pkgs; [
     qbittorrent
-    gnome-boxes
-
     btop
   ];
-
-  virtualisation.libvirtd.enable = true;
 }

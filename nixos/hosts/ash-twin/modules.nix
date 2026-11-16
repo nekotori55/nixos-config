@@ -23,6 +23,7 @@ in
           steam.enable = true;
         };
         wireshark.enable = true;
+        # gnome-boxes.enable = true;
       };
     };
     services = {

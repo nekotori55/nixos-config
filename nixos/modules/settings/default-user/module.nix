@@ -1,6 +1,16 @@
-{ config, lib, hostname, ... }:
+{
+  config,
+  lib,
+  hostname,
+  ...
+}:
 let
-  inherit (lib) mkDefault mkEnableOption mkOption mkIf;
+  inherit (lib)
+    mkDefault
+    mkEnableOption
+    mkOption
+    mkIf
+    ;
   inherit (lib.types) str bool;
 
   cfg = config.modules.settings.default-user;
@@ -10,12 +20,14 @@ let
 in
 {
   options.modules.settings.default-user = {
-    enable = mkEnableOption "Enable default user creation";
+    enable = mkEnableOption "default user autocreation";
 
     username = mkOption {
       type = str;
       default = "nekotori55";
     };
+
+    autologin = mkEnableOption "Autologin default user";
   };
 
   config = mkIf cfg.enable {
@@ -27,21 +39,24 @@ in
         extraGroups = [ "wheel" ];
 
         openssh.authorizedKeys.keys = config.modules.services.ssh.workstationKeys;
-      } 
-      // (lib.optionalAttrs (!agenix-enabled)
-      {
+      }
+      // (lib.optionalAttrs (!agenix-enabled) {
         password = mkDefault "changeme";
-      }) 
-      // (lib.optionalAttrs (agenix-enabled) 
-      {
+      })
+      // (lib.optionalAttrs (agenix-enabled) {
         hashedPasswordFile = agenix-password-path;
       });
 
-      groups.${cfg.username} = {};
+      groups.${cfg.username} = { };
     };
 
     modules.services.agenix.secrets."${hostname}-password" = {
       file = "passwords/${hostname}.age";
+    };
+
+    services.displayManager = mkIf cfg.autologin {
+      autoLogin.enable = true;
+      autoLogin.user = cfg.username;
     };
   };
 }

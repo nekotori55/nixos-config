@@ -9,5 +9,8 @@
       enable = true;
       tunMode.enable = true;
     };
+
+    # Fix Throne Issues
+    networking.firewall.checkReversePath = false;
   };
 }
