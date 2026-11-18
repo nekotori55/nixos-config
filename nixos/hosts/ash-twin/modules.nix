@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   username = "nekotori55";
 in
@@ -22,7 +22,7 @@ in
           osu.enable = true;
           steam.enable = true;
         };
-        wireshark.enable = true;
+        # wireshark.enable = true;
         # gnome-boxes.enable = true;
       };
     };
@@ -38,6 +38,18 @@ in
       printing.enable = true;
 
       docker.enable = true;
+
+      plymouth = {
+        enable = true;
+        theme = "abstract_ring";
+
+        themePackages = with pkgs; [
+          # By default we would install all themes
+          (adi1090x-plymouth-themes.override {
+            selected_themes = [ "abstract_ring" ];
+          })
+        ];
+      };
 
       home-manager = {
         enable = true;

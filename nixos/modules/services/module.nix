@@ -1,5 +1,5 @@
 {
-  imports = [ 
+  imports = [
     ./agenix.nix
     ./ananicy.nix
     ./home-manager.nix
@@ -11,5 +11,6 @@
     ./fail2ban.nix
     ./zapret.nix
     ./docker.nix
+    ./plymouth.nix
   ];
 }
