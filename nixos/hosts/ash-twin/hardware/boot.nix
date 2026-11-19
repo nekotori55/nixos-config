@@ -34,7 +34,7 @@
           /Windows
           protocol: efi
           comment: Windows Boot Manager (Windows 11)
-          path: uuid(89b99b0a-0d77-4dda-9caf-1577524d5a34):/EFI/Microsoft/Boot/bootmgfw.efi#bf54ae4c759a239c2dc64dd6c48e1cc742e9666c2544714e70dc789a2b0e019731012cb68d64c22a7e4cbe505c556ba9d6c92072dcac53043f224e2fe5e69ab2'';
+          path: boot():/EFI/Microsoft/Boot/bootmgfw.efi#325eb0ea8811677ef38e48016aad9fd10a0f53b9ff7625291caf6d30ff6129207634450649912cb29b4eaedf303f5c4c8b51f9bb1c84499ace3c36ce720fac2d'';
 
         # extraEntries = ''
         #     /Windows
