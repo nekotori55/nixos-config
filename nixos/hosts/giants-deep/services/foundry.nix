@@ -10,6 +10,9 @@ let
 
   cfg = config.modules.foundry;
 
+  domain = config.modules.settings.networking.static-ip.domain;
+  foundry-url-path = "/foundry";
+
 in
 {
   imports = [
@@ -30,7 +33,7 @@ in
         in
         {
           enable = true;
-          hostName = "nekotori55.space";
+          hostName = "${domain}";
           minifyStaticFiles = true;
           proxyPort = 443;
           proxySSL = true;
@@ -47,22 +50,18 @@ in
           );
         };
 
-      nginx.virtualHosts."${config.domain}" =
-        let
-          foundry-url-path = "/foundry";
-        in
-        {
-          locations = {
-            "${foundry-url-path}" = {
-              proxyPass = "http://localhost:30000";
-              proxyWebsockets = true;
-            };
+      nginx.virtualHosts."${domain}" = {
+        locations = {
+          "${foundry-url-path}" = {
+            proxyPass = "http://localhost:30000";
+            proxyWebsockets = true;
+          };
 
-            "/dnd" = {
-              return = "301 https://${config.domain + foundry-url-path}";
-            };
+          "/dnd" = {
+            return = "301 https://${domain + foundry-url-path}";
           };
         };
+      };
     };
   };
 }
