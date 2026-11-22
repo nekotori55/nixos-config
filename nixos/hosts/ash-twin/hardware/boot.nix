@@ -15,6 +15,8 @@
       limine = {
         enable = true;
 
+        maxGenerations = 10;
+
         enrollConfig = true;
         panicOnChecksumMismatch = true;
 
