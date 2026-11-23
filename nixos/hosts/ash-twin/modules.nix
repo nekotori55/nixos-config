@@ -22,6 +22,7 @@ in
           osu.enable = true;
           steam.enable = true;
         };
+        dnd-tools.enable = true;
         # wireshark.enable = true;
         # gnome-boxes.enable = true;
       };
@@ -70,7 +71,5 @@ in
 
       nix.enable = true;
     };
-
-    dnd-tools.enable = true;
   };
 }

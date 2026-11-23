@@ -3,9 +3,7 @@
   imports = [
     ./hardware
     ./specialisations
-    ./services
     ./modules.nix
-    ./modules
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
