@@ -1,39 +1,56 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  self,
+  ...
+}:
 let
-  # lib shortcuts
+  # lib shortcut
   fs = lib.fileset;
+  inherit (lib) mapAttrs listToAttrs removeSuffix;
+  inherit (builtins) elemAt split;
+  inherit (fs) toList fileFilter;
 
-  # settings
-  hostEntrypointFileName = "host.nix";
-  hostsPath = ../nixos/hosts;
-
-  modulesPath = ../nixos/modules;
-  moduleName = "module.nix";
+  # workaround for:
+  # "error: a string that refers to a store path cannot be appended to a path"
+  # see https://discourse.nixos.org/t/what-am-i-doing-wrong-here/2517/3
+  # TODO: move to lib
+  toNixStorePath = path: /. + "/nix/store" + elemAt (split "/nix/store" path) 2;
+  flakeRoot = toNixStorePath self.outPath;
 
   # make list of paths in hostsPath dir that matches hostDefinitionFileName
-  collectPaths = path: filename: fs.toList (fs.fileFilter (file: file.name == filename) path);
+  # TODO: move to lib
+  collectPaths = path: filename: toList (fileFilter (file: file.name == filename) path);
 
-  hosts = builtins.listToAttrs (
+  hosts = listToAttrs (
     lib.map (hostFile: {
-      name = baseNameOf (lib.removeSuffix hostEntrypointFileName (toString hostFile));
+      name = baseNameOf (removeSuffix hostEntrypointName (toString hostFile));
       value = hostFile;
-    }) (collectPaths hostsPath hostEntrypointFileName)
+    }) (collectPaths hostsPath hostEntrypointName)
   );
 
-  modules = collectPaths modulesPath moduleName;
+  # settings
+  hostEntrypointName = "host.nix";
+  hostsPath = flakeRoot + /nixos/hosts;
+  moduleEntrypointName = "module.nix";
+  modulesPath = flakeRoot + /nixos/modules;
 in
 {
-  flake.nixosConfigurations = lib.mapAttrs (
+  flake.nixosConfigurations = mapAttrs (
     host: entrypoint:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         entrypoint
       ]
-      ++ modules;
+      ++ (collectPaths modulesPath moduleEntrypointName);
 
       specialArgs = {
         inherit inputs;
+
         hostname = host;
+
+        # pass reference to this flake
+        self = inputs.self;
       };
     }
   ) hosts;
