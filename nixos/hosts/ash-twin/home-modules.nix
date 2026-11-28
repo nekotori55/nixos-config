@@ -31,11 +31,11 @@
         utils = {
           enable = true;
           kcalc.enable = true;
-          ghostwriter.enable = true;
+          # ghostwriter.enable = true;
         };
 
         fun = {
-          kteatime = true;
+          # kteatime = true;
         };
       };
 
