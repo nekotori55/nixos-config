@@ -56,4 +56,20 @@
     qbittorrent
     btop
   ];
+
+  environment.sessionVariables = {
+    "KWIN_DRM_DEVICES" = lib.mkDefault "/dev/dri/card1:/dev/dri/card2";
+  };
+
+  programs.gamemode = {
+    enable = true;
+
+    settings = {
+      gpu = {
+        apply_gpu_optimisations = "accept-responsibility";
+        gpu_device = 1;
+        nv_powermizer_mode = 1;
+      };
+    };
+  };
 }
